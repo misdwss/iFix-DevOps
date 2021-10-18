@@ -3,8 +3,8 @@ global:
   tracing-enabled: true
   namespace: ifix
   nodepool:
-    selector: ifix-qa-ng
-    toleration: ifix-qa-ng
+    selector: ifixng
+    toleration: ifixng
 
 cluster-configs:
   namespaces:
@@ -31,7 +31,7 @@ cluster-configs:
       data:
         mongo-db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
         mongo-db-name: "ifix_qa_db"
-        mongo-db-url: "mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
+        mongo-db-url: "mongodb://ifix-db.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@ifix-db@"
         db-host: "postgres.ifix"
         db-name: "ifix_qa_db"
         keycloak-db-name: "keycloak_qa_db"
@@ -69,6 +69,7 @@ cluster-configs:
         ifix-zuul: "http://ifix-zuul.ifix:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
         keycloak: "http://keycloak.ifix:8080/"
+        redis-host: "redis.ifix"
 
 ifix-master-data-service:
   server-context-path: "/ifix-master-data"
@@ -220,15 +221,18 @@ redis:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 kafka-v2:
+  image:
+    tag: 5.4.1
   persistence:
     enabled: true
-    aws:
-      - volumeId: "vol-0bf50431131787b2c"
-        zone: ap-south-1a
-      - volumeId: "vol-05c6c776c1eb91d2a"
-        zone: ap-south-1a
-      - volumeId: "vol-031194d1fac5a24c0"
-        zone: ap-south-1a
+    dataDirSize: "100Gi"
+    azure:
+      - diskName: "kafka-ifix-0"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/kafka-ifix-0
+      - diskName: "kafka-ifix-1"
+        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/kafka-ifix-1
+      - diskName: "kafka-ifix-2" 
+        diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/kafka-ifix-2
   zookeeperHosts: "zookeeper-v2.ifix:2181/kafka-v2"
 
   heapOptions: "-Xms704M -Xmx704M"
@@ -247,15 +251,19 @@ kafka-connect:
 
 # zookeeper-v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 zookeeper-v2:
+  image:
+    tag: 5.4.1
   persistence:
     enabled: true
-    aws:
-      - volumeId: "vol-0e7b4956b957b93a3"
-        zone: ap-south-1a
-      - volumeId: "vol-05cd9010777871915"
-        zone: ap-south-1a
-      - volumeId: "vol-03d4517b9b0c29415"
-        zone: ap-south-1a
+    dataDirSize: "5Gi"
+    azure:
+      - diskName: "zookeeper-ifix-0"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-0
+      - diskName: "zookeeper-ifix-1"
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-1
+      - diskName: "zookeeper-ifix-2" 
+        diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/zookeeper-ifix-2
+
 
   ## Zookeeper JVM Heap Option
   heapOptions: "-Xms256M -Xmx256M"
@@ -398,8 +406,12 @@ postgres:
   postgresDatabase: ifix_qa_db
   persistence:
     enabled: true
-    aws:
-      volumeId: "vol-0b62ac5eb48fe9987"
+    azure:
+      diskName: "postgres-db-1"
+      diskUri:  /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/postgres-db-1
+      
+
+
       
 minio:
   mode: distributed
