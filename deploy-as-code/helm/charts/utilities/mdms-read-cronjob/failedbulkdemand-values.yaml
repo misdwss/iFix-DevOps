@@ -1,10 +1,10 @@
 # Common Labels
 labels:
-  app: "dailyevening-cronjob"
+  app: "failedbulkdemand-cronjob"
   group: "mdms-read-cronjob"
 
 cron:
-  schedule: "30 12 * * *"
+  schedule: "30 3 5 * *"
 
 # Container Configs
 image:
@@ -15,7 +15,7 @@ command:
   - "python3"
   - "cronJobAPIConfig.py"
 args: 
-  - "dailyevening"
+  - "failedbulkdemand"
 
 # Additional Container Envs
 env: |
