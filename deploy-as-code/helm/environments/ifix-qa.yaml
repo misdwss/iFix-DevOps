@@ -104,7 +104,18 @@ mongodb-kafka-source-connector:
 
 druid:
   domain: druid-qa.digit.org
-  druids3: ifix-druid-qa-assets
+  storage: azure
+  azure:
+    druid_storage_type: azure
+    druid_azure_account: ifix
+    druid_azure_container: ifixdruid
+    druid_azure_protocol: https
+    druid_azure_maxTries: 3
+    druid_azure_prefix: druid/segments
+  aws:
+    druid_storage_type: s3
+    druid_storage_baseKey: druid/segments
+    druid_storage_bucket: ifix-druid-qa-assets
 
 metabase:
   domain: metabase-qa.digit.org
