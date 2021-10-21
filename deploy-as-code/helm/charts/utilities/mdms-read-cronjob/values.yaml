@@ -4,7 +4,7 @@ labels:
   group: "mdms-read-cronjob"
 
 cron:
-  schedule: "30 11 * * *"
+  schedule: "30 12 * * *"
 
 # Container Configs
 image:
