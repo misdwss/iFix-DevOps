@@ -1,5 +1,5 @@
 global:
-  domain: ifix-prod.ifix.org.in
+  domain: ifix-dwss.digit.org
   tracing-enabled: true
   namespace: ifix
   nodepool:
@@ -38,8 +38,8 @@ cluster-configs:
         db-url: "jdbc:postgresql://magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/ifix_prod_db"
         bpa-db-url: "jdbc:postgresql://magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/ifix_prod_db"
         erp-db-url: "jdbc:postgresql://magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/ifix_prod_db"
-        domain: "ifix-prod.ifix.org.in"
-        egov-services-fqdn-name: "https://ifix-prod.ifix.org.in/"
+        domain: "ifix-dwss.digit.org"
+        egov-services-fqdn-name: "https://ifix-dwss.digit.org/"
         egov-state-level-tenant-id: "pg"
         es-host: "elasticsearch-data-v1.ifix"
         es-indexer-host: "http://elasticsearch-data-v1.ifix:9200/"
@@ -102,11 +102,11 @@ mongodb-kafka-source-connector:
   kafka-topic: "fiscal-event-request-dereferenced"
 
 druid:
-  domain: druid-uat.ifix.org.in
+  domain: druid-dwss.digit.org
   druids3: ifix-prod-assets
 
 metabase:
-  domain: metabase-prod.ifix.org.in
+  domain: metabase-dwss.digit.org
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
