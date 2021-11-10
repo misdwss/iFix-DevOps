@@ -83,8 +83,8 @@ cluster-configs:
   root-ingress:
     namespace: mgramseva
     cert-issuer: letsencrypt-prod
-    serviceName: digit-ui
-    appRoot: digit-ui 
+    serviceName: frontend-mgramseva
+    appRoot: mgramseva
     
   configmaps:
     egov-config:
@@ -93,8 +93,8 @@ cluster-configs:
         db-host: "magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com"
         db-name: "mgramseva_qa_db"
         db-url: "jdbc:postgresql://magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com/mgramseva_prod_db"
-        bpa-db-url: "jdbc:postgresql://magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/ifix_bpa_prod_db"
-        erp-db-url: "jdbc:postgresql://magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/ifix_finance_prod_db"
+        bpa-db-url: "jdbc:postgresql://magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_bpa_prod_db"
+        erp-db-url: "jdbc:postgresql://magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_finance_prod_db"
         domain: "mgramseva-qa.egov.org.in"
         egov-services-fqdn-name: "https://mgramseva-dwss.digit.org/"
         egov-state-level-tenant-id: "pb"
