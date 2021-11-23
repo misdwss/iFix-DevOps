@@ -94,8 +94,6 @@ cluster-configs:
         db-host: "magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com"
         db-name: "mgramseva_uat_db"
         db-url: "jdbc:postgresql://magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_uat_db"
-        bpa-db-url: "jdbc:postgresql://magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_bpa_uat_db"
-        erp-db-url: "jdbc:postgresql://magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_finance_uat_db"
         domain: "mgramseva-qa.egov.org.in"
         egov-services-fqdn-name: "https://mgramseva-uat.psegs.in/"
         egov-state-level-tenant-id: "pb"
@@ -114,7 +112,6 @@ cluster-configs:
         spring-datasource-tomcat-initialSize: "1"
         spring-datasource-tomcat-max-active: "5"
         spring-jpa-show-sql: "true"
-        egov-indexer-yaml-repo-path: "https://raw.githubusercontent.com/egovernments/playground-rainmaker-customization/master/configs/egov-indexer/egov-telemetry-indexer.yml,https://raw.githubusercontent.com/egovernments/playground-rainmaker-customization/master/configs/egov-indexer/rainmaker-pgr-indexer.yml,https://raw.githubusercontent.com/egovernments/playground-rainmaker-customization/master/configs/egov-indexer/rainmaker-pt-indexer.yml,https://raw.githubusercontent.com/egovernments/playground-rainmaker-customization/master/configs/egov-indexer/billingservices-indexer.yml,https://raw.githubusercontent.com/egovernments/playground-rainmaker-customization/master/configs/egov-indexer/tradelicense-indexer.yml,https://raw.githubusercontent.com/egovernments/playground-rainmaker-customization/master/configs/egov-indexer/collection-indexer.yml,https://raw.githubusercontent.com/egovernments/playground-rainmaker-customization/master/configs/egov-indexer/egov-uploader-indexer.yml"
         tracer-errors-provideexceptionindetails: "true"
         timezone: "Asia/Kolkata"
         es-infra-host: elasticsearch-data-v1.mgramseva
@@ -122,26 +119,16 @@ cluster-configs:
     egov-service-host:
       namespace: [mgramseva]
       data:
-        asset-services: "http://asset-services.mgramseva:8080/"
-        asset-services-maha: "http://asset-services-maha.mgramseva:8080/"
         billing-service: "http://billing-service.mgramseva:8080/"
         collection-services: "http://collection-services.mgramseva:8080/"
         collection-masters: "http://collection-masters.mgramseva:8080/"
         collection-search-indexer: "http://collection-search-indexer.mgramseva:8080/"
         citizen-indexer: "http://citizen-indexer.mgramseva:8080/"
         citizen-services: "http://citizen-services.mgramseva:8080/"
-        dashboard-analytics: http://dashboard-analytics.mgramseva:8080/
-        dashboard-ingest: http://dashboard-ingest.mgramseva:8080/
         demand-services: "http://demand-services.mgramseva:8080/"
         data-sync-employee: "http://data-sync-employee.mgramseva:8080/"
         egov-common-masters: "http://egov-common-masters.mgramseva:8080/"
-        egf-masters: "http://egf-masters.mgramseva:8080/"
-        egf-master: "http://egf-master.mgramseva:8080/"
-        egf-instrument: "http://egf-instrument.mgramseva:8080/"
-        egf-voucher: "http://egf-voucher.mgramseva:8080/"
-        egf-bill: "http://egf-bill.mgramseva:8080/"
         egov-enc-service: "http://egov-enc-service.mgramseva:8080/"
-        egf-voucher-workflow: "http://egf-voucher-workflow.mgramseva:8080/"
         egov-accesscontrol: "http://egov-accesscontrol.mgramseva:8080/"
         egov-user: "http://egov-user.mgramseva:8080/"
         egov-user-egov: "http://egov-user.mgramseva:8080/"
@@ -150,66 +137,35 @@ cluster-configs:
         egov-localization: "http://egov-localization.mgramseva:8080/"
         egov-idgen: "http://egov-idgen.mgramseva:8080/"
         egov-otp: "http://egov-otp.mgramseva:8080/"
+        egf-master: "http://egf-master.mgramseva:8080/"
+        egf-instrument: "http://egf-instrument.mgramseva:8080/"
         egov-common-workflows: "http://egov-common-workflows.mgramseva:8080/"
         egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
         egov-mdms-service-test: "http://egov-mdms-service-test.mgramseva:8080/"
         egov-mdms-create: "http://egov-mdms-create.mgramseva:8080/"
-        egov-eis: "http://egov-eis.mgramseva:8080/"
         egov-workflow: "http://egov-workflow.mgramseva:8080/"
         egov-workflow-v2: "http://egov-workflow-v2.mgramseva:8080/"
         egov-searcher: "http://egov-searcher.mgramseva:8080/"
         egov-data-uploader: "http://egov-data-uploader.mgramseva:8080/"
         egov-indexer: "http://egov-indexer.mgramseva:8080/"
-        egov-hrms: "http://egov-hrms.mgramseva:8080/"
         es-client: "http://elasticsearch-data-v1.es-cluster.mgramseva:9200"
         hr-masters: "http://hr-masters.mgramseva:8080/"
         hr-employee: "http://hr-employee.mgramseva:8080/"
-        hr-masters-v2: "http://hr-masters-v2.mgramseva:8080/"
-        hr-employee-v2: "http://hr-employee-v2.mgramseva:8080/"
-        hr-attendance: "http://hr-attendance.mgramseva:8080/"
-        hr-leave: "http://hr-leave.mgramseva:8080/"
-        hr-employee-movement: "http://hr-employee-movement.mgramseva:8080/"
-        inventory-services: "http://inventory-services.mgramseva:8080/"
-        lams-services: "http://lams-services.mgramseva:8080/"
-        lcms-workflow: "http://lcms-workflow.mgramseva:8080/"
-        lcms-services: "http://lcms-services.mgramseva:8080/"
         location: "http://location.mgramseva:8080/"
-        performance-assessment: "http://performance-assessment.mgramseva:8080/"
-        pt-property: "http://pt-property.mgramseva:8080/"
-        pt-workflow: "http://pt-workflow.mgramseva:8080/"
-        pt-tax-enrichment: "http://pt-tax-enrichment.mgramseva:8080/"
-        pt-calculator: "http://pt-calculator.mgramseva:8080/"
-        pt-calculator-v2: "http://pt-calculator-v2.mgramseva:8080/"
         pt-services-v2: "http://pt-services-v2.mgramseva:8080/"
         property-services: "http://property-services.mgramseva:8080/"
-        pgr-master: "http://pgr-master.mgramseva:8080/"
-        pgr-rest: "http://pgr-rest.mgramseva:8080/"
         pdf-service: "http://pdf-service.mgramseva:8080/"
         report: "http://report.mgramseva:8080/"
-        swm-services: "http://swm-services.mgramseva:8080/"
         tenant: "http://tenant.mgramseva:8080/"
-        tl-masters: "http://tl-masters.mgramseva:8080/"
-        tl-services: "http://tl-services.mgramseva:8080/"
-        tl-workflow: "http://tl-workflow.mgramseva:8080/"
-        tl-indexer: "http://tl-indexer.mgramseva.:8080/"
-        tl-calculator: "http://tl-calculator.mgramseva:8080/"
         user-otp: "http://user-otp:8080/"
-        firenoc-services: "http://firenoc-services:8080/"
-        firenoc-calculator: "http://firenoc-calculator:8080/"
         egov-apportion-service: "http://egov-apportion-service:8080/"
-        bpa-services: "http://bpa-services.mgramseva:8080/"
-        bpa-calculator: "http://bpa-calculator.mgramseva:8080/"
-        rainmaker-pgr: "http://rainmaker-pgr:8080/"
         ws-calculator: "http://ws-calculator.mgramseva:8080/"
         ws-services: "http://ws-services.mgramseva:8080/"
-        sw-services: "http://sw-services.mgramseva:8080/"
-        sw-calculator: "http://sw-calculator.mgramseva:8080/"
         noc-services: "http://noc-services.mgramseva:8080/"
         land-services: "http://land-services.mgramseva:8080/"
         egov-url-shortening: "http://egov-url-shortening:8080/"
         minio-url: "https://minio-staging.digit.org/"
         vendor: "http://vendor.mgramseva:8080"
-        vehicle: "http://vehicle.mgramseva:8080"
         echallan-calculator: http://echallan-calculator.mgramseva:8080/
         echallan-services: http://echallan-services.mgramseva:8080/
         keycloak: "https://ifix-uat.psegs.in/"
@@ -364,9 +320,6 @@ egov-searcher:
 
 
 # web >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-react-pgr-web:
-  ULB_JS_URL: "https://s3.ap-south-1.amazonaws.com/pb-egov-assets/ulb-overrides-prod-20191106.js"
-  TELEMETRY_JS_URL: "https://s3.ap-south-1.amazonaws.com/egov-telemetry-data/egov-telemetry-1557467338.js"
 
 
 employee:
@@ -394,7 +347,6 @@ digit-ui:
       sub_filter  '<head>' '<head>
       <script src=https://s3.ap-south-1.amazonaws.com/egov-uat-assets/globalConfigs.js type=text/javascript></script>
       ';"
-
 dashboard-analytics:
   config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-analytics/*.json"  
   initContainers:
@@ -443,13 +395,6 @@ egov-custom-consumer:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # financials >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-egf-masters:
-  memory_limits: 512Mi
-
-egf-master:
-  db-url: "jdbc:postgresql://magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_uat_db"
-  memory_limits: 512Mi
-  heap: "-Xmx256m -Xms256m"
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -477,11 +422,6 @@ zuul:
 
 # hr-2.0 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-hr-masters-v2:
-  db-url: "jdbc:postgresql://egov-dev-db.ctm6jbmr5mnj.ap-south-1.rds.amazonaws.com:5432/egov_staging_db?currentSchema=hr_masters_v2_schema"
-
-hr-employee-v2:
-  db-url: "jdbc:postgresql://egov-dev-db.ctm6jbmr5mnj.ap-south-1.rds.amazonaws.com:5432/egov_staging_db?currentSchema=hr_employee_v2_schema"
 
 # collections >>>>>>>>>>>>>>>>>>>>>>>>>>>
 collection-masters:
@@ -520,25 +460,6 @@ report:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # rainmaker-pgr >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-rainmaker-pgr:
-  notification-sms-enabled: "false"
-  notification-email-enabled: "false"
-  new-complaint-enabled: "true"
-  reassign-complaint-enabled: "true"
-  reopen-complaint-enabled: "true"
-  comment-by-employee-notif-enabled: "false"
-  notification-allowed-status: "open,assigned,rejected,resolved"
-
-pgr-services:
-  notification-sms-enabled: "true"
-  notification-email-enabled: "false"
-  new-complaint-enabled: "true"
-  reassign-complaint-enabled: "true"
-  reopen-complaint-enabled: "true"
-  comment-by-employee-notif-enabled: "false"
-  notification-allowed-status: "open,assigned,rejected,resolved"
-  java-enable-debug: "true"
-  time-before-closing-complaint: "3600000"
 
 pt-calculator-v2:
   logging-level: "DEBUG"
@@ -551,10 +472,6 @@ egov-workflow-v2:
   heap: "-Xmx192m -Xms192m"
   workflow-statelevel: "true"
 
-egov-hrms:
-  java-args: -Dspring.profiles.active=monitoring
-  heap: "-Xmx192m -Xms192m"
-  employee-applink: "https://https://mgramseva-dev.egov.org.in/employee/user/login"
 
 egov-apportion-service:
   memory_limits: 512Mi
