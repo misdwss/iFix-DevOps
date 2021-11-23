@@ -136,7 +136,6 @@ cluster-configs:
         egov-localization: "http://egov-localization.mgramseva:8080/"
         egov-idgen: "http://egov-idgen.mgramseva:8080/"
         egov-otp: "http://egov-otp.mgramseva:8080/"
-        egf-masters: "http://egf-masters.mgramseva:8080/"
         egf-master: "http://egf-master.mgramseva:8080/"
         egf-instrument: "http://egf-instrument.mgramseva:8080/"
         egov-common-workflows: "http://egov-common-workflows.mgramseva:8080/"
@@ -339,7 +338,22 @@ digit-ui:
       sub_filter  '<head>' '<head>
       <script src=https://s3.ap-south-1.amazonaws.com/egov-uat-assets/globalConfigs.js type=text/javascript></script>
       ';"
+dashboard-analytics:
+  config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-analytics/*.json"  
+  initContainers:
+    gitSync:
+      repo: "git@github.com:misdwss/config-mgramseva"
+      branch: "UAT"
 
+dashboard-ingest:
+  topic-incoming-collection: "dss-collection-update"
+  es-index-name: "dss-collection_v2"
+  es-push-direct: "false"
+  config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-ingest/*.json"
+  initContainers:
+    gitSync:
+      repo: "git@github.com:misdwss/config-mgramseva"
+      branch: "UAT"
 
 nginx-ingress:
   replicas: 1
