@@ -155,6 +155,8 @@ cluster-configs:
 
 billing-service:
   memory_limits: 512Mi
+  demand.updateurl: '{"PT":"http://pt-calculator-v2.mgramseva:8080/pt-calculator-v2/propertytax/_updatedemand","WS":"http://ws-calculator.mgramseva:8080/","SW":"","TL":""}'
+  
 
 ws-services:
   is-external-workflow-enabled: "true"
