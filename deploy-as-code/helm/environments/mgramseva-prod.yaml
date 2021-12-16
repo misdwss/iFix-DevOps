@@ -272,7 +272,14 @@ egov-indexer:
 egov-pg-service:
   replicas: 1
   axis: true
-
+  replicas: 2
+  
+collection-services:
+  replicas: 2
+  
+egov-localization:
+  replicas: 2
+  
 egov-persister:
   replicas: 2
   images:
