@@ -282,7 +282,7 @@ egov-persister:
 
 
 echallan-services:
-  egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
+  egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE_[TENANT_ID]]"
 
 pdf-service:
   initContainers:
