@@ -14,8 +14,6 @@ image:
 command: 
   - "python3"
   - "app.py"
-args: 
-  - "dailyevening"
 
 # Additional Container Envs
 env: |
