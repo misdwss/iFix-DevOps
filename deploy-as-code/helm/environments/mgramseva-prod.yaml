@@ -167,6 +167,11 @@ cluster-configs:
 billing-service:
   memory_limits: 512Mi
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
+
+rollout-dashboard-cronjob:
+  token.username: "9962597390"
+  token.password: "eGov@123"
+  token.tenantid: "pb"
   
 ws-services:
   replicas: 2
