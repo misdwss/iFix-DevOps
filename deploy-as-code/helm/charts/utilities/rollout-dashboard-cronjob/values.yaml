@@ -49,6 +49,9 @@ env: |
         name: egov-service-host
         key: egov-mdms-service
   - name: TENANT_ID
-    value: {{ index .Values "tenantid" | quote }}
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: egov-state-level-tenant-id
 resources: |
   requests: {}
