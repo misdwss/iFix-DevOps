@@ -222,7 +222,7 @@ billing-service:
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   
 rollout-dashboard-cronjob:
-  token.tenantid: "pb"
+  tenantid: "pb"
   
 ws-services:
   is-external-workflow-enabled: "true"
