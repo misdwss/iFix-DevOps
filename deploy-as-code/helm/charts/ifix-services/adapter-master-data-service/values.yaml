@@ -1,27 +1,19 @@
 # Common Labels
 labels:
-  app: "adapter-master-data"
+  app: "adapter-master-data-service"
   group: "rainmaker"
+
 
 # Ingress Configs
 ingress:
-  enabled: true
-  zuul: false
-  context: "adapter-master-data"
+  enabled: false
 
-# Init Containers Configs
-initContainers:
-  dbMigration:
-    enabled: false
     
 # Container Configs
 image:
-  repository: "adapter-master-data"
+  repository: "adapter-master-data-service"
 replicas: "1"
-healthChecks:
-  enabled: false
-  livenessProbePath: "/adapter-master-data/health"
-  readinessProbePath: "/adapter-master-data/health"
+
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx192m -Xms192m"
@@ -59,6 +51,6 @@ env: |
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
-        key: adapter-department-entity-service
+        key: ifix-department-entity-service
 
 
