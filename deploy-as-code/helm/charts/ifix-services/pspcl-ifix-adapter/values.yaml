@@ -18,7 +18,6 @@ image:
 cron_appType: "java-spring"
 dbMigration:
   schemaTable: "pspcl_ifix_adapter_schema"
-pspcl-ifix-datasource: "pspcl_ifix"
 
 
 # Additional Container Envs
@@ -51,12 +50,12 @@ env: |
         key: keycloak-pspcl-clientsecret
   - name: KEYCLOAK_CREDENTIALS_GRANTTYPE
     value: "client_credentials"
-  - name: TENANT_ID
-    value: {{ index .Values "tenant-id" | quote }}
+  - name: FISCAL_EVENT_TENANTID
+    value: {{ index .Values "fiscal-event-tenantId" | quote }}
   - name: DEMAND_COACODE  
     value: {{ index .Values "demand-coaCode" | quote }} 
   - name: RECEIPT_COACODE
     value: {{ index .Values "receipt-coaCode" | quote }}
   - name: RECEIVER_FISCAL_EVENT  
-    value: {{ index .Values "receiver-fiscal-event" | quote }}
+    value: {{ index .Values "fiscal-event-receiver" | quote }}
   

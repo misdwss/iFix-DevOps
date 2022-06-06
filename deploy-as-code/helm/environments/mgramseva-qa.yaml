@@ -235,10 +235,10 @@ pspcl-ifix-adapter:
   pspcl-fetch-bill-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
   pspcl-fetch-payment-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
   keycloak-pspcl-credentials-clientid: "pspcl-ifix-qa"
-  tenant-id: "pb"
+  fiscal-event-tenantId: "pb"
   demand-coaCode: "8247-12-373-56-78-90"
   receipt-coaCode: "8247-12-373-56-78-90"
-  receiver-fiscal-event: "mGramSeva"
+  fiscal-event-receiver: "mGramSeva"
 
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
