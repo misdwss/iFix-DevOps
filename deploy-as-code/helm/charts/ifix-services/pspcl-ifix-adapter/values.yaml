@@ -56,6 +56,6 @@ env: |
     value: {{ index .Values "demand-coaCode" | quote }} 
   - name: RECEIPT_COACODE
     value: {{ index .Values "receipt-coaCode" | quote }}
-  - name: RECEIVER_FISCAL_EVENT  
+  - name: FISCAL_EVENT_RECEIVER  
     value: {{ index .Values "fiscal-event-receiver" | quote }}
   
