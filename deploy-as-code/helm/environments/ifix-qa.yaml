@@ -59,6 +59,8 @@ cluster-configs:
         ifix-zuul: "http://ifix-zuul.ifix:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
         keycloak: "http://keycloak.ifix:8080/"
+        egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
+        keycloak-host: "https://ifix-qa.ifix.org.in/"
 
 ifix-master-data-service:
   server-context-path: "/ifix-master-data"
@@ -73,6 +75,14 @@ fiscal-event-post-processor:
   fiscal-event-kafka-flattened-topic: "fiscal-event-line-item-flattened"
   fiscal-event-processor-kafka-mongodb-topic: "fiscal-event-mongodb-sink"
   fiscal-event-processor-kafka-druid-topic: "fiscal-event-druid-sink"
+
+pspcl-ifix-adapter:
+  pspcl-fetch-bill-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
+  pspcl-fetch-payment-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
+  keycloak-pspcl-credentials-clientid: "pspcl-ifix-qa"
+  fiscal-event-tenantId: "pb"
+  fiscal-event-receiver: "mGramSeva"
+  fiscal-event-publish-url: "https://ifix-qa.ifix.org.in/"
   
 ifix-zuul:
   replicas: 1
