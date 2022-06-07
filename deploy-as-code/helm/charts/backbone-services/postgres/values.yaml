@@ -42,9 +42,9 @@ persistence:
 
 extraVolumeMounts: |
   - mountPath: /var/lib/postgresql/data
-    name: postgres-data-ifix
+    name: postgres-data-pspcl
     subPath: html
 extraVolumes: |
-  - name: postgres-data-ifix
+  - name: postgres-data-pspcl
     persistentVolumeClaim:
-      claimName: postgres-data-ifix
+      claimName: postgres-data-pspcl
