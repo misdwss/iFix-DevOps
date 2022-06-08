@@ -59,7 +59,6 @@ cluster-configs:
         fiscal-event-service: "http://fiscal-event-service.ifix:8080/"
         ifix-zuul: "http://ifix-zuul.ifix:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
-        keycloak: "http://keycloak.ifix:8080/"
         egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
       
 
@@ -78,5 +77,5 @@ pspcl-ifix-adapter:
   keycloak-pspcl-credentials-clientid: "pspcl-ifix-qa"
   fiscal-event-tenantId: "pb"
   fiscal-event-receiver: "mGramSeva"
-  fiscal-event-publish-url: "https://ifix-qa.ifix.org.in/"
+  ifix-host: "https://ifix-qa.ifix.org.in/"
   keycloak-host: "https://ifix-qa.ifix.org.in/"

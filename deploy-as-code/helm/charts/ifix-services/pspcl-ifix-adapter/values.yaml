@@ -1,7 +1,7 @@
 # Common Labels
 labels:
   app: "pspcl-ifix-adapter"
-  group: "ifix"
+  group: "pspcl"
 
 cron:
   schedule: "0 0 * * *"  
@@ -27,27 +27,21 @@ env: |
   - name: PSPCL_FETCH_PAYMENT_URL
     value: {{ index .Values "pspcl-fetch-payment-url" | quote }}
   - name: IFIX_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: fiscal-event-service
+    value: {{ index .Values "ifix-host" | quote }}
   - name: EGOV_MDMS_HOST
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
   - name: KEYCLOAK_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: keycloak
+    value: {{ index .Values "keycloak-host" | quote }}
   - name: KEYCLOAK_CREDENTIALS_CLIENTID
     value: {{ index .Values "keycloak-pspcl-credentials-clientid" | quote }}
   - name: KEYCLOAK_CREDENTIALS_CLIENTSECRET
     valueFrom:
       secretKeyRef:
-        name: keycloak
-        key: keycloak-pspcl-clientsecret
+        name: keycloak-client-secrets
+        key: pspcl-keycloak-client-secret
   - name: FISCAL_EVENT_TENANTID
     value: {{ index .Values "fiscal-event-tenantId" | quote }}
   - name: DEMAND_COACODE  
