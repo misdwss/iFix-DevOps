@@ -292,7 +292,7 @@ egov-persister:
       branch: "UAT"
       
 property-services:
- replicas: 2
+ replicas: 5
  memory_limits: 512Mi
  
 ws-calculator:
