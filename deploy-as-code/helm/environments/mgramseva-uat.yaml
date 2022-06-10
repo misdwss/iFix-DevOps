@@ -176,7 +176,7 @@ billing-service:
   
 ws-services:
   memory_limits: 512Mi
-  replicas: 2
+  replicas: 5
   is-external-workflow-enabled: "true"
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
