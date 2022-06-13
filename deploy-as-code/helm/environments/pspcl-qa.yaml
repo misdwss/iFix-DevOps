@@ -4,8 +4,8 @@ global:
   tracing-enabled: false
   namespace: pspcl
   nodepool:
-    selector: pspcl-qa-ng
-    toleration: pspcl-qa-ng
+    selector: ifix-qa-ng
+    toleration: ifix-qa-ng
 
 cluster-configs:
   namespaces:
