@@ -78,6 +78,6 @@ pspcl-ifix-adapter:
   fiscal-event-tenantId: "pb"
   demand-coaCode: "8247-12-373-56-78-90"
   receipt-coaCode: "8247-12-373-56-78-90"
-  fiscal-event-receiver: "mGramSeva"
+  fiscal-event-receiver: "mgramseva-qa"
   ifix-host: "https://ifix-qa.ifix.org.in/"
   keycloak-host: "https://ifix-qa.ifix.org.in/"
