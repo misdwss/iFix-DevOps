@@ -249,7 +249,6 @@ egov-user:
   egov-state-level-tenant-id: "pb"
 
 egov-workflow:
-  replicas: 2
   heap: "-Xmx256m -Xms256m"
   memory_limits: 512Mi
 
@@ -433,6 +432,7 @@ report:
 # rainmaker-pgr >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 egov-workflow-v2:
+  replicas: 2
   logging-level: "DEBUG"
   java-args: -Dspring.profiles.active=monitoring
   heap: "-Xmx192m -Xms192m"
