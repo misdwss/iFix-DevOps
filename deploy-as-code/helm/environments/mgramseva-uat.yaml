@@ -280,7 +280,6 @@ egov-indexer:
 
 egov-mdms-service:
   replicas: 2
-  axis: true
   
 egov-pg-service:
   replicas: 1
