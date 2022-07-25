@@ -221,7 +221,6 @@ cluster-configs:
         redis-host: "redis.mgramseva"
         adapter-master-data-service: "http://adapter-master-data-service.mgramseva:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.mgramseva:8080/"
-        mgramseva-domain-name: "https://mgramseva-qa.egov.org.in"
 
 billing-service:
   memory_limits: 512Mi
