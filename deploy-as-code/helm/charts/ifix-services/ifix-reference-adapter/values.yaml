@@ -55,8 +55,8 @@ env: |
   - name: MGRAMSEVA_HOST
     valueFrom:
       configMapKeyRef:
-        name: egov-config
-        key: domain
+        name: egov-service-host
+        key: mgramseva-service-host
   - name: SPRING_REDIS_HOST  
   {{- if index .Values "cluster-configs" "configmaps" "egov-service-host" "data" "redis-host" }}
     valueFrom:
