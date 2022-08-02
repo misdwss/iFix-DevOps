@@ -214,7 +214,8 @@ cluster-configs:
         vendor: "http://vendor.mgramseva:8080"
         vehicle: "http://vehicle.mgramseva:8080"
         echallan-calculator: http://echallan-calculator.mgramseva:8080/
-        echallan-services: http://echallan-services.mgramseva:8080/
+        
+        http://echallan-services.mgramseva:8080/
         keycloak: "https://ifix-qa.ifix.org.in/"
         fiscal-event-service: "https://ifix-qa.ifix.org.in/"
         ifix-reference-adapter: "http://ifix-reference-adapter.mgramseva:8080/"
@@ -346,6 +347,7 @@ egov-persister:
 
 echallan-services:
   egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
+  java-enable-debug: "true"
 
 
 egov-data-uploader:
