@@ -101,8 +101,8 @@ env: |
   - name: BILLING.SERVICE.HOST
     valueFrom:
       configMapKeyRef:
-        name: egov-config
-        key: egov-services-fqdn-name
+        name: egov-service-host
+        key: billing-service
   - name: EGOV_COLLECTION_SERVICE_CREATE_ENDPOINT
     value: "/collection-services/payments/_create"
   - name: EGOV_COLLECTION_SERVICE_SEARCH
