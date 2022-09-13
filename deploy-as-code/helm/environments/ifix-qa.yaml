@@ -62,6 +62,7 @@ cluster-configs:
         fiscal-event-service: "http://fiscal-event-service.ifix:8080/"
         ifix-zuul: "http://ifix-zuul.ifix:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.mgramseva:8080/"
+        adapter-master-data-service: "http://adapter-master-data-service.mgramseva:8080/"
         keycloak: "http://keycloak.ifix:8080/"
 
 ifix-master-data-service:
