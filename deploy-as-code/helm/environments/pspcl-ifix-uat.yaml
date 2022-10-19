@@ -1,11 +1,11 @@
 global:
-  domain: ifix-qa.ifix.org.in
+  domain: ifix-uat.ifix.org.in
   containerRegistry: dwssio
   tracing-enabled: false
   namespace: pspcl
   nodepool:
-    selector: ifix-qa-ng
-    toleration: ifix-qa-ng
+    selector: ifix-uat-ng
+    toleration: ifix-uat-ng
 
 cluster-configs:
   namespaces:
