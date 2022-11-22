@@ -32,16 +32,16 @@ cluster-configs:
         mongo-db-host: "ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com"
         mongo-db-name: "pspcl_qa_db"
         mongo-db-url: "mongodb://ifix-db.cluster-cqqfmghbjssw.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
-        db-host: "postgres.pspcl"
-        db-name: "pspcl_qa_db"
-        keycloak-db-name: "keycloak_qa_db"
-        db-url: "jdbc:postgresql://postgres.pspcl:5432/pspcl_qa_db"
-        domain: "ifix-qa.ifix.org.in"
-        egov-services-fqdn-name: "https://ifix-qa.ifix.org.in/"
+        db-host: "magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com"
+        db-name: "mgramseva_uat_db"
+        keycloak-db-name: "keycloak_uat_db"
+        db-url: "jdbc:postgresql:magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_uat_db"
+        domain: "ifix-uat.ifix.org.in"
+        egov-services-fqdn-name: "https://ifix-uat.ifix.org.in/"
         egov-state-level-tenant-id: "pb"
-        flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
+        flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/uat"
         kafka-brokers: "kafka-v2.pspcl:9092"
-        kafka-infra-brokers: "kafka-v2.pspcl:9092"
+        kafka-infra-brokers: "kafka-v2-infra.pspcl:9092"
         logging-level-jdbc: "debug"
         serializers-timezone-in-ist: "true"
         server-tomcat-max-threads: "10"
@@ -64,20 +64,20 @@ cluster-configs:
 
 
 postgres:
-  postgresDatabase: pspcl_qa_db
   persistence:
     enabled: true
-    aws:
-      volumeId: "vol-0b71f4fdf4a11a7e2"
-    dataDirSize: 100Gi  
+    azure:
+      diskName: "postgres-db-0"  
+      diskUri: /subscriptions/71f67180-c7fb-43dd-988a-e9f9e3135adc/resourceGroups/MC_mgramsewa-qa_mgramsewa-qa_southeastasia/providers/Microsoft.Compute/disks/postgres-db-0
+  postgresDatabase: mgramseva_qa_db
 
 pspcl-ifix-adapter:
   pspcl-fetch-bill-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
   pspcl-fetch-payment-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
-  keycloak-pspcl-credentials-clientid: "pspcl-ifix-qa"
+  keycloak-pspcl-credentials-clientid: "pspcl-ifix-uat"
   fiscal-event-tenantId: "pb"
   demand-coaCode: "8247-12-373-56-78-90"
   receipt-coaCode: "8247-12-373-56-78-90"
-  fiscal-event-receiver: "mgramseva-qa"
-  ifix-host: "https://ifix-qa.ifix.org.in/"
-  keycloak-host: "https://ifix-qa.ifix.org.in/"
+  fiscal-event-receiver: "mgramseva-uat"
+  ifix-host: "https://ifix-uat.psegs.in/"
+  keycloak-host: "https://ifix-uat.psegs.in/"
