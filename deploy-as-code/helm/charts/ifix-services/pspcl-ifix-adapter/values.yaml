@@ -9,7 +9,9 @@ cron:
 # Init Containers Configs
 initContainers:
   dbMigration:
-    enabled: false
+    enabled: true
+    image:
+      repository: "pspcl-ifix-adapter-db"
 
 # Container Configs
 image:
