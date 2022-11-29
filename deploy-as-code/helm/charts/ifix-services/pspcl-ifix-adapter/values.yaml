@@ -9,15 +9,18 @@ cron:
 # Init Containers Configs
 initContainers:
   dbMigration:
-    enabled: false
+    enabled: true
+    schemaTable: "pspcl-ifix-adapter_schema"
+    image:
+      repository: "pspcl-ifix-adapter-db"
 
 # Container Configs
 image:
   repository: "pspcl-ifix-adapter"
 
 cron_appType: "java-spring"
-dbMigration:
-  schemaTable: "pspcl_ifix_adapter_schema"
+#dbMigration:
+ # schemaTable: "pspcl_ifix_adapter_schema"
 
 
 # Additional Container Envs
