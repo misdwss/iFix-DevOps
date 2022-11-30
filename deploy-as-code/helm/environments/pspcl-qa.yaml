@@ -35,7 +35,7 @@ cluster-configs:
         db-host: "postgres.pspcl"
         db-name: "pspcl_qa_db"
         keycloak-db-name: "keycloak_qa_db"
-        db-url: "jdbc:postgresql://postgres.pspcl:5432/pspcl_qa_db"
+        db-url: "jdbc:postgresql://postgres.mgramseva:5432/mgramseva_qa_db"
         domain: "ifix-qa.ifix.org.in"
         egov-services-fqdn-name: "https://ifix-qa.ifix.org.in/"
         egov-state-level-tenant-id: "pb"
