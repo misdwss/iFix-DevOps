@@ -37,7 +37,7 @@ cluster-configs:
         keycloak-db-name: "keycloak_uat_db"
         db-url: "jdbc:postgresql:magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com:5432/mgramseva_uat_db"
         domain: "ifix-uat.ifix.org.in"
-        egov-services-fqdn-name: "https://ifix-uat.ifix.org.in/"
+        egov-services-fqdn-name: "ifix-uat.psegs.in/"
         egov-state-level-tenant-id: "pb"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/uat"
         kafka-brokers: "kafka-v2.pspcl:9092"
