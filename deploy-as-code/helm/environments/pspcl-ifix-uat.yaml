@@ -1,5 +1,5 @@
 global:
-  domain: ifix-uat.ifix.org.in
+  domain: ifix-uat.psegs.in
   containerRegistry: dwssio
   tracing-enabled: false
   namespace: pspcl
