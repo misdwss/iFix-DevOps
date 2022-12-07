@@ -81,3 +81,4 @@ pspcl-ifix-adapter:
   fiscal-event-receiver: "mgramseva-uat"
   ifix-host: "https://ifix-uat.psegs.in/"
   keycloak-host: "https://ifix-uat.psegs.in/"
+  java-enable-debug: "true"
