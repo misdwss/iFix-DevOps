@@ -52,6 +52,7 @@ cluster-configs:
         tracer-errors-provideexceptionindetails: "true"
         timezone: "Asia/Kolkata"
         druid-host: "druid-broker.olap"
+        egov-mdms-host: "https://mgramseva-uat.psegs.in/"
 
     egov-service-host:
       data:
