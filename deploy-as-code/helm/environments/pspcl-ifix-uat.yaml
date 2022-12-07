@@ -59,7 +59,7 @@ cluster-configs:
         fiscal-event-service: "http://fiscal-event-service.ifix:8080/"
         ifix-zuul: "http://ifix-zuul.ifix:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
-        egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
+        egov-mdms-service: "https://mgramseva-uat.psegs.in/"
       
 
 
