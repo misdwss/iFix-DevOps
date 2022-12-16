@@ -82,4 +82,4 @@ pspcl-ifix-adapter:
   ifix-host: "https://ifix-qa.ifix.org.in/"
   keycloak-host: "https://ifix-qa.ifix.org.in/"
   cron:
-  schedule: "0 */12 * * *" 
+    schedule: "0 */12 * * *" 
