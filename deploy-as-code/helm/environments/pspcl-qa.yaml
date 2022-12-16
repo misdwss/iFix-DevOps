@@ -81,3 +81,5 @@ pspcl-ifix-adapter:
   fiscal-event-receiver: "mgramseva-qa"
   ifix-host: "https://ifix-qa.ifix.org.in/"
   keycloak-host: "https://ifix-qa.ifix.org.in/"
+  cron:
+  schedule: "0 */12 * * *" 
