@@ -72,8 +72,8 @@ postgres:
     dataDirSize: 100Gi  
 
 pspcl-ifix-adapter:
-  pspcl-fetch-bill-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
-  pspcl-fetch-payment-url: "https://billapp.pspcl.in//fetchbillingdata.asmx"
+  pspcl-fetch-bill-url: "https://devapi.pspcl.in/Services/PunjabDWSS.svc?WSDL"
+  pspcl-fetch-payment-url: "https://devapi.pspcl.in/Services/PunjabDWSS.svc?WSDL"
   keycloak-pspcl-credentials-clientid: "pspcl-ifix-qa"
   fiscal-event-tenantId: "pb"
   demand-coaCode: "8247-12-373-56-78-90"
