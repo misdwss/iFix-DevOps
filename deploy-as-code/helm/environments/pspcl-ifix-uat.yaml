@@ -72,8 +72,8 @@ postgres:
   postgresDatabase: mgramseva_qa_db
 
 pspcl-ifix-adapter:
-  pspcl-fetch-bill-url: "https://devapi.pspcl.in/Services/PunjabDWSS.svc?WSDL"
-  pspcl-fetch-payment-url: "https://devapi.pspcl.in/Services/PunjabDWSS.svc?WSDL"
+  pspcl-fetch-bill-url: "https://api.pspcl.in/Services/PunjabDWSS.svc"
+  pspcl-fetch-payment-url: "https://api.pspcl.in/Services/PunjabDWSS.svc"
   keycloak-pspcl-credentials-clientid: "pspcl-ifix-uat"
   fiscal-event-tenantId: "pb"
   demand-coaCode: "8284-12-347-56-78-92"
