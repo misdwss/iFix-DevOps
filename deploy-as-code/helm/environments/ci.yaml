@@ -54,8 +54,6 @@ jenkins:
       acl: [misdwss*mgramsewa-prod]
     - name: ifix-prod
       acl: [misdwss*mgramsewa-prod]
-    - name: pspcl-prod
-      acl: [misdwss*mgramsewa-prod]
 
        
   master:
