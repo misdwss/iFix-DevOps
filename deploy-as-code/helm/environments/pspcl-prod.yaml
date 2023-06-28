@@ -253,11 +253,11 @@ postgres:
 pspcl-ifix-adapter:
   pspcl-fetch-bill-url: "https://api.pspcl.in/Services/PunjabDWSS.svc"
   pspcl-fetch-payment-url: "https://api.pspcl.in/Services/PunjabDWSS.svc"
-  keycloak-pspcl-credentials-clientid: "pspcl-ifix-uat"
+  keycloak-pspcl-credentials-clientid: "pspcl-ifix-prod"
   fiscal-event-tenantId: "pb"
   demand-coaCode: "2215-01-001-00-00-93"
   receipt-coaCode: "2215-01-001-00-00-93"
-  fiscal-event-receiver: "mgramseva-uat"
+  fiscal-event-receiver: "mgramseva-prod"
   ifix-host: "https://ifix-dwss.psegs.in/"
   keycloak-host: "https://ifix-dwss.psegs.in/"
   java-enable-debug: "true"
