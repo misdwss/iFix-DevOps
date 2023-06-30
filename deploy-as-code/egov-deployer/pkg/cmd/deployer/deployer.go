@@ -234,8 +234,10 @@ func execCommandRaw(command string, commandDirectory string, suppressErrors bool
 	head := parts[0]
 	parts = parts[1:len(parts)]
 
-	// fmt.Println(command)
+	fmt.Println("commandDirectory: ",commandDirectory)
+  fmt.Println(command)
 	cmd := exec.Command(head, parts...)
+  fmt.Println("executed command: ",command)
 	var output bytes.Buffer
 	var stderr bytes.Buffer
 	cmd.Stdout = &output
@@ -251,5 +253,8 @@ func execCommandRaw(command string, commandDirectory string, suppressErrors bool
 	if err != nil && !suppressErrors {
 		log.Panicln(fmt.Sprint(err) + ": " + stderr.String())
 	}
+  if err != nil && !suppressErrors {
+    log.Panicln(fmt.Sprintf("%v\n%s", err, stderr.String()))
+  }
 	return output
 }
