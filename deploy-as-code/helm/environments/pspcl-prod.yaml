@@ -239,18 +239,6 @@ zookeeper-v2:
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-playground:
-  namespace: pspcl
-  replicas: 1
-  images:
-    - egovio/playground:mongo-v1
-
-postgres:
-  postgresDatabase: ifix_qa_db
-  persistence:
-    enabled: true
-    aws:
-      volumeId: "vol-0b62ac5eb48fe9987"
 pspcl-ifix-adapter:
   namespace: pspcl
   pspcl-fetch-bill-url: "https://api.pspcl.in/Services/PunjabDWSS.svc"
