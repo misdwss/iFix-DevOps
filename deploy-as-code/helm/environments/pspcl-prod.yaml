@@ -252,6 +252,7 @@ postgres:
     aws:
       volumeId: "vol-0b62ac5eb48fe9987"
 pspcl-ifix-adapter:
+  namespace: pspcl
   pspcl-fetch-bill-url: "https://api.pspcl.in/Services/PunjabDWSS.svc"
   pspcl-fetch-payment-url: "https://api.pspcl.in/Services/PunjabDWSS.svc"
   keycloak-pspcl-credentials-clientid: "pspcl-ifix-prod"
