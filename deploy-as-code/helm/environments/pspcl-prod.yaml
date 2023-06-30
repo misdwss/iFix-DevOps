@@ -9,7 +9,7 @@ global:
 
 cluster-configs:
   namespaces:
-    create: false
+    create: true
     values:
       [
         ifix,
@@ -240,6 +240,7 @@ zookeeper-v2:
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 playground:
+  namespace: pspcl
   replicas: 1
   images:
     - egovio/playground:mongo-v1
