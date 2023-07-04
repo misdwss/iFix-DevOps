@@ -182,7 +182,7 @@ ws-services:
 ifix-reference-adapter:
   keycloak-credentials-clientid: "mgram-prod"
   pspcl-ifix-event-receiver-name: "mgramseva-prod"
-  mgramseva-oauth-token-username: "9019727051"
+  mgramseva-oauth-token-username: "9569761362"
   mgramseva-oauth-token-scope: "read"
   mgramseva-oauth-token-grantType: "password"
   mgramseva-oauth-token-tenantId: "pb"
