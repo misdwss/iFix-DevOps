@@ -45,7 +45,7 @@ healthChecks:
 tracing-enabled: true
 egov-state-level-tenant-id: "pb"
 decryption-abac-enabled: "false"
-account-unlock-cool-down-period-minutes: "30"
+account-unlock-cool-down-period-minutes: "5"
 otp-validation: "false"
 create-user-validate-name: "false"
 citizen-otp-enabled: "true"
