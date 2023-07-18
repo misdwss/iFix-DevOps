@@ -93,6 +93,16 @@ env: |
     value: egov-ws-calculator
   - name: EGOV_METERSERVICE_CREATEMETERCONNECTION
     value: save-ws-meter
+  - name: SMS_DEMAND_ENABLED
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: sms-demand-enabled
+  - name: SMS_PAYMENT_ENABLED
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: sms-payment-enabled
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
     value: org.apache.kafka.common.serialization.StringSerializer
   - name: SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER

@@ -121,6 +121,11 @@ cluster-configs:
         mongo-db-name: "mgramseva_uat_db"
         mongo-db-host: "ifix-uat-db.cluster-cvisvjyknxm1.ap-south-1.docdb.amazonaws.com"
         mongo-db-url: "mongodb://ifix-uat-db.cluster-cvisvjyknxm1.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
+        sms-otp-enabled: true
+        sms-demand-enabled: true
+        sms-payment-enabled: true
+        sms-collection-enabled: true
+        sms-expenditure-enabled: true
 
     egov-service-host:
       namespace: [mgramseva]
@@ -858,9 +863,3 @@ ifix-department-entity-service:
       enabled: true
       annotations:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-uat.psegs.in"
-egov-sms-config:
-  sms-otp-enabled: true
-  sms-demand-enabled: true
-  sms-payment-enabled: true
-  sms-collection-enabled: true
-  sms-expenditure-enabled: true
