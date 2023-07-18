@@ -848,3 +848,9 @@ ifix-department-entity-service:
       enabled: true
       annotations:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-dwss.psegs.in"
+egov-sms-config:
+  sms-otp-enabled: true
+  sms-demand-enabled: true
+  sms-payment-enabled: true
+  sms-collection-enabled: true
+  sms-expenditure-enabled: true
