@@ -121,11 +121,13 @@ cluster-configs:
         mongo-db-name: "mgramseva_uat_db"
         mongo-db-host: "ifix-uat-db.cluster-cvisvjyknxm1.ap-south-1.docdb.amazonaws.com"
         mongo-db-url: "mongodb://ifix-uat-db.cluster-cvisvjyknxm1.ap-south-1.docdb.amazonaws.com:27017/?retryWrites=false"
-        sms-otp-enabled: true
         sms-demand-enabled: true
         sms-payment-enabled: true
+        sms-bill-enable: true
         sms-collection-enabled: true
         sms-expenditure-enabled: true
+        sms-expenditure-mark-bill-enabled: true
+        sms-monthy-summary-enabled: true
 
     egov-service-host:
       namespace: [mgramseva]

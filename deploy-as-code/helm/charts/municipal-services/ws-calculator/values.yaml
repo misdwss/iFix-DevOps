@@ -103,6 +103,11 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: sms-payment-enabled
+  - name: SMS_BILL_ENABLED
+    valueFrom:
+      configMapKeyRef:
+        name: egov-config
+        key: sms-bill-enabled
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
     value: org.apache.kafka.common.serialization.StringSerializer
   - name: SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER
