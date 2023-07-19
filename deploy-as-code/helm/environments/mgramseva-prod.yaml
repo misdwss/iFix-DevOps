@@ -240,20 +240,6 @@ egov-notification-sms:
   sms.default.tmplid: "1"
   sms.debug.msggateway: "true"
   sms.enabled: "false"
-  sms-demand-enabled: false
-  sms-payment-link-enabled: false
-  sms-bill-download-enable: false
-  sms-bill-notification-enable: false
-  sms-collection-notification-enabled: false
-  sms-pending-collection-enabled: false
-  sms-todays-collection-enabled: false
-  sms-payment-notification-enabled: false
-  sms-edit-water-connection-notification-enabled: flase
-  sms-workflow-enabled: false
-  sms-expenditure-enabled: false
-  sms-expenditure-mark-bill-enabled: false
-  sms-monthy-summary-enabled: false
-
 egov-user:
   replicas: 2
   heap: "-Xmx256m -Xms256m"

@@ -94,20 +94,11 @@ env: |
   - name: EGOV_METERSERVICE_CREATEMETERCONNECTION
     value: save-ws-meter
   - name: SMS_DEMAND_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-demand-enabled
+    value: {{ index .Values "sms-demand-enabled" | quote }}
   - name: SMS_PAYMENT_LINK_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-payment-link-enabled
+    value: {{ index .Values "sms-payment-link-enabled" | quote }}
   - name: SMS_BILL_DOWNLOAD_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-bill-download-enable
+    value: {{ index .Values "sms-bill-download-enable" | quote }}
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
     value: org.apache.kafka.common.serialization.StringSerializer
   - name: SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER

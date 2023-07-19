@@ -88,30 +88,15 @@ env: |
         name: egov-service-host
         key: ws-calculator
   - name: SMS_PENDING_COLLECTION_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-pending-collection-enabled
+    value: {{ index .Values "sms-pending-collection-enabled" | quote }} 
   - name: SMS_TODAYS_COLLECTION_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-todays-collection-enabled
+    value: {{ index .Values "sms-todays-collection-enabled" | quote }}
   - name: SMS_EDIT_WATER_CONNECTION_NOTIFICATION_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-edit-water-connection-notification-enabled
+    value: {{ index .Values "sms-edit-water-connection-notification-enabled" | quote }}
   - name: SMS_PAYMENT_NOTIFICATION_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-payment-notification-enabled
+    value: {{ index .Values "sms-payment-notification-enabled" | quote }}
   - name: SMS_WORKFLOW_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-workflow-enabled
+    value: {{ index .Values "sms-workflow-enabled" | quote }}
   - name: EGOV_FILESTORE_HOST
     valueFrom:
       configMapKeyRef:

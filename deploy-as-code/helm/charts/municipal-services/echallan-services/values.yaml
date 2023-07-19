@@ -104,20 +104,11 @@ env: |
         name: egov-service-host
         key: billing-service
   - name: SMS_EXPENDITURE_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-expenditure-enabled
+    value: {{ index .Values "sms-expenditure-enabled" | quote }}
   - name: SMS_EXPENDITURE_MARK_BILL_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-expenditure-mark-bill-enabled
+    value: {{ index .Values "sms-expenditure-mark-bill-enabled" | quote }}
   - name: SMS_MONTHY_SUMMARY_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-notification-sms
-        key: sms-monthy-summary-enabled 
+    value: {{ index .Values "sms-monthy-summary-enabled" | quote }}
   - name: EGOV_COLLECTION_SERVICE_CREATE_ENDPOINT
     value: "/collection-services/payments/_create"
   - name: EGOV_COLLECTION_SERVICE_SEARCH
