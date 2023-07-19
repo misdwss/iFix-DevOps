@@ -96,17 +96,17 @@ env: |
   - name: SMS_DEMAND_ENABLED
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: egov-notification-sms
         key: sms-demand-enabled
   - name: SMS_PAYMENT_LINK_ENABLED
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: egov-notification-sms
         key: sms-payment-link-enabled
   - name: SMS_BILL_DOWNLOAD_ENABLED
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: egov-notification-sms
         key: sms-bill-download-enable
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
     value: org.apache.kafka.common.serialization.StringSerializer

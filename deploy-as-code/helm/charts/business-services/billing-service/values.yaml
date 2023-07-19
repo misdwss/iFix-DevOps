@@ -54,7 +54,7 @@ env: |
   - name: SMS_BILL_NOTIFICATION_ENABLE
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: egov-notification-sms
         key: sms-bill-notification-enable
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: bs-persist

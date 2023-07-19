@@ -90,27 +90,27 @@ env: |
   - name: SMS_PENDING_COLLECTION_ENABLED
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: egov-notification-sms
         key: sms-pending-collection-enabled
   - name: SMS_TODAYS_COLLECTION_ENABLED
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: egov-notification-sms
         key: sms-todays-collection-enabled
   - name: SMS_EDIT_WATER_CONNECTION_NOTIFICATION_ENABLED
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: egov-notification-sms
         key: sms-edit-water-connection-notification-enabled
   - name: SMS_PAYMENT_NOTIFICATION_ENABLED
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: egov-notification-sms
         key: sms-payment-notification-enabled
   - name: SMS_WORKFLOW_ENABLED
     valueFrom:
       configMapKeyRef:
-        name: egov-config
+        name: egov-notification-sms
         key: sms-workflow-enabled
   - name: EGOV_FILESTORE_HOST
     valueFrom:

@@ -110,11 +110,6 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-apportion-service
-  - name: SMS_COLLECTION_NOTIFICATION_ENABLED
-    valueFrom:
-      configMapKeyRef:
-        name: egov-config
-        key: sms-collection-notification-enabled
   - name: RECEIPTNUMBER_SERVICEBASED
     value: {{ index .Values "receiptnumber-servicebased" | quote }}
   - name: SECURITY_BASIC_ENABLED
