@@ -270,6 +270,7 @@ egov-user:
   citizen-otp-fixed: "123456"
   citizen-otp-fixed-enabled: "true"
   egov-state-level-tenant-id: "pb"
+  account-unlock-cool-down-period-minutes: 5
 
 egov-workflow:
   heap: "-Xmx256m -Xms256m"
