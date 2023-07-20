@@ -1,6 +1,6 @@
 global:
   domain: mgramseva-qa.egov.org.in
-  #containerRegistry: dwssio
+  containerRegistry: dwssio
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
@@ -244,7 +244,7 @@ ws-calculator:
 ifix-reference-adapter:
   keycloak-credentials-clientid: "mgramseva-qa"
   pspcl-ifix-event-receiver-name: "mgramseva-qa"
-  mgramseva-oauth-token-username: "7731045306"
+  mgramseva-oauth-token-username: "7349125125"
   mgramseva-oauth-token-scope: "read"
   mgramseva-oauth-token-grantType: "password"
   mgramseva-oauth-token-tenantId: "pb"
