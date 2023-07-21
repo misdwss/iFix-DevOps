@@ -87,8 +87,6 @@ env: |
     value: {{ index .Values "keycloak-credentials-clientid" | quote }}
   - name: PSPCL_IFIX_EVENT_RECEIVER_NAME
     value: {{ index .Values "pspcl-ifix-event-receiver-name" | quote }}
-  - name: MGRAMSEVA_OAUTH_TOKEN_USERNAME
-    value: {{ index .Values "mgramseva-oauth-token-username" | quote }}
   - name: MGRAMSEVA_OAUTH_TOKEN_SCOPE
     value: {{ index .Values "mgramseva-oauth-token-scope" | quote }}
   - name: MGRAMSEVA_OAUTH_TOKEN_GRANTTYPE
@@ -113,6 +111,21 @@ env: |
       secretKeyRef:
         name: keycloak
         key: oauth-mgramseva-password
+  - name: MGRAMSEVA_OAUTH_TOKEN_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: keyclock
+        key: mgramseva-oauth-token-username
+  - name: VENDOR_OWNER_NUMBER
+    valueFrom:
+      secretKeyRef:
+        name: ifix-reference-adapter
+        key: vendor-owner-number
+  - name: KEYCLOAK_CREDENTIALS_CLIENTSECRET
+    valueFrom:
+      secretKeyRef:
+        name: keycloak
+        key: keycloak-clientsecret
   - name: KEYCLOAK_CREDENTIALS_GRANTTYPE
     value: client_credentials
   - name: SECURITY_BASIC_ENABLED
