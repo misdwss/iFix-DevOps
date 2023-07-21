@@ -114,7 +114,7 @@ env: |
   - name: MGRAMSEVA_OAUTH_TOKEN_USERNAME
     valueFrom:
       secretKeyRef:
-        name: keyclock
+        name: keycloak
         key: mgramseva-oauth-token-username
   - name: VENDOR_OWNER_NUMBER
     valueFrom:
