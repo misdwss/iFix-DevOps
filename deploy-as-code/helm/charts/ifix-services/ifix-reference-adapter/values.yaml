@@ -121,11 +121,6 @@ env: |
       secretKeyRef:
         name: ifix-reference-adapter
         key: vendor-owner-number
-  - name: KEYCLOAK_CREDENTIALS_CLIENTSECRET
-    valueFrom:
-      secretKeyRef:
-        name: keycloak
-        key: keycloak-clientsecret
   - name: KEYCLOAK_CREDENTIALS_GRANTTYPE
     value: client_credentials
   - name: SECURITY_BASIC_ENABLED
