@@ -223,11 +223,11 @@ vendor:
 egov-notification-sms:
   sms-provider-url: "https://smsgw.sms.gov.in/failsafe/MLink"
   sms.provider.url: "https://smsgw.sms.gov.in/failsafe/MLink"
-  sms.provider.class: "Console"
+  sms.provider.class: "NIC"
   sms.provider.requestType: "POST"
   sms.provider.contentType:  "application/json"
   sms-config-map: "{'username':'$username', 'pin': '$password', 'signature':'$senderid', 'mnumber':'$mobileno', 'message':'$message', 'smsservicetype':'unicodemsg', 'myParam': '$extraParam' , 'messageType': '$mtype'}"
-  sms-gateway-to-use: "Console"
+  sms-gateway-to-use: "NIC"
   sms-sender: "PBDWSS"
   sms.senderid: "PBDWSS"
   sms-sender-requesttype: "GET"
@@ -244,7 +244,7 @@ egov-notification-sms:
   sms.provider.entityid: "1001842650153206278"
   sms.default.tmplid: "1"
   sms.debug.msggateway: "true"
-  sms.enabled: "false"
+  sms.enabled: "true"
 egov-user:
   replicas: 2
   heap: "-Xmx256m -Xms256m"
