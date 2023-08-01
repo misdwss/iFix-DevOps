@@ -322,9 +322,9 @@ property-services:
 ws-calculator:
  replicas: 4
  memory_limits: 512Mi
- sms-demand-enabled: false
+ sms-demand-enabled: true
  sms-payment-link-enabled: false
- sms-bill-download-enable: false
+ sms-bill-download-enable: true
 
 egov-localization:
   replicas: 2
