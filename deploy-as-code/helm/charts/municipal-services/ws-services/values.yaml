@@ -97,6 +97,8 @@ env: |
     value: {{ index .Values "sms-payment-notification-enabled" | quote }}
   - name: SMS_WORKFLOW_ENABLED
     value: {{ index .Values "sms-workflow-enabled" | quote }}
+  - name: SMS_FEEDBACK_NOTIFICATION_ENABLED
+    value: {{ index .Values "sms-feedback-notification-enabled" | quote }}
   - name: EGOV_FILESTORE_HOST
     valueFrom:
       configMapKeyRef:
