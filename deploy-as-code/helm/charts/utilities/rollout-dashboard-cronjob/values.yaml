@@ -48,15 +48,15 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
-  - name: IFIX_DEP_ENTITY_URL
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: ifix-department-entity-service
   - name: TENANT_ID
     valueFrom:
       configMapKeyRef:
         name: egov-config
         key: egov-state-level-tenant-id
+   - name: IFIX_DEP_ENTITY_URL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ifix-department-entity-service
 resources: |
   requests: {}
