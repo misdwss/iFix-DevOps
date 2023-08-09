@@ -48,7 +48,7 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
-  - name: IFIX_URL
+  - name: IFIX_DEP_ENTITY_URL
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
