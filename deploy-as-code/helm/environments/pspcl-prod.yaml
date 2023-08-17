@@ -2,7 +2,7 @@ global:
   domain: ifix-dwss.psegs.in
   containerRegistry: dwssio
   tracing-enabled: false
-  namespace: ifix
+  namespace: pspcl
   nodepool:
     selector: ifix-prod-ng
     toleration: ifix-prod-ng
