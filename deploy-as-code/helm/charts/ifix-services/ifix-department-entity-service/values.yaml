@@ -44,8 +44,6 @@ env: |
         name: egov-service-host
         key: adapter-master-data-service
   - name: IFIX_MASTER_DEPARTMENT_CONTEXT_PATH
-    value: {{ index .Values "master-department-context-path" | quote }}
-  - name: FLYWAY_ENABLED
-    value: "true"      
+    value: {{ index .Values "master-department-context-path" | quote }}     
   - name: SPRING_FLYWAY_ENABLED
     value: "true"      
