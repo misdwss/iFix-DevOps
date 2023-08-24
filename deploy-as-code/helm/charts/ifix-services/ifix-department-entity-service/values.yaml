@@ -45,3 +45,7 @@ env: |
         key: adapter-master-data-service
   - name: IFIX_MASTER_DEPARTMENT_CONTEXT_PATH
     value: {{ index .Values "master-department-context-path" | quote }}
+  - name: FLYWAY_ENABLED
+    value: "true"      
+  - name: SPRING_FLYWAY_ENABLED
+    value: "true"      
