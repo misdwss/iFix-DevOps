@@ -10,6 +10,14 @@ ingress:
   enabled: true
   zuul: true
   context: "fiscal-event-service"
+  
+# Init container configs
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "fiscal_event_service_schema"
+    image:
+      repository: "fiscal-event-service-db"
 
 # Container Configs
 image:
