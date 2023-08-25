@@ -8,6 +8,14 @@ ingress:
   enabled: true
   zuul: true
   context: "ifix-department-entity"
+  
+# Init Containers Configs
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "ifix_department_entity_schema"
+    image:
+      repository: "ifix-department-entity-service-db"
 
 # Container Configs
 image:
@@ -44,8 +52,4 @@ env: |
         name: egov-service-host
         key: adapter-master-data-service
   - name: IFIX_MASTER_DEPARTMENT_CONTEXT_PATH
-    value: {{ index .Values "master-department-context-path" | quote }}     
-extraEnv:
-  java: |     
-      - name: SPRING_FLYWAY_ENABLED
-        value: "true"          
+    value: {{ index .Values "master-department-context-path" | quote }}            
