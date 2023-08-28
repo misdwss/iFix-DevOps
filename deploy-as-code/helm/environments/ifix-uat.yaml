@@ -98,6 +98,10 @@ ifix-migration-toolkit:
   fiscal-event-es-push-topic: "index-fiscal-events"
   ifix-migration-batch-size: "200"
   ifix-department-entity-search-endpoint: "ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search"
+  ifix-master-data-service-search-endpoint: "ifix-master-data/chartOfAccount/v1/_search"
+  fiscal-events-migration-topic: "ifix-fiscal-events-migrate"
+  fiscal-events-migration-topic: "ifix-fiscal-events-migrate"
+  fiscal-event-migration-origin-push-topic: "ifix-fiscal-events-migration-origin"
   
 ifix-zuul:
   replicas: 1
@@ -135,7 +139,7 @@ dashboard-analytics:
       branch: "master"
 
 egov-persister:
-  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml"
+  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml,file:///work-dir/config-mgramseva/egov-persister/fiscal-events-persister.yml,file:///work-dir/config-mgramseva/egov-persister/ifix-master-data-persister.yml"
   initContainers:
     gitSync:
       enabled: true
