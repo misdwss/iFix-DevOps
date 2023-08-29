@@ -174,7 +174,7 @@ cluster-configs:
         
 billing-service:
   memory_limits: 512Mi
-  demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
+  demand.updateurl: '{"WS":"http://lculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
   
 ws-services:
@@ -335,8 +335,8 @@ ws-calculator:
  replicas: 3
  memory_limits: 512Mi
  sms-demand-enabled: false
- sms-payment-link-enabled: false
- sms-bill-download-enable: false
+ sms-payment-link-enabled: true
+ sms-bill-download-enable: true
 
 egov-localization:
   replicas: 2
