@@ -275,6 +275,8 @@ egov-idgen:
   autocreate-new-seq: "true"
 
 egov-mdms-service:
+  heap: "-Xmx384m -Xms384m"
+  memory_limits: 768Mi
   mdms-path: "/work-dir/mdms-mgramseva/data"
   initContainers:
     gitSync:
