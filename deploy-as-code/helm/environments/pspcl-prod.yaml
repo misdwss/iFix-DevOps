@@ -252,4 +252,4 @@ pspcl-ifix-adapter:
   keycloak-host: "https://ifix-dwss.psegs.in/"
   java-enable-debug: "true"
   cron:
-    schedule: "0 0 * * *"
+    schedule: "0 13 * * *"
