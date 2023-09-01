@@ -31,3 +31,9 @@ extraVolumeMounts: |
   - mountPath: /etc/nginx/conf.d/sub_filter.conf
     name: js-injection
     subPath: sub_filter.conf
+
+env:          
+  - name: REACT_APP_STATE_LEVEL_TENANT_ID
+    value: {{ index .Values "react-app-state-level-tenant-id" | quote }}
+  - name: REACT_APP_PROXY_URL
+    value: {{ index .Values "react-app-proxy-url" | quote }}
