@@ -175,23 +175,23 @@ cluster-configs:
 billing-service:
   memory_limits: 512Mi
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
-  sms-bill-notification-enable: false
+  sms-bill-notification-enable: true
   
 ws-services:
   memory_limits: 512Mi
   replicas: 5
   is-external-workflow-enabled: "true"
-  sms-pending-collection-enabled: false
-  sms-todays-collection-enabled: false
-  sms-edit-water-connection-notification-enabled: false
-  sms-payment-notification-enabled: false
-  sms-workflow-enabled: false
-  sms-feedback-notification-enabled: false
+  sms-pending-collection-enabled: true
+  sms-todays-collection-enabled: true
+  sms-edit-water-connection-notification-enabled: true
+  sms-payment-notification-enabled: true
+  sms-workflow-enabled: true
+  sms-feedback-notification-enabled: true
 
 echallan-services:
-  sms-expenditure-enabled: false
-  sms-expenditure-mark-bill-enabled: false
-  sms-monthy-summary-enabled: false
+  sms-expenditure-enabled: true
+  sms-expenditure-mark-bill-enabled: true
+  sms-monthy-summary-enabled: true
 
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
@@ -334,7 +334,7 @@ property-services:
 ws-calculator:
  replicas: 3
  memory_limits: 512Mi
- sms-demand-enabled: false
+ sms-demand-enabled: true
  sms-payment-link-enabled: true
  sms-bill-download-enable: true
 
