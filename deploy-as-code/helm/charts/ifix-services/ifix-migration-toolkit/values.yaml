@@ -4,7 +4,12 @@ labels:
   group: "rainmaker"
 
 #namespace: ifix
-
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "ifix_migration_toolkit_schema"
+    image:
+      repository: "ifix-migration-toolkit-db"
 
 # Container Configs
 image:
