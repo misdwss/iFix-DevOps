@@ -71,6 +71,7 @@ cluster-configs:
 ifix-es-pipeline:
   fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
   fiscal-event-es-push-topic: "index-fiscal-events"
+  fiscal-event-index-topic: "index-fiscal-events"
   ifix-department-entity-search-endpoint: "ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search"
   ifix-master-data-service-search-endpoint: "ifix-master-data/chartOfAccount/v1/_search"
   fiscal-events-migration-topic: "ifix-fiscal-events-migrate"
@@ -101,7 +102,7 @@ dashboard-analytics:
       branch: "master"
 
 egov-persister:
-  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml"
+  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml,file:///work-dir/config-mgramseva/egov-persister/fiscal-events-persister.yml,file:///work-dir/config-mgramseva/egov-persister/ifix-master-data-persister.yml"
   initContainers:
     gitSync:
       enabled: true
@@ -113,6 +114,9 @@ ifix-migration-toolkit:
   fiscal-event-es-push-topic: "index-fiscal-events"
   ifix-migration-batch-size: "200"
   ifix-department-entity-search-endpoint: "ifix-department-entity/departmentEntity/hierarchyLevel/v1/_search"
+  ifix-master-data-service-search-endpoint: "ifix-master-data/chartOfAccount/v1/_search"
+  fiscal-events-migration-topic: "ifix-fiscal-events-migrate"
+  fiscal-event-migration-origin-push-topic: "ifix-fiscal-events-migration-origin"
 
         
 ifix-master-data-service:
@@ -120,7 +124,9 @@ ifix-master-data-service:
 
 fiscal-event-service:
   fiscal-kafka-push-topic: "fiscal-event-request-validated"
+  fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
   fiscal-event-push-request-max-size: "1000"
+  fiscal-event-kafka-postgres-topic: "save-fiscal-event"
 
 fiscal-event-post-processor:
   fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
