@@ -122,7 +122,7 @@ cluster-configs:
 
 
     egov-service-host:
-      namespace: [mgramseva]
+      namespace: [mgramseva , monitoring]
       data:
         billing-service: "http://billing-service.mgramseva:8080/"
         collection-services: "http://collection-services.mgramseva:8080/"
