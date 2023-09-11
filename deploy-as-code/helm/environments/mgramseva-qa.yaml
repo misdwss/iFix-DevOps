@@ -2,7 +2,7 @@ global:
   domain: mgramseva-qa.egov.org.in
   #containerRegistry: dwssio
   tracing-enabled: true
-  namespace: mgramseva
+  # namespace: mgramseva
   nodepool:
     nodeAffinity: true
     selector: mgramseva-qa-ng
@@ -13,7 +13,7 @@ cluster-configs:
   namespaces:
     create: true
     values:
-      [ mgramseva , cert-manager , olap, ifix ]  
+      [ mgramseva , cert-manager , olap, ifix , monitoring ]  
   db:
     namespace: mgramseva
   root-ingress:
@@ -124,7 +124,7 @@ cluster-configs:
 
 
     egov-service-host:
-      namespace: [mgramseva]
+      namespace: [mgramseva , monitoring]
       data:
         asset-services: "http://asset-services.mgramseva:8080/"
         asset-services-maha: "http://asset-services-maha.mgramseva:8080/"
