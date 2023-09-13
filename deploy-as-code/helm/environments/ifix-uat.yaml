@@ -94,6 +94,9 @@ ifix-es-pipeline:
   ifix-master-data-service-search-endpoint: "ifix-master-data/chartOfAccount/v1/_search"
   fiscal-events-migration-topic: "ifix-fiscal-events-migrate"
   fiscal-event-migration-origin-push-topic: "ifix-fiscal-events-migration-origin"
+  coa-electricity-head-name: "Eelctricity"
+  coa-operations-head-name: "O&M"
+  coa-salary-head-name: "Salaries"
 
 
 ifix-migration-toolkit:
