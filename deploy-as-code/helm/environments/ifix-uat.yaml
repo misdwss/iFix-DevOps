@@ -94,7 +94,7 @@ ifix-es-pipeline:
   ifix-master-data-service-search-endpoint: "ifix-master-data/chartOfAccount/v1/_search"
   fiscal-events-migration-topic: "ifix-fiscal-events-migrate"
   fiscal-event-migration-origin-push-topic: "ifix-fiscal-events-migration-origin"
-  coa-map= {'Salaries': {'4a267566-ff67-4caf-a4b7-fc0231d07c95'},'O&M':{'0c736aab-c214-4604-8565-fc903a835222'},'Eelctricity': {'6a2c3d2e-f3eb-483e-9e60-e613509f8453'}, 'others':{'bac69e16-802b-4eef-aa67-e05ed1b4e422','d0c70cd5-77f5-486d-8bff-5526966bb293'} }
+  coa-map: {'Salaries': {'4a267566-ff67-4caf-a4b7-fc0231d07c95'},'O&M':{'0c736aab-c214-4604-8565-fc903a835222'},'Eelctricity': {'6a2c3d2e-f3eb-483e-9e60-e613509f8453'}, 'others':{'bac69e16-802b-4eef-aa67-e05ed1b4e422','d0c70cd5-77f5-486d-8bff-5526966bb293'} }
 
 
 ifix-migration-toolkit:
