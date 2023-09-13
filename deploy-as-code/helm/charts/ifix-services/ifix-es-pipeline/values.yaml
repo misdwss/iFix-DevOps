@@ -30,6 +30,8 @@ env: |
     value: {{ index .Values "fiscal-event-index-topic" | quote }}
   - name: IFIX_DEPARTMENT_ENTITY_SEARCH_ENDPOINT
     value: {{ index .Values "ifix-department-entity-search-endpoint" | quote }}
+  - name: COA_MAP
+    value: {{ index .Values "coa-map" | quote }}
   - name: IFIX_DEPARTMENT_ENTITY_SERVICE_HOST
     valueFrom:
       configMapKeyRef:
