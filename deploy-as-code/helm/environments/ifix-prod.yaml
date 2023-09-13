@@ -106,6 +106,7 @@ egov-persister:
   persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/ifix-migration-progress.yml,file:///work-dir/config-mgramseva/egov-persister/fiscal-events-persister.yml,file:///work-dir/config-mgramseva/egov-persister/ifix-master-data-persister.yml"
   heap: "-Xmx384m -Xms384m"
   memory_limits: 768Mi
+  replicas: 3
   initContainers:
     gitSync:
       enabled: true
