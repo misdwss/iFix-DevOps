@@ -79,6 +79,9 @@ ifix-es-pipeline:
   coa-map: "{'Salaries': {'dd54d125-c4c0-489f-9e8b-98238cdd3345'},'O&M':{'1bfd36e-b1d0-40a1-ad2e-72cc559a5e2a'},'Eelctricity': {'967a197a-d98b-421d-98fe-a32a3029389f'}, 'others':{'530f3158-c5c9-46da-bd98-6de509789720'} }"
 
 egov-mdms-service:
+  replicas: 1
+  heap: "-Xmx256m -Xms256m"
+  memory_limits: 512Mi
   mdms-path: "/work-dir/mdms-mgramseva/data"
   mdms-folder: "mdms-mgramseva"
   java-args: -Dspring.profiles.active=monitoring
@@ -95,6 +98,9 @@ digit-ui:
       <script src=https://s3.ap-south-1.amazonaws.com/ifix-dev-assets/globalProdConfigs.js type=text/javascript></script>
       ';"
 dashboard-analytics:
+  replicas: 2
+  heap: "-Xmx256m -Xms256m"
+  memory_limits: 512Mi
   config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-analytics/*.json"
   initContainers:
     gitSync:
