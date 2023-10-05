@@ -6,6 +6,13 @@ labels:
 # Init Containers Configs
 initContainers: {}
 
+initContainers:
+  dbMigration:
+    enabled: true
+    schemaTable: "eg_notification_sms_schema"
+    image:
+      repository: "egov-notification-sms"
+
 # Container Configs
 image:
   repository: "egov-notification-sms"
