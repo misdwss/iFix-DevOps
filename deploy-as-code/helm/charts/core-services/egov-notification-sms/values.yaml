@@ -11,7 +11,7 @@ initContainers:
     enabled: true
     schemaTable: "eg_notification_sms_schema"
     image:
-      repository: "egov-notification-sms-db"
+      repository: "egov-notification-sms"
 
 # Container Configs
 image:
