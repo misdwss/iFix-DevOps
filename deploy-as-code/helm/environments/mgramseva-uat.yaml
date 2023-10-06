@@ -192,6 +192,7 @@ echallan-services:
   sms-expenditure-enabled: true
   sms-expenditure-mark-bill-enabled: true
   sms-monthy-summary-enabled: true
+  java-enable-debug: true
 
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
