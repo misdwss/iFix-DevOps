@@ -13,7 +13,7 @@ cluster-configs:
   namespaces:
     create: true
     values:
-      [ mgramseva , cert-manager , olap, ifix , monitoring ]
+      [ mgramseva , cert-manager , olap, ifix , monitoring ] 
   db:
     namespace: mgramseva
   root-ingress:
