@@ -101,7 +101,16 @@ collector:
   annotations: {}
   replicas: "1" 
   dnsPolicy: ClusterFirstWithHostNet
-  cmdlineParams: {}   
+  cmdlineParams: {} 
+  tolerations:
+  - effect: NoSchedule
+    key: dedicated
+    operator: Equal
+    value: mgramseva-qa-ng
+  - effect: NoSchedule
+    key: dedicated
+    operator: Equal
+    value: ifix-qa-ng  
   autoscaling:
     enabled: false
     minReplicas: 2
@@ -264,7 +273,15 @@ query:
     #    cpu: 256m
     #    memory: 128Mi
   nodeSelector: {}
-  tolerations: []
+  tolerations:
+  - effect: NoSchedule
+    key: dedicated
+    operator: Equal
+    value: mgramseva-qa-ng
+  - effect: NoSchedule
+    key: dedicated
+    operator: Equal
+    value: ifix-qa-ng
   affinity: {}
   podAnnotations: {}
   ## Additional pod labels
@@ -324,7 +341,15 @@ agent:
     create: true
     name:
   nodeSelector: {}
-  tolerations: []
+  tolerations:
+  - effect: NoSchedule
+    key: dedicated
+    operator: Equal
+    value: mgramseva-qa-ng
+  - effect: NoSchedule
+    key: dedicated
+    operator: Equal
+    value: ifix-qa-ng
   affinity: {}
   podAnnotations: {}
   ## Additional pod labels

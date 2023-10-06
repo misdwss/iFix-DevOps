@@ -45,7 +45,11 @@ spec:
       - effect: NoSchedule
         key: dedicated
         operator: Equal
-        value: mgramseva-uat-ng
+        value: mgramseva-qa-ng
+      - effect: NoSchedule
+        key: dedicated
+        operator: Equal
+        value: ifix-qa-ng
     {{- end }}
     {{- if .Values.image.pullSecrets }}
       imagePullSecrets:

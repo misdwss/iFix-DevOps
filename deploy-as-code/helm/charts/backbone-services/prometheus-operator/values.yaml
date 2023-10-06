@@ -425,7 +425,15 @@ alertmanager:
     ## If specified, the pod's tolerations.
     ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
     ##
-    tolerations: []
+    tolerations: 
+    - effect: NoSchedule
+      key: dedicated
+      operator: Equal
+      value: mgramseva-uat-ng
+    - effect: NoSchedule
+      key: dedicated
+      operator: Equal
+      value: ifix-qa-ng
     # - key: "key"
     #   operator: "Equal"
     #   value: "value"
@@ -1245,8 +1253,7 @@ prometheusOperator:
     #         - ifix-prod-ng
 
   securityContext:
-    runAsNonRoot: true
-    runAsUser: 65534
+    fsGroup: 65534
 
   ## Prometheus-operator image
   ##
@@ -1504,7 +1511,15 @@ prometheus:
     ## Tolerations for use with node taints
     ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
     ##
-    tolerations: []
+    tolerations: 
+    - effect: NoSchedule
+      key: dedicated
+      operator: Equal
+      value: mgramseva-uat-ng
+    - effect: NoSchedule
+      key: dedicated
+      operator: Equal
+      value: ifix-qa-ng
     #  - key: "key"
     #    operator: "Equal"
     #    value: "value"
