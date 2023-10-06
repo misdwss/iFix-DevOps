@@ -263,6 +263,7 @@ egov-notification-sms:
   sms.default.tmplid: "1"
   sms.debug.msggateway: "true"
   sms.enabled: "true"
+  save-sms-entity-enabled: "true"
 
 egov-user:
   replicas: 2
