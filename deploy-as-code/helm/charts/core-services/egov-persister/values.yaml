@@ -36,5 +36,3 @@ env: |
     value: "8080"
   - name: JAEGER_SAMPLER_PARAM
     value: "1"
-  - name: JAVA_ENABLE_DEBUG
-    value: "true"
