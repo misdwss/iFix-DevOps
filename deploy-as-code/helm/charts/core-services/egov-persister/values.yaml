@@ -33,6 +33,8 @@ env: |
   - name: JAVA_ARGS
     value: {{ index .Values "java-args" | quote }}
   - name: SERVER_PORT
+  - name: JAVA_ENABLE_DEBUG
+    value: "true"
     value: "8080"
   - name: JAEGER_SAMPLER_PARAM
     value: "1"
