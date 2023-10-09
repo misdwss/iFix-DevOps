@@ -257,7 +257,7 @@ egov-notification-sms:
   sms.default.tmplid: "1"
   sms.debug.msggateway: "true"
   sms.enabled: "true"
-  save-sms-entity-enabled: "false"
+  save-sms-entity-enabled: "true"
 egov-user:
   replicas: 4
   heap: "-Xmx1900m -Xms1900m -XX:TieredStopAtLevel=1"
