@@ -187,6 +187,7 @@ ws-services:
   sms-payment-notification-enabled: true
   sms-workflow-enabled: true
   sms-feedback-notification-enabled: true
+  java-enable-debug: true
 
 echallan-services:
   sms-expenditure-enabled: true
