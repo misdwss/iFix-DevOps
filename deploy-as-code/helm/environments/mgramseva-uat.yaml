@@ -6,7 +6,7 @@ global:
   nodepool:
     nodeAffinity: true
     selector: mgramseva-uat-ng
-    toleration: mgramseva-uat-ng
+    toleration: mgramseva-uat-ng, ifix-uat-ng
 
 cluster-configs:
   namespace: mgramseva
