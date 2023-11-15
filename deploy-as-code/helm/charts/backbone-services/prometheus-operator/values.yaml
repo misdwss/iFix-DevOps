@@ -1520,6 +1520,10 @@ prometheus:
       key: dedicated
       operator: Equal
       value: ifix-qa-ng
+    - effect: NoSchedule
+      key: dedicated
+      operator: Equal
+      value: mgramseva-prod-ng
     #  - key: "key"
     #    operator: "Equal"
     #    value: "value"
