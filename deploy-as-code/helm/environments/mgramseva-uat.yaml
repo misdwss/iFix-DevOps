@@ -11,9 +11,9 @@ global:
 cluster-configs:
   namespace: mgramseva
   namespaces:
-    create: false
+    create: true
     values:
-      [ mgramseva , cert-manager , olap, ifix ]  
+      [ mgramseva , cert-manager , olap, ifix , jupyter ]  
   db:
     namespace: mgramseva
   root-ingress:
@@ -904,3 +904,16 @@ ifix-department-entity-service:
       enabled: true
       annotations:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-uat.psegs.in"
+
+jupyter:
+  namespace: mgramseva
+  ingress: 
+    enabled: true
+    context: "jupyter"
+    serviceName: proxy
+    servicePort: 80
+    waf: 
+      enabled: false  
+    additionalAnnotations: |
+      nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
+      nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth
