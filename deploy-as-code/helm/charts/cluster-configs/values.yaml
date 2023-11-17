@@ -43,6 +43,10 @@ cluster-configs:
       namespace: mgramseva
       name: egov-notification-sms
 
+    jupyter:
+      namespace: jupyter
+      name: jupyter
+
     egov-filestore:
       namespace: mgramseva
       name: egov-filestore
