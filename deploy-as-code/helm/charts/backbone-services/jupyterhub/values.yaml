@@ -19,10 +19,10 @@ imagePullSecret:
 imagePullSecrets: []
 ingress: 
   enabled: true
-  context: "hub(/|$)(.*)"
-  context2: "user(/|$)(.*)"
-  path: "user(/|$)(.*)"
-  pathSuffix: 'jupyterhub'
+  context: "hub"
+  context2: "user/mgramsevaadmin/"
+  # path: "user(/|$)(.*)"
+  # pathSuffix: 'jupyterhub'
   serviceName: proxy-public
   servicePort: 80
   waf: 
@@ -36,14 +36,10 @@ ingress:
 # ConfigurableHTTPProxy speaks with the actual ConfigurableHTTPProxy server in
 # the proxy pod.
 hub:
- config:
+  config:
    Authenticator:
      admin_users:
        - Available-in-secrets
-     # allowed_users:
-     #   - user3
-     #   - user4
-   # ...
    DummyAuthenticator:
      password: Available-in-secrets
    JupyterHub:
