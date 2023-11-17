@@ -37,8 +37,16 @@ ingress:
 # the proxy pod.
 hub:
   config:
+    Authenticator:
+      admin_users:
+        - Available-in-secrets
+      # allowed_users:
+      #   - user3
+      #   - user4
+    # ...
+    DummyAuthenticator:
+      password: Available-in-secrets
     JupyterHub:
-      admin_access: true
       authenticator_class: dummy
   service:
     type: ClusterIP
