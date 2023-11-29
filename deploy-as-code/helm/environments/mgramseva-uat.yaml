@@ -267,7 +267,7 @@ egov-notification-sms:
   sms.debug.msggateway: "true"
   sms.enabled: "true"
   save-sms-entity-enabled: "true"
-  sms-disabled-tenants-list: "testing,ab"
+  sms-disabled-tenants-list: "pb.testing,pb.ab"
 
 egov-user:
   replicas: 2
