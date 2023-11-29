@@ -97,6 +97,8 @@ env: |
     value: "false"
   - name: SMS_URL_DONT_ENCODE_URL
     value: "true"
+  - name: SMS_DISABLED_TENANTS_LIST
+    value: {{ index .Values "sms-disabled-tenants-list" | quote }}
   {{- end }}
   - name: SMS_SPICEDIGITAL_PROVIDER_URL
     value: {{ index .Values "sms-provider-url" | quote }}
