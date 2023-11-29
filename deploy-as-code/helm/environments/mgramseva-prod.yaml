@@ -1,6 +1,6 @@
 global:
   domain: mgramseva-dwss.punjab.gov.in
-#  containerRegistry: dwssio
+  containerRegistry: dwssio
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
@@ -258,6 +258,7 @@ egov-notification-sms:
   sms.debug.msggateway: "true"
   sms.enabled: "true"
   save-sms-entity-enabled: "true"
+  sms-disabled-tenants-list: "pb.testing"
 egov-user:
   replicas: 4
   heap: "-Xmx1900m -Xms1900m -XX:TieredStopAtLevel=1"
