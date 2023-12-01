@@ -142,7 +142,7 @@ cluster-configs:
         egov-localization: "http://egov-localization.mgramseva:8080/"
         egov-idgen: "http://egov-idgen.mgramseva:8080/"
         egov-otp: "http://egov-otp.mgramseva:8080/"
-        egov-mdms-service: "http://mdms-v2.mgramseva:8080/"
+        egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
         egov-workflow-v2: "http://egov-workflow-v2.mgramseva:8080/"
         egov-searcher: "http://egov-searcher.mgramseva:8080/"
         egov-indexer: "http://egov-indexer.mgramseva:8080/"
