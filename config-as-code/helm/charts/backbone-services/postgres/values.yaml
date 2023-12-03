@@ -1,7 +1,7 @@
 labels:
   app: "postgres"
   group: "db"
-namespace: egov
+namespace: naljal
 
 image:
   repository: "docker.io/postgres"

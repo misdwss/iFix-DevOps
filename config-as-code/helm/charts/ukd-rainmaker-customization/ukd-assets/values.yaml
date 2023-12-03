@@ -21,4 +21,4 @@ image:
 replicas: "1"
 httpPort: 80
 
-namespace: egov
+namespace: naljal

@@ -2,8 +2,7 @@ version: v1.0
 modules:
     - name: backbone
       services:
-        - zookeeper-v2
-        - kafka-v2
+        - kafka-kraft
         - kafka-connect
         - kafka-connect-restart-tasks
         - elasticsearch-data-v1
@@ -12,7 +11,7 @@ modules:
     - name: authn-authz
       services:
         - redis
-        - nginx-ingress
+        - ingress-nginx
         - zuul:v1.3.1-f26c4afdca-18
         - oauth2-proxy
     - name: core

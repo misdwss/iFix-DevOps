@@ -2,7 +2,7 @@
 labels:
   app: "oauth2-proxy"
 
-namespace: egov
+namespace: naljal
 replicas: 1
 
 image:

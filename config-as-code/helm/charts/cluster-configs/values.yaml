@@ -1,13 +1,13 @@
 cluster-configs:
   db:
-    namespace: egov
+    namespace: naljal
     name: db-service
     port: 5432
     targetPort: 5432
 
   root-ingress:
     name: root-ingress
-    namespace: egov
+    namespace: naljal
     cert-issuer: "letsencrypt-staging"
     appRoot: citizen
     serviceName: citizen
@@ -16,13 +16,13 @@ cluster-configs:
   nginx-errors:
     enabled: false
     name: nginx-errors
-    namespace: egov
+    namespace: naljal
     serviceName: nginx-errors
     servicePort: 80
 
   configmaps:
     egov-config:
-      namespace: [ egov ]
+      namespace: [naljal]
       name: egov-config
       server-tomcat-max-connections: "500"
       server-tomcat-max-threads: "10"
@@ -32,27 +32,27 @@ cluster-configs:
 
     egov-service-host:    
       name: egov-service-host
-      namespace: [ egov ] 
+      namespace: [naljal] 
 
   secrets:
     db: 
-      namespace: [ egov ]
+      namespace: [naljal]
       name: db
 
     egov-notification-sms:
-      namespace: egov
+      namespace: naljal
       name: egov-notification-sms
 
     egov-filestore: 
-      namespace: egov
+      namespace: naljal
       name: egov-filestore     
       
     egov-location: 
-      namespace: egov
+      namespace: naljal
       name: egov-location
 
     egov-pg-service: 
-      namespace: egov
+      namespace: naljal
       name: egov-pg-service                 
 
     pgadmin: 
@@ -60,27 +60,27 @@ cluster-configs:
       name: pgadmin       
 
     egov-enc-service: 
-      namespace: egov
+      namespace: naljal
       name: egov-enc-service       
 
     egov-notification-mail: 
-      namespace: egov
+      namespace: naljal
       name: egov-notification-mail
 
     home-isolation-notification-mail: 
-      namespace: egov
+      namespace: naljal
       name: home-isolation-notification-mail      
 
     git-sync: 
-      namespace: [ egov ]
+      namespace: [naljal]
       name: git-creds   
 
     kibana: 
-      namespace: egov
+      namespace: naljal
       name: kibana-creds                       
 
     kibana-infra: 
-      namespace: egov
+      namespace: naljal
       name: kibana-infra-creds     
 
     pgadmin: 
@@ -88,35 +88,35 @@ cluster-configs:
       name: pgadmin
 
     egov-si-microservice:
-      namespace: egov
+      namespace: naljal
       name: egov-si-microservice
 
     egov-edcr-notification:
-      namespace: egov
+      namespace: naljal
       name: egov-edcr-notification 
 
     egov-edcr-bank-gateway:
-      namespace: egov
+      namespace: naljal
       name: egov-edcr-bank-gateway
 
     chatbot:
-      namespace: egov
+      namespace: naljal
       name: chatbot
     
     covid-chatbot:
-      namespace: egov
+      namespace: naljal
       name: covid-chatbot
 
     egov-user-chatbot:
-      namespace: egov
+      namespace: naljal
       name: egov-user-chatbot
 
     oauth2-proxy:
-      namespace: egov
+      namespace: naljal
       name: oauth2-proxy   
 
     case-management:
-      namespace: egov
+      namespace: naljal
       name: case-management   
   
     minio:
@@ -132,11 +132,11 @@ cluster-configs:
       name: jenkins 
     
     mysql:
-      namespace: egov
+      namespace: naljal
       name: mysql
     
     wordpress:
-      namespace: egov
+      namespace: naljal
       name: wordpress
 
     postgres:
