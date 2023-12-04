@@ -180,7 +180,7 @@ billing-service:
   
 ws-services:
   memory_limits: 512Mi
-  replicas: 5
+  replicas: 2
   is-external-workflow-enabled: "true"
   sms-pending-collection-enabled: true
   sms-todays-collection-enabled: true
@@ -333,11 +333,11 @@ egov-persister:
       branch: "UAT"
       
 property-services:
- replicas: 5
+ replicas: 2
  memory_limits: 512Mi
  
 ws-calculator:
- replicas: 3
+ replicas: 2
  memory_limits: 512Mi
  sms-demand-enabled: true
  sms-payment-link-enabled: true
@@ -441,7 +441,7 @@ redoc:
 # gateway >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 zuul:
-  replicas: 3
+  replicas: 2
   custom-filter-property: "false"
   tracing-enabled: "true"
   heap: "-Xmx704m -Xms512m"
