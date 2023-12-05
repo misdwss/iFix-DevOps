@@ -21,7 +21,7 @@ cluster-configs:
                 domain: naljal-uat.digit.org ## Add your Domain Name    
                 egov-services-fqdn-name: https://naljal-uat.digit.org/ ## Add your Domain Name
                 
-                egov-state-level-tenant-id: "pb" 
+                egov-state-level-tenant-id: "ka" 
                 s3-assets-bucket: "(mgramseva-dev-assets|egov-dev-assets)"
                 es-host: "elasticsearch-data-v1.es-cluster"
                 es-indexer-host: "http://elasticsearch-data-v1.es-cluster:9200/"
@@ -33,7 +33,7 @@ cluster-configs:
                 serializers-timezone-in-ist: "true"
                 server-tomcat-max-connections: "500"
                 server-tomcat-max-threads: "10"
-                sms-enabled: "true"
+                sms-enabled: "false"
                 spring-datasource-tomcat-initialSize: "1"
                 spring-datasource-tomcat-max-active: "2"
                 spring-jpa-show-sql: "true"
@@ -196,7 +196,7 @@ egov-idgen:
 
 egov-notification-sms:
   sms-provider-url: "sms provider url" ## Add sms provider url
-  sms.provider.class: "Generic"
+  sms.provider.class: "Console"
   sms.provider.contentType:  "application/x-www-form-urlencoded"
   sms-config-map: "{'User':'$username', 'passwd': '$password', 'sid':'$senderid', 'mobilenumber':'$mobileno', 'message':'$message', 'mtype':'N', 'DR':'N', 'smsservicetype':'singlemsg'}"
   sms-gateway-to-use: "sms provider name" ## Add sms provider name
@@ -226,7 +226,7 @@ egov-user:
   citizen-registration-withlogin: "true"
   citizen-otp-fixed: "123456"
   citizen-otp-fixed-enabled: "true"
-  egov-state-level-tenant-id: "pb"
+  egov-state-level-tenant-id: "ka"
   account-unlock-cool-down-period-minutes: 5
 
 chatbot:
@@ -300,7 +300,7 @@ egov-indexer:
 
 egov-enc-service:
   java-args: -Dspring.profiles.active=monitoring
-  state-level-tenant-id: "pb"
+  state-level-tenant-id: "ka"
 
 egov-persister:
   replicas: 2
