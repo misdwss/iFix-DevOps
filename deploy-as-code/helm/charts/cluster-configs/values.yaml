@@ -9,8 +9,8 @@ cluster-configs:
     name: root-ingress
     namespace: naljal
     cert-issuer: "letsencrypt-staging"
-    appRoot: citizen
-    serviceName: citizen
+    appRoot: mgramseva
+    serviceName: frontend-mgramseva
     servicePort: 80
  
   nginx-errors:
