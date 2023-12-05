@@ -1,5 +1,5 @@
 global:
-   domain: naljal-uat-gov.in ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
+   domain: naljal-uat.digit.org ## Add your Domain Name "Eg: site.mydomain.com" Do not use the dummy domain
    setup: fullsetup
    namespace: naljal
    containerRegistry: naljal
@@ -18,8 +18,8 @@ cluster-configs:
                 db-host: naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432 ## Add db-host name eg: egov-demo.database.azure.com
                 db-name: naljaluatdb ## Add db-name
                 db-url: jdbc:postgresql://naljal-uat-db.c7a9hnasyeda.ap-south-1.rds.amazonaws.com:5432/naljaluatdb ## example: jdbc:postgresql://egov-demo.postgres.database.azure.com:5432/egov_demo
-                domain: naljal-uat-gov.in ## Add your Domain Name    
-                egov-services-fqdn-name: https://naljal-uat-gov.in/ ## Add your Domain Name
+                domain: naljal-uat.digit.org ## Add your Domain Name    
+                egov-services-fqdn-name: https://naljal-uat.digit.org/ ## Add your Domain Name
                 
                 egov-state-level-tenant-id: "pb" 
                 s3-assets-bucket: "(mgramseva-dev-assets|egov-dev-assets)"
