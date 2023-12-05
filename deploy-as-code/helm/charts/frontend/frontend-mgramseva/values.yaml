@@ -32,5 +32,6 @@ extraVolumeMounts: |
   - mountPath: /etc/nginx/conf.d/sub_filter.conf
     name: js-injection
     subPath: sub_filter.conf
-
-
+env: |
+  - name: STATE_LEVEL_TENANT_ID
+    value: {{ index .Values "state-level-tenant-id" | quote }}
