@@ -351,29 +351,29 @@ pgr-services:
 egov-data-uploader:
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-naljal.git"      ##### Change repo url with Your fork Repo url
-      branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
+      repo: "git@github.com:ddws-org/config-naljal"      ##### Change repo url with Your fork Repo url
+      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
 
 egov-searcher:
   search-yaml-path: "file:///work-dir/config-naljal/egov-searcher/bill-genie.yml,file:///work-dir/config-naljal/egov-searcher/wateropensearch.yml,file:///work-dir/config-naljal/egov-searcher/localitySearcher.yml,file:///work-dir/config-naljal/egov-searcher/propertyopensearch.yml"
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-naljal.git"
-      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
+      repo: "git@github.com:ddws-org/config-naljal"
+      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-analytics:
-  config-schema-paths: "file:///work-dir/configs/egov-dss-dashboards/dashboard-analytics/*.json"
+  config-schema-paths: "file:///work-dir/config-naljal/egov-dss-dashboards/dashboard-analytics/*.json"
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-naljal.git"
-      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
+      repo: "git@github.com:ddws-org/config-naljal"
+      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-ingest:
-  config-schema-paths: "file:///work-dir/configs/egov-dss-dashboards/dashboard-ingest/*.json"
+  config-schema-paths: "file:///work-dir/config-naljal/egov-dss-dashboards/dashboard-ingest/*.json"
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-naljal.git"
-      branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
+      repo: "git@github.com:ddws-org/config-naljal"
+      branch: "master"                                    ##### Change repo branch with Your fork Repo branch
 
 # reportinfra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -393,17 +393,17 @@ report:
   spring-datasource-tomcat-max-active: 5
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-naljal.git"     ##### Change repo url with Your fork Repo url
-      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
-  report-locationsfile-path: "file:///work-dir/configs/reports/reportFileLocationsv1.txt"
+      repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
+      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
+  report-locationsfile-path: "file:///work-dir/config-naljal/reports/reportFileLocationsv1.txt"
 
 pdf-service:
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-naljal.git"     ##### Change repo url with Your fork Repo url
-      branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
-  data-config-urls: "file:///work-dir/configs/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/configs/pdf-service/data-config/property-receipt.json,file:///work-dir/configs/pdf-service/data-config/property-bill.json,file:///work-dir/configs/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/configs/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/data-config/pt-receipt.json,file:///work-dir/configs/pdf-service/data-config/tl-receipt.json,file:///work-dir/configs/pdf-service/data-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/data-config/tlapplication.json,file:///work-dir/configs/pdf-service/data-config/passvehicle-certificate.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/data-config/buildingpermit.json,file:///work-dir/configs/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/configs/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/configs/pdf-service/data-config/bpa-revocation.json,file:///work-dir/configs/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/configs/pdf-service/data-config/misc-receipt.json,file:///work-dir/configs/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/configs/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/configs/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/configs/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/configs/pdf-service/data-config/tlcertificate.json"
-  format-config-urls: "file:///work-dir/configs/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/configs/pdf-service/format-config/property-receipt.json,file:///work-dir/configs/pdf-service/format-config/property-bill.json,file:///work-dir/configs/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/configs/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/format-config/pt-receipt.json,file:///work-dir/configs/pdf-service/format-config/tl-receipt.json,file:///work-dir/configs/pdf-service/format-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/format-config/tlapplication.json,file:///work-dir/configs/pdf-service/format-config/passvehicle-certificate.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/format-config/buildingpermit.json,file:///work-dir/configs/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/configs/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/configs/pdf-service/format-config/bpa-revocation.json,file:///work-dir/configs/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/configs/pdf-service/format-config/misc-receipt.json,file:///work-dir/configs/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/configs/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/configs/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/configs/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/configs/pdf-service/format-config/tlcertificate.json"
+      repo: "git@github.com:ddws-org/config-naljal"     ##### Change repo url with Your fork Repo url
+      branch: "master"                                   ##### Change repo branch with Your fork Repo branch
+  data-config-urls: "file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/data-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/data-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/data-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/data-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/data-config/tlcertificate.json"
+  format-config-urls: "file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/property-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/config-naljal/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/pt-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tl-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedbill.json,file:///work-dir/config-naljal/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/config-naljal/pdf-service/format-config/tlapplication.json,file:///work-dir/config-naljal/pdf-service/format-config/passvehicle-certificate.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit.json,file:///work-dir/config-naljal/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/config-naljal/pdf-service/format-config/bpa-revocation.json,file:///work-dir/config-naljal/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/config-naljal/pdf-service/format-config/misc-receipt.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/config-naljal/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/config-naljal/pdf-service/format-config/tlcertificate.json"
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
