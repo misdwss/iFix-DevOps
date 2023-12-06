@@ -51,6 +51,8 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-apportion-service
+  - name: SMS_BILL_NOTIFICATION_ENABLE
+    value: {{ index .Values "sms-bill-notification-enable" | quote }}
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: bs-persist
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
