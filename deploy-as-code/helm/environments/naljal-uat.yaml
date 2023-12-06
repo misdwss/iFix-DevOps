@@ -265,7 +265,7 @@ chatbot:
 billing-service:
   replicas: 2
   memory_limits: 512Mi
-  demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
+  demand.updateurl: '{"WS":"http://ws-calculator.naljal:8080/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
 
 ws-services:
@@ -318,7 +318,7 @@ egov-mdms-service:
     gitSync:
       repo: "git@github.com:ddws-org/mdms-naljal"   ##### Change repo url with Your fork Repo url
       branch: "master"                                        ##### Change repo branch with Your fork Repo branch
-  mdms-folder: "mdms-mgramseva"
+  mdms-folder: "mdms-naljal"
   masters-config-url: "file:///work-dir/egov-mdms-data/master-config.json"
   java-args: -Dspring.profiles.active=monitoring
 
@@ -327,9 +327,9 @@ egov-indexer:
   memory_limits: "768Mi"
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-mgramseva.git"
+      repo: "git@github.com:ddws-org/config-naljal.git"
       branch: "UAT"
-  egov-indexer-yaml-repo-path: "file:///work-dir/config-mgramseva/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/collection-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-echallan.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/error-queue.yml,file:///work-dir/config-mgramseva/egov-indexer/egov-vendor.yaml,file:///work-dir/config-mgramseva/egov-indexer/payment-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-mgramseva/egov-indexer/property-services.yml,file:///work-dir/config-mgramseva/egov-indexer/water-service.yml,file:///work-dir/config-mgramseva/egov-indexer/water-services-meter.yml"
+  egov-indexer-yaml-repo-path: "file:///work-dir/config-naljal/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-naljal/egov-indexer/collection-indexer.yml,file:///work-dir/config-naljal/egov-indexer/egov-echallan.yml,file:///work-dir/config-naljal/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-naljal/egov-indexer/error-queue.yml,file:///work-dir/config-naljal/egov-indexer/egov-vendor.yaml,file:///work-dir/config-naljal/egov-indexer/payment-indexer.yml,file:///work-dir/config-naljal/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-naljal/egov-indexer/property-services.yml,file:///work-dir/config-naljal/egov-indexer/water-service.yml,file:///work-dir/config-naljal/egov-indexer/water-services-meter.yml"
 
 egov-enc-service:
   java-args: -Dspring.profiles.active=monitoring
@@ -339,10 +339,10 @@ egov-persister:
   replicas: 2
   images:
     - ddws-org/egov-persister
-  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/billing-services-persist.yml,file:///work-dir/config-mgramseva/egov-persister/collection-migration-persister.yml,file:///work-dir/config-mgramseva/egov-persister/echallan.yml,file:///work-dir/config-mgramseva/egov-persister/egf-bill.yaml,file:///work-dir/config-mgramseva/egov-persister/egov-user-event-persister.yml,file:///work-dir/config-mgramseva/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pdf-filestoreid-update.yml,file:///work-dir/config-mgramseva/egov-persister/pdf-generator.yml,file:///work-dir/config-mgramseva/egov-persister/pg-service-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services.yml,file:///work-dir/config-mgramseva/egov-persister/pt-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-meter.yml,file:///work-dir/config-mgramseva/egov-persister/vendor-persister.yaml,file:///work-dir/config-mgramseva/egov-persister/apportion-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services-registry.yml,file:///work-dir/config-mgramseva/egov-persister/department-entity-persister.yml,file:///work-dir/config-mgramseva/egov-persister/department-entity-migration-progress.yml,file:///work-dir/config-mgramseva/egov-persister/adapter-master-data-service.yml,file:///work-dir/config-mgramseva/egov-persister/sms-persister.yml,file:///work-dir/config-mgramseva/egov-persister/hrms-employee-persister.yml,file:///work-dir/config-mgramseva/egov-persister/mdms-persister.yml"
+  persist-yml-path: "file:///work-dir/config-naljal/egov-persister/billing-services-persist.yml,file:///work-dir/config-naljal/egov-persister/collection-migration-persister.yml,file:///work-dir/config-naljal/egov-persister/echallan.yml,file:///work-dir/config-naljal/egov-persister/egf-bill.yaml,file:///work-dir/config-naljal/egov-persister/egov-user-event-persister.yml,file:///work-dir/config-naljal/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/config-naljal/egov-persister/pdf-filestoreid-update.yml,file:///work-dir/config-naljal/egov-persister/pdf-generator.yml,file:///work-dir/config-naljal/egov-persister/pg-service-persister.yml,file:///work-dir/config-naljal/egov-persister/property-services.yml,file:///work-dir/config-naljal/egov-persister/pt-persist.yml,file:///work-dir/config-naljal/egov-persister/water-persist.yml,file:///work-dir/config-naljal/egov-persister/water-meter.yml,file:///work-dir/config-naljal/egov-persister/vendor-persister.yaml,file:///work-dir/config-naljal/egov-persister/apportion-persister.yml,file:///work-dir/config-naljal/egov-persister/property-services-registry.yml,file:///work-dir/config-naljal/egov-persister/department-entity-persister.yml,file:///work-dir/config-naljal/egov-persister/department-entity-migration-progress.yml,file:///work-dir/config-naljal/egov-persister/adapter-master-data-service.yml,file:///work-dir/config-naljal/egov-persister/sms-persister.yml,file:///work-dir/config-naljal/egov-persister/hrms-employee-persister.yml,file:///work-dir/config-naljal/egov-persister/mdms-persister.yml"
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-mgramseva.git"
+      repo: "git@github.com:ddws-org/config-naljal.git"
       branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
 
 pgr-services:
@@ -351,28 +351,28 @@ pgr-services:
 egov-data-uploader:
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-mgramseva.git"      ##### Change repo url with Your fork Repo url
+      repo: "git@github.com:ddws-org/config-naljal.git"      ##### Change repo url with Your fork Repo url
       branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
 
 egov-searcher:
-  search-yaml-path: "file:///work-dir/config-mgramseva/egov-searcher/bill-genie.yml,file:///work-dir/config-mgramseva/egov-searcher/wateropensearch.yml,file:///work-dir/config-mgramseva/egov-searcher/localitySearcher.yml,file:///work-dir/config-mgramseva/egov-searcher/propertyopensearch.yml"
+  search-yaml-path: "file:///work-dir/config-naljal/egov-searcher/bill-genie.yml,file:///work-dir/config-naljal/egov-searcher/wateropensearch.yml,file:///work-dir/config-naljal/egov-searcher/localitySearcher.yml,file:///work-dir/config-naljal/egov-searcher/propertyopensearch.yml"
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-mgramseva.git"
+      repo: "git@github.com:ddws-org/config-naljal.git"
       branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-analytics:
   config-schema-paths: "file:///work-dir/configs/egov-dss-dashboards/dashboard-analytics/*.json"
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-mgramseva.git"
+      repo: "git@github.com:ddws-org/config-naljal.git"
       branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
 
 dashboard-ingest:
   config-schema-paths: "file:///work-dir/configs/egov-dss-dashboards/dashboard-ingest/*.json"
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-mgramseva.git"
+      repo: "git@github.com:ddws-org/config-naljal.git"
       branch: "UAT"                                    ##### Change repo branch with Your fork Repo branch
 
 # reportinfra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -393,14 +393,14 @@ report:
   spring-datasource-tomcat-max-active: 5
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-mgramseva.git"     ##### Change repo url with Your fork Repo url
+      repo: "git@github.com:ddws-org/config-naljal.git"     ##### Change repo url with Your fork Repo url
       branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
   report-locationsfile-path: "file:///work-dir/configs/reports/reportFileLocationsv1.txt"
 
 pdf-service:
   initContainers:
     gitSync:
-      repo: "git@github.com:ddws-org/config-mgramseva.git"     ##### Change repo url with Your fork Repo url
+      repo: "git@github.com:ddws-org/config-naljal.git"     ##### Change repo url with Your fork Repo url
       branch: "UAT"                                   ##### Change repo branch with Your fork Repo branch
   data-config-urls: "file:///work-dir/configs/pdf-service/data-config/tradelicense-receipt.json,file:///work-dir/configs/pdf-service/data-config/property-receipt.json,file:///work-dir/configs/pdf-service/data-config/property-bill.json,file:///work-dir/configs/pdf-service/data-config/tradelicense-bill.json,file:///work-dir/configs/pdf-service/data-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/data-config/pt-receipt.json,file:///work-dir/configs/pdf-service/data-config/tl-receipt.json,file:///work-dir/configs/pdf-service/data-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/data-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/data-config/tlapplication.json,file:///work-dir/configs/pdf-service/data-config/passvehicle-certificate.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/data-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/data-config/buildingpermit.json,file:///work-dir/configs/pdf-service/data-config/ptmutationcertificate.json,file:///work-dir/configs/pdf-service/data-config/tlrenewalcertificate.json,file:///work-dir/configs/pdf-service/data-config/bpa-revocation.json,file:///work-dir/configs/pdf-service/data-config/buildingpermit-low.json,file:///work-dir/configs/pdf-service/data-config/misc-receipt.json,file:///work-dir/configs/pdf-service/data-config/ws-applicationwater.json,file:///work-dir/configs/pdf-service/data-config/ws-sanctionletter.json,file:///work-dir/configs/pdf-service/data-config/ws-estimationnotice.json,file:///work-dir/configs/pdf-service/data-config/ws-applicationsewerage.json,file:///work-dir/configs/pdf-service/data-config/tlcertificate.json"
   format-config-urls: "file:///work-dir/configs/pdf-service/format-config/tradelicense-receipt.json,file:///work-dir/configs/pdf-service/format-config/property-receipt.json,file:///work-dir/configs/pdf-service/format-config/property-bill.json,file:///work-dir/configs/pdf-service/format-config/tradelicense-bill.json,file:///work-dir/configs/pdf-service/format-config/firenoc-receipt.json,file:///work-dir/configs/pdf-service/format-config/pt-receipt.json,file:///work-dir/configs/pdf-service/format-config/tl-receipt.json,file:///work-dir/configs/pdf-service/format-config/consolidatedbill.json,file:///work-dir/configs/pdf-service/format-config/consolidatedreceipt.json,file:///work-dir/configs/pdf-service/format-config/tlapplication.json,file:///work-dir/configs/pdf-service/format-config/passvehicle-certificate.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedacknowlegment.json,file:///work-dir/configs/pdf-service/format-config/ws-consolidatedsewerageconnection.json,file:///work-dir/configs/pdf-service/format-config/buildingpermit.json,file:///work-dir/configs/pdf-service/format-config/ptmutationcertificate.json,file:///work-dir/configs/pdf-service/format-config/tlrenewalcertificate.json,file:///work-dir/configs/pdf-service/format-config/bpa-revocation.json,file:///work-dir/configs/pdf-service/format-config/buildingpermit-low.json,file:///work-dir/configs/pdf-service/format-config/misc-receipt.json,file:///work-dir/configs/pdf-service/format-config/ws-applicationwater.json,file:///work-dir/configs/pdf-service/format-config/ws-sanctionletter.json,file:///work-dir/configs/pdf-service/format-config/ws-estimationnotice.json,file:///work-dir/configs/pdf-service/format-config/ws-applicationsewerage.json,file:///work-dir/configs/pdf-service/format-config/tlcertificate.json"
