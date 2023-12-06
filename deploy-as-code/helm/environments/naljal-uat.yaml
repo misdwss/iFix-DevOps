@@ -319,7 +319,7 @@ egov-mdms-service:
       repo: "git@github.com:ddws-org/mdms-naljal"   ##### Change repo url with Your fork Repo url
       branch: "master"                                        ##### Change repo branch with Your fork Repo branch
   mdms-folder: "mdms-naljal"
-  masters-config-url: "file:///work-dir/egov-mdms-data/master-config.json"
+  masters-config-url: "file:///work-dir/mdms-naljal/master-config.json"
   java-args: -Dspring.profiles.active=monitoring
 
 egov-indexer:
