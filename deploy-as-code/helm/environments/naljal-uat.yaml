@@ -304,6 +304,7 @@ vendor:
 echallan-services:
   replicas: 2
   heap: "-Xmx512m -Xms512m"
+  memory_limits: "768Mi"
   egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
   sms-expenditure-enabled: false
   sms-expenditure-mark-bill-enabled: false
@@ -353,6 +354,7 @@ egov-indexer:
 egov-enc-service:
   replicas: 3
   heap: "-Xmx512m -Xms512m"
+  memory_limits: "768Mi"
   java-args: -Dspring.profiles.active=monitoring
   state-level-tenant-id: "ka"
 
