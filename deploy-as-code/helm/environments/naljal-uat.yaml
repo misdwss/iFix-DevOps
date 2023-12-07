@@ -183,6 +183,8 @@ property-services:
  heap: "-Xmx512m -Xms512m"
 
 egov-filestore:
+  memory_limits: 512Mi
+  heap: "-Xmx512m -Xms512m"
   volume: /opt/eGov/filestore
   is-bucket-fixed: "true"
   minio.url : "http://minio.backbone:9000/"
@@ -300,6 +302,8 @@ vendor:
   replicas: 2
 
 echallan-services:
+  replicas: 2
+  heap: "-Xmx512m -Xms512m"
   egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
   sms-expenditure-enabled: false
   sms-expenditure-mark-bill-enabled: false
@@ -314,6 +318,9 @@ ws-calculator:
   sms-bill-download-enable: true
 
 egov-pg-service:
+  replicas: 2
+  heap: "-Xmx512m -Xms512m"
+  memory_limits: "768Mi"
   axis: true  
   egov-pg-reconciliation-system-user-uuid: "db4fe8ed-c0e0-4c2a-829b-72296d8d156f"
 
@@ -344,6 +351,8 @@ egov-indexer:
   egov-indexer-yaml-repo-path: "file:///work-dir/config-naljal/egov-indexer/billingservices-indexer.yml,file:///work-dir/config-naljal/egov-indexer/collection-indexer.yml,file:///work-dir/config-naljal/egov-indexer/egov-echallan.yml,file:///work-dir/config-naljal/egov-indexer/egov-telemetry-indexer.yml,file:///work-dir/config-naljal/egov-indexer/error-queue.yml,file:///work-dir/config-naljal/egov-indexer/egov-vendor.yaml,file:///work-dir/config-naljal/egov-indexer/payment-indexer.yml,file:///work-dir/config-naljal/egov-indexer/finance-rolloutadotpion-indexer.yml,file:///work-dir/config-naljal/egov-indexer/property-services.yml,file:///work-dir/config-naljal/egov-indexer/water-service.yml,file:///work-dir/config-naljal/egov-indexer/water-services-meter.yml"
 
 egov-enc-service:
+  replicas: 3
+  heap: "-Xmx512m -Xms512m"
   java-args: -Dspring.profiles.active=monitoring
   state-level-tenant-id: "ka"
 
