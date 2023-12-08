@@ -291,8 +291,8 @@ ws-services:
   sms-feedback-notification-enabled: false
 
 egov-location:
-  memory_limits: 512Mi
-  replicas: 2
+  memory_limits: 768Mi
+  replicas: 10
 
 vendor:
   vendor.role: CITIZEN
