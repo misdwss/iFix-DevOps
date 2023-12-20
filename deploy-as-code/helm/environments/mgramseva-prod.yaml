@@ -218,6 +218,7 @@ ifix-migration-toolkit:
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 egov-filestore:
+  replicas: 2
   volume: /opt/eGov/filestore
   is-bucket-fixed: "true"
   minio.url : "http://minio.backbone:9000/"
@@ -312,6 +313,7 @@ egov-mdms-service:
   replicas: 3
 
 egov-indexer:
+  replicas: 2
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   initContainers:
@@ -335,8 +337,11 @@ egov-persister:
       repo: "git@github.com:misdwss/config-mgramseva"
       branch: "master"
 
+echallan-calculator:
+  replicas: 2
 
 echallan-services:
+  replicas: 2
   egov-idgen-challanNum-format: "EB-[fy:yyyy-yy]-[SEQ_EG_ECHALLAN_EXPENSE]"
   sms-expenditure-enabled: false
   sms-expenditure-mark-bill-enabled: false
@@ -358,6 +363,7 @@ egov-localization:
   memory_limits: 512Mi
 
 pdf-service:
+  replicas: 2
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
@@ -494,6 +500,7 @@ egov-hrms:
 
 egov-apportion-service:
   memory_limits: 512Mi
+  replicas: 2
   heap: -Xmx256m -Xms256m
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
