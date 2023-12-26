@@ -175,6 +175,7 @@ ws-services:
   memory_limits: 512Mi
   replicas: 2
   is-external-workflow-enabled: "true"
+  java-enable-debug: true
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
 
