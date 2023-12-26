@@ -149,6 +149,8 @@ env: |
   {{- if index .Values "tracing-enabled" }}
   - name: TRACER_OPENTRACING_ENABLED
     value: "true"
+  - name: JAVA_ENABLE_DEBUG
+    value: "true"
   {{- end }}
   - name: IS_EXTERNAL_WORKFLOW_ENABLED
     value: {{ index .Values "is-external-workflow-enabled" | quote }}
