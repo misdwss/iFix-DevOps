@@ -810,7 +810,7 @@ playground:
   replicas: 1
   namespace: mgramseva
   images:
-    - egovio/playground:ubuntu-18-elasticdump
+    - egovio/playground:1.0
 
 pgadmin:
   images:
