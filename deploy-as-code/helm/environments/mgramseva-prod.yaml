@@ -892,6 +892,7 @@ adapter-master-data-service:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-dwss.psegs.in"
 
 ifix-department-entity-service:
+  replicas: 2
   ingress:
     cors:
       enabled: true
