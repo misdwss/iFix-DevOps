@@ -225,6 +225,7 @@ egov-notification-sms:
   sms.default.tmplid: "1"
   sms.debug.msggateway: "true"
   sms.enabled: "true"
+  java-enable-debug: true
 
 egov-user:
   replicas: 2
