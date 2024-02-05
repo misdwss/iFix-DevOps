@@ -1,6 +1,6 @@
 global:
   domain: mgramseva-uat.psegs.in
-  # containerRegistry: dwssio
+  containerRegistry: dwssio
   tracing-enabled: true
   namespace: mgramseva
   nodepool:
@@ -268,6 +268,7 @@ egov-notification-sms:
   sms.enabled: "true"
   save-sms-entity-enabled: "true"
   sms-disabled-tenants-list: "pb.testing,pb.ab"
+  java-enable-debug: true
 
 egov-user:
   replicas: 2
