@@ -465,7 +465,7 @@ zuul:
 
 
 collection-services:
-  replicas: 3
+  replicas: 4
   memory_limits: 512Mi
   receiptnumber-servicebased: "true"
   receipt-search-paginate: "true"
@@ -898,3 +898,6 @@ ifix-department-entity-service:
       enabled: true
       annotations:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-dwss.psegs.in"
+
+mgramseva-ifix-adapter:
+  replicas: 4
