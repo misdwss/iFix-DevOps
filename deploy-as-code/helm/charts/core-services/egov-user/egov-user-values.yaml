@@ -86,6 +86,10 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
+  - name: MDMS_PATH
+    value: {{ index .Values "mdms-path" | quote }}
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: {{ index .Values "egov-mdms-search-endpoint" | quote }}
   - name: EGOV_ENC_HOST
     valueFrom:
       configMapKeyRef:
