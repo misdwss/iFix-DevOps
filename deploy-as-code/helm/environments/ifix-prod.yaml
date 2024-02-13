@@ -99,8 +99,8 @@ digit-ui:
       ';"
 dashboard-analytics:
   replicas: 4
-  heap: "-Xmx256m -Xms256m"
-  memory_limits: 512Mi
+  heap: "-Xmx384m -Xms384m"
+  memory_limits: 768Mi
   config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-analytics/*.json"
   initContainers:
     gitSync:
