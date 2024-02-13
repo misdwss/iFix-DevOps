@@ -98,7 +98,7 @@ digit-ui:
       <script src=https://s3.ap-south-1.amazonaws.com/ifix-dev-assets/globalProdConfigs.js type=text/javascript></script>
       ';"
 dashboard-analytics:
-  replicas: 4
+  replicas: 5
   heap: "-Xmx384m -Xms384m"
   memory_limits: 768Mi
   config-schema-paths: "file:///work-dir/config-mgramseva/egov-dss-dashboards/dashboard-analytics/*.json"
