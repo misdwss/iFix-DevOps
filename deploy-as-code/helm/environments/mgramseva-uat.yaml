@@ -159,7 +159,7 @@ cluster-configs:
         egov-apportion-service: "http://egov-apportion-service:8080/"
         ws-calculator: "http://ws-calculator.mgramseva:8080/"
         ws-services: "http://ws-services.mgramseva:8080/"
-        egov-url-shortening: "http://egov-url-shortening:8080/"
+        egov-url-shortening: "http://egov-url-shortening-mgs:8080/"
         egov-url-shortening-mgs: "http://egov-url-shortening-mgs:8080/"
         minio-url: "https://minio-staging.digit.org/"
         vendor: "http://vendor.mgramseva:8080"
