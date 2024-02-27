@@ -101,6 +101,10 @@ env: |
     value: {{ index .Values "sms-workflow-enabled" | quote }}
   - name: SMS_FEEDBACK_NOTIFICATION_ENABLED
     value: {{ index .Values "sms-feedback-notification-enabled" | quote }}
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
+  - name: EGOV_SHORTENER_URL
+    value: {{ index .Values "egov-shortener-url" | quote }}
   - name: EGOV_FILESTORE_HOST
     valueFrom:
       configMapKeyRef:
