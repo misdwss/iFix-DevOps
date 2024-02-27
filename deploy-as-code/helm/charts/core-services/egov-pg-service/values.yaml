@@ -133,6 +133,8 @@ env: |
     value: {{ index .Values "payu-url" | quote }}
   - name: PAYU_URL_STATUS
     value: {{ index .Values "payu-url-status" | quote }}
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
   - name: PAYU_MERCHANT_KEY
     valueFrom:
       secretKeyRef:
