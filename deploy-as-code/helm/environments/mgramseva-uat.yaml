@@ -192,6 +192,8 @@ ws-services:
   sms-feedback-notification-enabled: true
   java-enable-debug: true
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  egov.shortener.url: "eus/shortener"
+  egov.url.shortner.endpoint: "/eus/shortener"
 
 echallan-services:
   sms-expenditure-enabled: true
@@ -199,6 +201,8 @@ echallan-services:
   sms-monthy-summary-enabled: true
   java-enable-debug: true
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  egov.shortener.url: "eus/shortener"
+  egov.url.shortner.endpoint: "/eus/shortener"
 
 ifix-reference-adapter:
   keycloak-credentials-clientid: "ifix-uat"
@@ -346,6 +350,8 @@ property-services:
  replicas: 2
  memory_limits: 512Mi
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+ egov.shortener.url: "eus/shortener"
+ egov.url.shortner.endpoint: "/eus/shortener"
  
 ws-calculator:
  replicas: 2
@@ -354,7 +360,8 @@ ws-calculator:
  sms-payment-link-enabled: true
  sms-bill-download-enable: true
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
- egov-shortener-url: "/eus/shortener"
+ egov.shortener.url: "eus/shortener"
+ egov.url.shortner.endpoint: "/eus/shortener"
 
 egov-localization:
   replicas: 2
