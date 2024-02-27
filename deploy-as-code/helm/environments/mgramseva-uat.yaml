@@ -354,7 +354,7 @@ ws-calculator:
  sms-payment-link-enabled: true
  sms-bill-download-enable: true
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
- egov.shortener.url: "/eus/shortener"
+ egov-shortener-url: "/eus/shortener"
 
 egov-localization:
   replicas: 2
