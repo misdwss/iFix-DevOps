@@ -79,6 +79,10 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-url-shortening
+  - name: EGOV_SHORTENER_URL
+    value: {{ index .Values "egov-shortener-url" | quote }}
+  - name: EGOV_URL_SHORTENER_ENDPOINT
+    value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
   - name: WORKFLOW_WORKDIR_PATH
     valueFrom:
       configMapKeyRef:

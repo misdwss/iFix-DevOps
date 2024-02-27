@@ -192,8 +192,8 @@ ws-services:
   sms-feedback-notification-enabled: true
   java-enable-debug: true
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
-  egov.shortener.url: "eus/shortener"
-  egov.url.shortner.endpoint: "/eus/shortener"
+  egov-shortener-url: "eus/shortener"
+  egov-url-shortener-endpoint: "/eus/shortener"
 
 echallan-services:
   sms-expenditure-enabled: true
