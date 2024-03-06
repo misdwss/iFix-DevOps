@@ -947,3 +947,15 @@ jupyter:
     additionalAnnotations: |
       nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
       nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth
+
+egov-penalty-schedular:
+  java-enable-debug: "true"
+  egov-mdms-host: "http://localhost:8094"
+  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  mdms-event-tenantId: "pb"
+  egov-wscalculator-host: "http://localhost:8083"
+  egov-wscalculator-url: "/ws-calculator/waterCalculator/_addPenalty"
+  egov-penalty-enabled: "true"
+  egov-penalty-enabled-division-code-list: "DIV1038,DIV1001"
+  cron:
+    schedule: "0 0 * * *"
