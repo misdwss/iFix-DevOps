@@ -522,7 +522,7 @@ egov-hrms:
   heap: "-Xmx192m -Xms192m"
   employee-applink: "https://mgramseva-uat.psegs.in/mgramseva-web/employee/user/login"
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
-  sms-user-creation-enabled: false
+  sms-user-creation-enabled: true
 
 egov-apportion-service:
   memory_limits: 512Mi
