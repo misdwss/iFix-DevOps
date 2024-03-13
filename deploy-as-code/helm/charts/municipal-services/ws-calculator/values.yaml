@@ -107,6 +107,12 @@ env: |
     value: {{ index .Values "sms-payment-link-enabled" | quote }}
   - name: SMS_BILL_DOWNLOAD_ENABLED
     value: {{ index .Values "sms-bill-download-enable" | quote }}
+  - name: PENALTY_START_THRESHOLD_TIME
+    value: {{ index .Values "penalty-start-threshold-time" | quote }}
+  - name: PENALTY_APPLICABLE_IN_DAYS
+    value: {{ index .Values "penalty-applicable-in-days" | quote }}
+  - name: IS_PENALTY_FEATURE_ENABLE
+    value: {{ index .Values "is-penalty-feature-enable" | quote }}
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
     value: org.apache.kafka.common.serialization.StringSerializer
   - name: SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER
