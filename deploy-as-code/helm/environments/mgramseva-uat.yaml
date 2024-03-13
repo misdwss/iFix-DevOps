@@ -366,7 +366,9 @@ ws-calculator:
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
  egov-shortener-url: "eus/shortener"
  egov-url-shortener-endpoint: "/eus/shortener"
-
+ penalty-applicable-in-days: 10
+ penalty-start-threshold-time: 100000
+ is-penalty-feature-enable: true
 egov-localization:
   replicas: 2
   memory_limits: 512Mi
