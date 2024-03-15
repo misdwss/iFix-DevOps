@@ -120,8 +120,9 @@ env: |
   - name: EGOV_IDGEN_ASSM_FORMAT
     value: {{ index .Values "egov-idgen-assm-format" | quote }} 
   - name: EGOV_IDGEN_PTID_FORMAT
-    value: {{ index .Values "egov-idgen-ptid-format" | quote }}        
-
+    value: {{ index .Values "egov-idgen-ptid-format" | quote }}
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
   - name: NOTIFICATION_SMS_ENABLED
     value: {{ index .Values "notification-sms-enabled" | quote }}
   - name: EGOV_USER_EVENT_NOTIFICATION_ENABLED
