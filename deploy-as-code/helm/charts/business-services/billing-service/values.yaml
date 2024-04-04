@@ -53,6 +53,8 @@ env: |
         key: egov-apportion-service
   - name: SMS_BILL_NOTIFICATION_ENABLE
     value: {{ index .Values "sms-bill-notification-enable" | quote }}
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: {{ index .Values "egov-mdms-search-endpoint" | quote }}
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: bs-persist
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER

@@ -109,6 +109,8 @@ env: |
     value: {{ index .Values "sms-expenditure-mark-bill-enabled" | quote }}
   - name: SMS_MONTHY_SUMMARY_ENABLED
     value: {{ index .Values "sms-monthy-summary-enabled" | quote }}
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: {{ index .Values "egov-mdms-search-endpoint" | quote }}
   - name: EGOV_COLLECTION_SERVICE_CREATE_ENDPOINT
     value: "/collection-services/payments/_create"
   - name: EGOV_COLLECTION_SERVICE_SEARCH
@@ -144,6 +146,8 @@ env: |
     value: "8080"
   - name: EGOV_IDGEN_CHALLANNUM_FORMAT
     value: {{ index .Values "egov-idgen-challanNum-format" | quote }}
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
   - name: SECURITY_BASIC_ENABLED
     value: "false"  
   - name: MANAGEMENT_SECURITY_ENABLED

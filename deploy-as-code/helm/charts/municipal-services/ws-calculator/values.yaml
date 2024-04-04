@@ -47,6 +47,8 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: {{ index .Values "egov-mdms-search-endpoint" | quote }}
   - name: EGOV_USER_HOST
     valueFrom:
       configMapKeyRef:
@@ -77,11 +79,17 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-url-shortening
+  - name: EGOV_SHORTENER_URL
+    value: {{ index .Values "egov-shortener-url" | quote }}
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
   - name: WORKFLOW_WORKDIR_PATH
     valueFrom:
       configMapKeyRef:
         name: egov-service-host
         key: egov-workflow-v2
+  - name: JAVA_ENABLE_DEBUG
+    value: "true"
   {{- if index .Values "global" "tracer-errors-provideexceptionindetails" }}
   - name: TRACER_ERRORS_PROVIDEEXCEPTIONINDETAILS
     valueFrom:
@@ -99,6 +107,12 @@ env: |
     value: {{ index .Values "sms-payment-link-enabled" | quote }}
   - name: SMS_BILL_DOWNLOAD_ENABLED
     value: {{ index .Values "sms-bill-download-enable" | quote }}
+  - name: PENALTY_START_THRESHOLD_TIME
+    value: {{ index .Values "penalty-start-threshold-time" | quote }}
+  - name: PENALTY_APPLICABLE_IN_DAYS
+    value: {{ index .Values "penalty-applicable-in-days" | quote }}
+  - name: IS_PENALTY_FEATURE_ENABLE
+    value: {{ index .Values "is-penalty-feature-enable" | quote }}
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
     value: org.apache.kafka.common.serialization.StringSerializer
   - name: SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER

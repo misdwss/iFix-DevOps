@@ -44,6 +44,8 @@ env: |
     value: {{ index .Values "idformat-from-mdms" | quote }}
   - name: AUTOCREATE_NEW_SEQ
     value: {{ index .Values "autocreate-new-seq" | quote }}
+  - name: MDMS_SERVICE_SEARCH_URI
+    value: {{ index .Values "mdms-service-search-uri" | quote }}
   - name: MDMS_SERVICE_HOST
     valueFrom:
       configMapKeyRef:

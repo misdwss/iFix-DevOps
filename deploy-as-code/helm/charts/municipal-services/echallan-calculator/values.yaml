@@ -43,7 +43,7 @@ env: |
         name: egov-service-host
         key: egov-mdms-service
   - name: EGOV_MDMS_SEARCH_ENDPOINT
-    value: /egov-mdms-service/v1/_search
+    value: /mdms-v2/v1/_search
   - name: EGOV_BILLINGSERVICE_HOST
     valueFrom:
       configMapKeyRef:
@@ -63,6 +63,8 @@ env: |
     value: {{ index .Values "heap" | quote }}
   - name: JAVA_ARGS
     value: {{ index .Values "java-args" | quote }}
+  - name: EGOV_URL_SHORTNER_ENDPOINT
+    value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
   - name: SERVER_PORT
     value: "8080"
   - name: SECURITY_BASIC_ENABLED
