@@ -331,7 +331,7 @@ egov-persister:
   replicas: 2
   images:
     - egovio/egov-persister
-  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/billing-services-persist.yml,file:///work-dir/config-mgramseva/egov-persister/collection-migration-persister.yml,file:///work-dir/config-mgramseva/egov-persister/echallan.yml,file:///work-dir/config-mgramseva/egov-persister/egf-bill.yaml,file:///work-dir/config-mgramseva/egov-persister/egov-user-event-persister.yml,file:///work-dir/config-mgramseva/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pdf-filestoreid-update.yml,file:///work-dir/config-mgramseva/egov-persister/pdf-generator.yml,file:///work-dir/config-mgramseva/egov-persister/pg-service-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services.yml,file:///work-dir/config-mgramseva/egov-persister/pt-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-meter.yml,file:///work-dir/config-mgramseva/egov-persister/vendor-persister.yaml,file:///work-dir/config-mgramseva/egov-persister/apportion-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services-registry.yml,file:///work-dir/config-mgramseva/egov-persister/department-entity-persister.yml,file:///work-dir/config-mgramseva/egov-persister/department-entity-migration-progress.yml,file:///work-dir/config-mgramseva/egov-persister/adapter-master-data-service.yml,file:///work-dir/config-mgramseva/egov-persister/sms-persister.yml,file:///work-dir/config-mgramseva/egov-persister/hrms-employee-persister.yml"
+  persist-yml-path: "file:///work-dir/config-mgramseva/egov-persister/billing-services-persist.yml,file:///work-dir/config-mgramseva/egov-persister/collection-migration-persister.yml,file:///work-dir/config-mgramseva/egov-persister/echallan.yml,file:///work-dir/config-mgramseva/egov-persister/egf-bill.yaml,file:///work-dir/config-mgramseva/egov-persister/egov-user-event-persister.yml,file:///work-dir/config-mgramseva/egov-persister/egov-workflow-v2-persister.yml,file:///work-dir/config-mgramseva/egov-persister/pdf-filestoreid-update.yml,file:///work-dir/config-mgramseva/egov-persister/pdf-generator.yml,file:///work-dir/config-mgramseva/egov-persister/pg-service-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services.yml,file:///work-dir/config-mgramseva/egov-persister/pt-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-persist.yml,file:///work-dir/config-mgramseva/egov-persister/water-meter.yml,file:///work-dir/config-mgramseva/egov-persister/vendor-persister.yaml,file:///work-dir/config-mgramseva/egov-persister/apportion-persister.yml,file:///work-dir/config-mgramseva/egov-persister/property-services-registry.yml,file:///work-dir/config-mgramseva/egov-persister/department-entity-persister.yml,file:///work-dir/config-mgramseva/egov-persister/department-entity-migration-progress.yml,file:///work-dir/config-mgramseva/egov-persister/adapter-master-data-service.yml,file:///work-dir/config-mgramseva/egov-persister/sms-persister.yml,file:///work-dir/config-mgramseva/egov-persister/hrms-employee-persister.yml,file:///work-dir/config-mgramseva/egov-persister/mdms-persister.yml"
   initContainers:
     gitSync:
       repo: "git@github.com:misdwss/config-mgramseva"
@@ -465,7 +465,7 @@ zuul:
 
 
 collection-services:
-  replicas: 3
+  replicas: 4
   memory_limits: 512Mi
   receiptnumber-servicebased: "true"
   receipt-search-paginate: "true"
@@ -496,7 +496,8 @@ egov-workflow-v2:
 egov-hrms:
   java-args: -Dspring.profiles.active=monitoring
   heap: "-Xmx192m -Xms192m"
-  employee-applink: "https://https://mgramseva-dev.egov.org.in/employee/user/login"
+  employee-applink: "https://mgramseva-dev.egov.org.in/employee/user/login"
+  sms-user-creation-enabled: false
 
 egov-apportion-service:
   memory_limits: 512Mi
@@ -898,3 +899,6 @@ ifix-department-entity-service:
       enabled: true
       annotations:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-dwss.psegs.in"
+
+mgramseva-ifix-adapter:
+  replicas: 4
