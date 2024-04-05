@@ -44,10 +44,7 @@ env: |
   - name: DB_PORT
     value: "5432"
   - name: API_URL
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: egov-mdms-service
+    value: "http://egov-mdms-service.mgramseva:8080/"
   - name: TENANT_ID
     valueFrom:
       configMapKeyRef:
