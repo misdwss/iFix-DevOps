@@ -68,10 +68,7 @@ env: |
   - name: CONFIG_SCHEMA_PATHS
     value: {{ index .Values "config-schema-paths" | quote }}
   - name: EGOV_MDMS_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: egov-service-host
-        key: egov-mdms-service
+    value: "http://egov-mdms-service.mgramseva:8080/"
   - name: EGOV_STATELEVEL_TENANTID
     valueFrom:
       configMapKeyRef:
