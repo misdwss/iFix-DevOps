@@ -113,6 +113,10 @@ env: |
     value: {{ index .Values "penalty-applicable-in-days" | quote }}
   - name: IS_PENALTY_FEATURE_ENABLE
     value: {{ index .Values "is-penalty-feature-enable" | quote }}
+  - name: IS_SAVE_DEMAND_AUDIT_ENABLED
+    value: {{ index .Values "is-save-demand-audit-enabled" | quote }} 
+  - name: EGOV_SAVE_DEMAND_AUDIT_FROM_WSCAL
+    value: {{ index .Values "egov-save-demand-audit-from-wscal" | quote }}
   - name: SPRING_KAFKA_PRODUCER_KEY_SERIALIZER
     value: org.apache.kafka.common.serialization.StringSerializer
   - name: SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER
