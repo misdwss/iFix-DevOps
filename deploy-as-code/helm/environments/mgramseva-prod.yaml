@@ -200,7 +200,7 @@ ws-services:
   sms-pending-collection-enabled: false
   sms-todays-collection-enabled: false
   sms-edit-water-connection-notification-enabled: false
-  sms-payment-notification-enabled: false
+  sms-payment-notification-enabled: true
   sms-workflow-enabled: false
   sms-feedback-notification-enabled: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
