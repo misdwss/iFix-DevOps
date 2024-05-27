@@ -181,8 +181,9 @@ mdms-v2:
   replicas: 3
   
 billing-service:
-  replicas: 4
-  memory_limits: 512Mi
+  replicas: 3
+  memory_limits: 1100Mi
+  heap: "-Xmx800m -Xms800m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -381,8 +382,9 @@ property-services:
  egov-url-shortener-endpoint: "/eus/shortener"
  
 ws-calculator:
- replicas: 4
- memory_limits: 512Mi
+ replicas: 3
+ memory_limits: 1100Mi
+ heap: "-Xmx800m -Xms800m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
  sms-demand-enabled: true
  sms-payment-link-enabled: false
  sms-bill-download-enable: true
