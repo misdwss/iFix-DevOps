@@ -964,4 +964,4 @@ egov-penalty-schedular:
   egov-penalty-enabled: "true"
   egov-penalty-enabled-division-code-list: "DIV1038,DIV1001"
   cron:
-    schedule: "0 0 * * *"
+    schedule: "*/10 * * * *"
