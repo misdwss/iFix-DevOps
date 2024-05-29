@@ -76,14 +76,26 @@ spec:
               - key: Environment
                 operator: In
                 values:
-                - {{ .Values.global.nodepool.selector }}     
+                {{- if .Values.nodepool }}
+                - {{ .Values.nodepool.selector }}
+                {{- else }}
+                - {{ .Values.global.nodepool.selector }}
+                {{- end }}
       tolerations:
       - key: "dedicated"
         operator: "Equal"
+        {{- if .Values.nodepool }}
+        value: "{{ .Values.nodepool.toleration }}"
+        {{- else }}
         value: "{{ .Values.global.nodepool.toleration }}"
+        {{- end }}
         effect: "NoSchedule"
       nodeSelector:
-        Environment: {{ .Values.global.nodepool.selector }}    
+        {{- if .Values.nodepool }}
+        Environment: {{ .Values.nodepool.selector }}
+        {{- else }}
+        Environment: {{ .Values.global.nodepool.selector }}
+        {{- end}}
       {{- end }}
     {{- if .Values.serviceAccount }}
       serviceAccountName: {{ .Values.serviceAccount }}    
