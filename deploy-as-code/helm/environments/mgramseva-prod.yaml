@@ -184,10 +184,10 @@ mdms-v2:
     toleration: mgramseva-prod-cpu-ng
   resources: |
     requests:
-      cpu: "1"
+      cpu: 500m
       memory: 3150Mi
     limits:
-      cpu: "500m"
+      cpu: "1"
       memory: 3150Mi
   
 billing-service:
