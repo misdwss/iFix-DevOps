@@ -46,8 +46,6 @@ cluster-configs:
       namespace: mgramseva                      
     kibana-infra: 
       namespace: mgramseva    
-    pgadmin: 
-      namespace: mgramseva
     egov-si-microservice:
       namespace: mgramseva
     egov-edcr-notification:
@@ -846,16 +844,24 @@ playground:
     - egovio/playground:ubuntu-18-elasticdump
 
 pgadmin:
+  namespace: mgramseva
   images:
-    - egovio/pgadmin:v0.1
-
-pgadmin-config:
-  host: "egovqadb.ctm6jbmr5mnj.ap-south-1.rds.amazonaws.com"
-  db-admin-username: "egov_qa"
-  db-read-username: "egovqa_readonly"
-  port: "5432"
-  env: "QA"
-  maintenance-db-name: "egov_qa_pb_db"
+    - egovio/pgadmin:v4.7.7
+  dbUrl: "magramsewa-uat-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com"
+  environment: "mgramseva-uat"
+  maintenance-db-name: "mgramseva_uat_db"
+  db-admin-username: "ifixuat"
+  db-read-username: "mgramseva_read_user"
+  cookie-protection: "False"
+  max-query-history: "50"
+  max-login-attempts: "5"
+  enable-save-password: "False"
+  persistence:
+    enabled: true
+    dataDirSize: "1Gi"
+    aws:
+      volumeId: "vol-01e8b5e75c7ea7944"
+      zone: ap-south-1a
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
