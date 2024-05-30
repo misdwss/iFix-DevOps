@@ -45,8 +45,6 @@ cluster-configs:
     kibana: 
       namespace: mgramseva                      
     kibana-infra: 
-      namespace: mgramseva    
-    pgadmin: 
       namespace: mgramseva
     egov-si-microservice:
       namespace: mgramseva
@@ -877,13 +875,25 @@ pgadmin:
   images:
     - egovio/pgadmin:v0.1
 
-pgadmin-config:
-  host: "egovqadb.ctm6jbmr5mnj.ap-south-1.rds.amazonaws.com"
-  db-admin-username: "egov_qa"
-  db-read-username: "egovqa_readonly"
-  port: "5432"
-  env: "master"
-  maintenance-db-name: "egov_qa_pb_db"
+pgadmin:
+  namespace: mgramseva
+  images:
+    - egovio/pgadmin:v4.7.7
+  dbUrl: "magramsewa-prod-db.cvisvjyknxm1.ap-south-1.rds.amazonaws.com"
+  environment: "mgramseva-prod"
+  maintenance-db-name: "mgramseva_prod_db"
+  db-admin-username: "ifixprod"
+  db-read-username: "ifix_user"
+  cookie-protection: "False"
+  max-query-history: "50"
+  max-login-attempts: "5"
+  enable-save-password: "False"
+  persistence:
+    enabled: true
+    dataDirSize: "1Gi"
+    aws:
+      volumeId: "vol-092450bc67536f8d6"
+      zone: ap-south-1a
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
