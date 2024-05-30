@@ -6,7 +6,11 @@ kind: Ingress
 metadata:
   name: {{ template "common.name" . }}
 {{- if .Values.global.namespace }}
-  namespace: {{ .Values.global.namespace }} 
+  {{- if eq .Chart.Name "jaeger" }}
+  namespace: {{ .Values.namespace }}
+  {{- else }}
+  namespace: {{ .Values.global.namespace }}
+  {{- end }}
 {{- else }}   
   namespace: {{ .Values.namespace }}
 {{- end }} 
