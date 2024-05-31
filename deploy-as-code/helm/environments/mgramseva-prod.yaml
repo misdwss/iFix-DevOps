@@ -992,7 +992,7 @@ egov-penalty-schedular:
   egov-wscalculator-host: "http://localhost:8083"
   egov-wscalculator-url: "/ws-calculator/waterCalculator/_addPenalty"
   egov-penalty-enabled: "true"
-  egov-penalty-enabled-division-code-list: "DIV1038,DIV1001"
+  egov-penalty-enabled-division-code-list: 
   user-system-role: "EMPLOYEE"
   cron:
     schedule: "0 0 * * *"
