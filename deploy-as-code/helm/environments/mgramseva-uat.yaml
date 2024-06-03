@@ -1,4 +1,4 @@
-Fwsglobal:
+global:
   domain: mgramseva-uat.psegs.in
   # containerRegistry: dwssio
   tracing-enabled: true
