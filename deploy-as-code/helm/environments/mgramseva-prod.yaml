@@ -174,7 +174,7 @@ cluster-configs:
 
 mdms-v2:
 #  memory_limits: 2100Mi
-  heap: "-Xmx1850m -Xms1850m -Xmn1700m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
+  heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   java-args: -Dspring.profiles.active=monitoring
   replicas: 3
   nodepool:
@@ -183,15 +183,15 @@ mdms-v2:
   resources: |
     requests:
       cpu: 500m
-      memory: 3150Mi
+      memory: 2150Mi
     limits:
       cpu: "1"
-      memory: 3150Mi
+      memory: 2150Mi
   
 billing-service:
   replicas: 3
-  memory_limits: 3150Mi
-  heap: "-Xmx2950m -Xms2950m -Xmn2750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
+  memory_limits: 2150Mi
+  heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
@@ -355,8 +355,8 @@ egov-indexer:
 
 egov-pg-service:
   replicas: 1
-  memory_limits: 2100Mi
-  heap: "-Xmx1850m -Xms1850m -Xmn1700m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
+  memory_limits: 2150Mi
+  heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   axis: true
   egov-url-shortener-endpoint: "/eus/shortener"
 
@@ -393,8 +393,8 @@ property-services:
  
 ws-calculator:
  replicas: 3
- memory_limits: 3150Mi
- heap: "-Xmx2950m -Xms2950m -Xmn2750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
+ memory_limits: 2150Mi
+ heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
  sms-demand-enabled: true
  sms-payment-link-enabled: false
  sms-bill-download-enable: true
