@@ -402,7 +402,7 @@ ws-calculator:
  egov-shortener-url: "eus/shortener"
  egov-url-shortener-endpoint: "/eus/shortener"
  penalty-applicable-in-days: 10
- penalty-start-threshold-time: "1704047300000"
+ penalty-start-threshold-time: "1681324100000"
  is-penalty-feature-enable: true
  is-save-demand-audit-enabled: true
  egov-save-demand-audit-from-wscal: "save-ws-demand-change-audit"
@@ -992,7 +992,7 @@ egov-penalty-schedular:
   egov-wscalculator-host: "http://localhost:8083"
   egov-wscalculator-url: "/ws-calculator/waterCalculator/_addPenalty"
   egov-penalty-enabled: "true"
-  egov-penalty-enabled-division-code-list: 
+  egov-penalty-enabled-division-code-list: "DIV1038"
   user-system-role: "EMPLOYEE"
   cron:
     schedule: "0 0 * * *"
