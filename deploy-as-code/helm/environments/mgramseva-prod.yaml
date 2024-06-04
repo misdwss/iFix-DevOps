@@ -995,4 +995,4 @@ egov-penalty-schedular:
   egov-penalty-enabled-division-code-list: "DIV1038"
   user-system-role: "EMPLOYEE"
   cron:
-    schedule: "0 0 * * *"
+    schedule: "*/60 * * * *"
