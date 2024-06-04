@@ -146,3 +146,8 @@ cluster-configs:
     postgres:
       namespace: jenkins
       name: postgres
+    
+    egov-penalty-schedular:
+      namespace: mgramseva
+      name: egov-penalty-schedular
+      
