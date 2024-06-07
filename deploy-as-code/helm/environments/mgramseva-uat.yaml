@@ -360,7 +360,7 @@ property-services:
  egov-url-shortener-endpoint: "/eus/shortener"
  
 ws-calculator:
- replicas: 1
+ replicas: 4
  memory_limits: 512Mi
  sms-demand-enabled: true
  sms-payment-link-enabled: true
