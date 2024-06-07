@@ -181,6 +181,7 @@ echallan-calculator:
 
 billing-service:
   memory_limits: 512Mi
+  replicas: 3
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: true
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
