@@ -179,11 +179,11 @@ mdms-v2:
   replicas: 3
   resources: |
     requests:
-      cpu: 200m
-      memory: 850Mi
+      cpu: 500m
+      memory: 950Mi
     limits:
-      cpu: "600m"
-      memory: 850Mi
+      cpu: "900m"
+      memory: 950Mi
   
   
 echallan-calculator:
