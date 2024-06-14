@@ -175,7 +175,15 @@ cluster-configs:
         mdms-v2: http://mdms-v2.mgramseva:8080/
 mdms-v2:
   java-args: -Dspring.profiles.active=monitoring
+  heap: "-Xmx756m -Xms756m -Xmn690m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   replicas: 3
+  resources: |
+    requests:
+      cpu: 200m
+      memory: 850Mi
+    limits:
+      cpu: "600m"
+      memory: 850Mi
   
   
 echallan-calculator:
