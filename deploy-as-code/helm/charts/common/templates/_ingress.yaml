@@ -47,6 +47,7 @@ spec:
               number: {{ .Values.ingress.servicePort | default .Values.httpPort }}
 {{- end }}            
         path: /{{ .Values.ingress.context }}
+        pathType: ImplementationSpecific
 {{- if .Values.ingress.context2 }}
 {{- if .Values.ingress.host }}   
   {{- tpl  .Values.ingress.host . | nindent 2 }}
@@ -70,6 +71,7 @@ spec:
               number: {{ .Values.ingress.servicePort | default .Values.httpPort }}
 {{- end }}            
         path: /{{ .Values.ingress.context2 }}
+        pathType: ImplementationSpecific
 {{- end }}
   tls:
 {{- if .Values.ingress.tls }}
