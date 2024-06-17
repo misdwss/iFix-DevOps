@@ -16,8 +16,6 @@ cluster-configs:
       [ mgramseva , cert-manager , olap, ifix , jupyter ]  
   db:
     namespace: mgramseva
-  root-ingress:
-    namespace: mgramseva
   nginx-errors:
     namespace: mgramseva
   secrets:
@@ -419,25 +417,29 @@ dashboard-ingest:
       repo: "git@github.com:misdwss/config-mgramseva"
       branch: "UAT"
 
-nginx-ingress:
-  replicas: 2
+ingress-nginx:
   default-backend-service: "egov/nginx"
-  namespace: egov
+  namespace: mgramseva
   cert-issuer: "letsencrypt-prod"
   ssl-protocols: "TLSv1.2 TLSv1.3"
   ssl-ciphers: "EECDH+CHACHA20:EECDH+AES"
   ssl-ecdh-curve: "X25519:prime256v1:secp521r1:secp384r1"
   controller:
-    image:
-      repository: egovio/nginx-ingress-controller
-      tag: "0.26.1"     
+    replicas: 1
     metrics:
-      enabled: true
-      #serviceMonitor:
-      #  enabled: true
-    service:
+      enabled: false
+      serviceMonitor:
+        enabled: true
       prometheusRule:
-        enabled: true      
+        enabled: true
+    addHeaders:
+      X-Content-Type-Options: "nosniff"
+      X-Frame-Options: "SAMEORIGIN"
+      X-XSS-Protection: "1; mode=block"
+      Access-Control-Allow-Origin: "https://mgramseva-uat.psegs.in"
+      Access-Control-Allow-Methods: "GET, POST, OPTIONS"
+      Access-Control-Allow-Headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range"
+    setSslTls: "mgramseva-uat.psegs.in-tls-certs"
 
 cert-manager:
   email: "devops-team@egov.org.in"
