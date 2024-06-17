@@ -36,11 +36,15 @@ spec:
       paths:
       - backend:
 {{- if .Values.ingress.zuul }}          
-          serviceName: zuul
-          servicePort: 8080
+          service:
+            name: zuul
+            port:
+              number: 8080
 {{ else }}
-          serviceName: {{ .Values.ingress.serviceName | default (include "common.name" .) }}
-          servicePort: {{ .Values.ingress.servicePort | default .Values.httpPort }}
+          service:
+            name: {{ .Values.ingress.serviceName | default (include "common.name" .) }}
+            port:
+              number: {{ .Values.ingress.servicePort | default .Values.httpPort }}
 {{- end }}            
         path: /{{ .Values.ingress.context }}
 {{- if .Values.ingress.context2 }}
@@ -55,11 +59,15 @@ spec:
       paths:
       - backend:
 {{- if .Values.ingress.zuul }}          
-          serviceName: zuul
-          servicePort: 8080
+          service:
+            name: zuul
+            port:
+              number: 8080
 {{ else }}
-          serviceName: {{ .Values.ingress.serviceName | default (include "common.name" .) }}
-          servicePort: {{ .Values.ingress.servicePort | default .Values.httpPort }}
+          service:
+            name: {{ .Values.ingress.serviceName | default (include "common.name" .) }}
+            port:
+              number: {{ .Values.ingress.servicePort | default .Values.httpPort }}
 {{- end }}            
         path: /{{ .Values.ingress.context2 }}
 {{- end }}
