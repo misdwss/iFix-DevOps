@@ -14,8 +14,10 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: {{ .serviceName }}
-          servicePort: {{ .servicePort }}
+          service:
+            name: {{ .serviceName }}
+            port:
+              number: {{ .servicePort }}
         path: /*
   tls:
   - hosts:
