@@ -16,8 +16,6 @@ cluster-configs:
       [ mgramseva , cert-manager , olap, ifix, monitoring , jupyter ]  
   db:
     namespace: mgramseva
-  root-ingress:
-    namespace: mgramseva
   nginx-errors:
     namespace: mgramseva
   secrets:
@@ -177,15 +175,12 @@ mdms-v2:
   heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   java-args: -Dspring.profiles.active=monitoring
   replicas: 3
-  nodepool:
-    selector: mgramseva-prod-cpu-ng
-    toleration: mgramseva-prod-cpu-ng
   resources: |
     requests:
-      cpu: 500m
+      cpu: 200m
       memory: 2150Mi
     limits:
-      cpu: "1"
+      cpu: 500m
       memory: 2150Mi
   
 billing-service:
@@ -392,7 +387,7 @@ property-services:
  egov-url-shortener-endpoint: "/eus/shortener"
  
 ws-calculator:
- replicas: 3
+ replicas: 5
  memory_limits: 2150Mi
  heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
  sms-demand-enabled: true
@@ -459,27 +454,29 @@ dashboard-ingest:
       repo: "git@github.com:misdwss/config-mgramseva"
       branch: "master"
 
-nginx-ingress:
-  replicas: 2
+ingress-nginx:
   default-backend-service: "egov/nginx"
-  namespace: egov
+  namespace: mgramseva
   cert-issuer: "letsencrypt-prod"
   ssl-protocols: "TLSv1.2 TLSv1.3"
   ssl-ciphers: "EECDH+CHACHA20:EECDH+AES"
   ssl-ecdh-curve: "X25519:prime256v1:secp521r1:secp384r1"
   controller:
-    image:
-      repository: egovio/nginx-ingress-controller
-      tag: "0.26.1"     
+    replicas: 1
     metrics:
-      enabled: true
-      #serviceMonitor:
-      #  enabled: true
-    service:
-      annotations:
-        service.beta.kubernetes.io/aws-load-balancer-type: nlb
+      enabled: false
+      serviceMonitor:
+        enabled: true
       prometheusRule:
-        enabled: true      
+        enabled: true
+    addHeaders:
+      X-Content-Type-Options: "nosniff"
+      X-Frame-Options: "SAMEORIGIN"
+      X-XSS-Protection: "1; mode=block"
+      Access-Control-Allow-Origin: "https://mgramseva-dwss.punjab.gov.in"
+      Access-Control-Allow-Methods: "GET, POST, OPTIONS"
+      Access-Control-Allow-Headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range"
+    setSslTls: "mgramseva-dwss.punjab.gov.in-tls-certs"
 
 cert-manager:
   email: "devops-team@egov.org.in"

@@ -37,28 +37,57 @@ output "es_master_volume_ids" {
   value = "${module.es-master.volume_ids}"
 }
 
+output "es_master_infra_volume_ids" {
+  value = "${module.es-master-infra.volume_ids}"
+}
+
 output "es_data_volume_ids" {
   value = "${module.es-data-v1.volume_ids}"
 }
 
-output "zookeeper_volume_ids" {
-  value = "${module.zookeeper.volume_ids}"
+output "es_data_infra_volume_ids" {
+  value = "${module.es-data-infra-v1.volume_ids}"
 }
 
-output "kafka_vol_ids" {
-  value = "${module.kafka.volume_ids}"
+output "zookeeper_mgramseva_volume_ids" {
+  value = "${module.zookeeper_mgramseva.volume_ids}"
+}
+
+output "zookeeper_ifix_volume_ids" {
+  value = "${module.zookeeper_ifix.volume_ids}"
+}
+
+output "kafka_mgramseva_vol_ids" {
+  value = "${module.kafka_mgramseva.volume_ids}"
+}
+
+output "kafka_ifix_vol_ids" {
+  value = "${module.kafka_ifix.volume_ids}"
+}
+
+output "kafka_infra_vol_ids" {
+  value = "${module.kafka_infra.volume_ids}"
 }
 
 output "deployer_secret_key_cmd" {
-  value = "${map(module.iam_user_deployer.iam_access_key_id, module.iam_user_deployer.keybase_secret_key_decrypt_command)}"
+  value = "${
+  tomap({
+  (module.iam_user_deployer.iam_access_key_id) = module.iam_user_deployer.keybase_secret_key_decrypt_command
+  })}"
 }
 
 output "admin_secret_key_cmd" {
-  value = "${map(module.iam_user_admin.iam_access_key_id, module.iam_user_admin.keybase_secret_key_decrypt_command)}"
+  value = "${
+  tomap({
+  (module.iam_user_admin.iam_access_key_id) = module.iam_user_admin.keybase_secret_key_decrypt_command
+  })}"
 }
 
 output "user_secret_key_cmd" {
-  value = "${map(module.iam_user_user.iam_access_key_id, module.iam_user_user.keybase_secret_key_decrypt_command)}"
+  value = "${
+  tomap({
+  (module.iam_user_user.iam_access_key_id) = module.iam_user_user.keybase_secret_key_decrypt_command
+  })}"
 }
 
 output "db_rds_postgres_address" {

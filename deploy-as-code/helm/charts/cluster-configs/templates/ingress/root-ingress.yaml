@@ -1,11 +1,12 @@
 {{- with index .Values "cluster-configs" "root-ingress" -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
   {{- if ne .appRoot ""}}
     nginx.ingress.kubernetes.io/app-root: /{{ .appRoot }}
-  {{- end }} 
+  {{- end }}
+    kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: {{ index . "cert-issuer" }}
   name: {{ .name }}
   namespace: {{ .namespace }}
