@@ -175,15 +175,12 @@ mdms-v2:
   heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   java-args: -Dspring.profiles.active=monitoring
   replicas: 3
-  nodepool:
-    selector: mgramseva-prod-cpu-ng
-    toleration: mgramseva-prod-cpu-ng
   resources: |
     requests:
-      cpu: 500m
+      cpu: 200m
       memory: 2150Mi
     limits:
-      cpu: "1"
+      cpu: 500m
       memory: 2150Mi
   
 billing-service:
