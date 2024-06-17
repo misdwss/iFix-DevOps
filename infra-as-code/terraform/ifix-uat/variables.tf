@@ -23,15 +23,15 @@ variable "node_pool_zone" {
 }
 
 variable "kubernetes_version" {
-  default = "1.18"
+  default = "1.29"
 }
 
 variable "instance_type" {
-  default = "m4.xlarge"
+  default = "r5ad.large"
 }
 
 variable "override_instance_types" {
-  default = ["r5a.large", "r5ad.large", "r5d.large", "m4.xlarge"]
+  default = ["r5ad.large", "r5d.large", "r5a.large", "m4.xlarge", "t3a.xlarge"]
   
 }
 
