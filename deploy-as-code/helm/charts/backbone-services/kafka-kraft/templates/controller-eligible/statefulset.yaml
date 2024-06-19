@@ -57,23 +57,35 @@ spec:
       {{- if .Values.controller.schedulerName }}
       schedulerName: {{ .Values.controller.schedulerName | quote }}
       {{- end }}
-      {{- if .Values.controller.affinity }}
-      affinity: {{- include "common.tplvalues.render" (dict "value" .Values.controller.affinity "context" $) | nindent 8 }}
-      {{- else }}
       affinity:
-        podAffinity: {{- include "common.affinities.pods" (dict "type" .Values.controller.podAffinityPreset "component" "controller-eligible" "customLabels" $podLabels "context" $) | nindent 10 }}
-        podAntiAffinity: {{- include "common.affinities.pods" (dict "type" .Values.controller.podAntiAffinityPreset "component" "controller-eligible" "customLabels" $podLabels "context" $) | nindent 10 }}
-        nodeAffinity: {{- include "common.affinities.nodes" (dict "type" .Values.controller.nodeAffinityPreset.type "key" .Values.controller.nodeAffinityPreset.key "values" .Values.controller.nodeAffinityPreset.values) | nindent 10 }}
-      {{- end }}
-      {{- if .Values.controller.nodeSelector }}
-      nodeSelector: {{- include "common.tplvalues.render" (dict "value" .Values.controller.nodeSelector "context" $) | nindent 8 }}
-      {{- end }}
-      {{- if .Values.controller.tolerations }}
-      tolerations: {{- include "common.tplvalues.render" (dict "value" .Values.controller.tolerations "context" $) | nindent 8 }}
-      {{- end }}
-      {{- if .Values.controller.topologySpreadConstraints }}
-      topologySpreadConstraints: {{- include "common.tplvalues.render" (dict "value" .Values.controller.topologySpreadConstraints "context" $) | nindent 8 }}
-      {{- end }}
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 1
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: "app"
+                      operator: In
+                      values:
+                      - {{ printf "%s-controller" (include "common.names.fullname" .) }}
+                topologyKey: "kubernetes.io/hostname"
+      {{- if .Values.global.nodepool.nodeAffinity }}
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: Environment
+                    operator: In
+                    values:
+                      - {{ .Values.global.nodepool.selector }}
+      tolerations:
+        - key: "dedicated"
+          operator: "Equal"
+          value: "{{ .Values.global.nodepool.toleration }}"
+          effect: "NoSchedule"
+      nodeSelector:
+        Environment: {{ .Values.global.nodepool.selector }}
+      {{- end}}
       {{- if .Values.controller.terminationGracePeriodSeconds }}
       terminationGracePeriodSeconds: {{ .Values.controller.terminationGracePeriodSeconds }}
       {{- end }}

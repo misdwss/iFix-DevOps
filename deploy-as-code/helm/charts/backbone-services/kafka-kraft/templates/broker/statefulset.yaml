@@ -57,23 +57,35 @@ spec:
       {{- if .Values.broker.schedulerName }}
       schedulerName: {{ .Values.broker.schedulerName | quote }}
       {{- end }}
-      {{- if .Values.broker.affinity }}
-      affinity: {{- include "common.tplvalues.render" (dict "value" .Values.broker.affinity "context" $) | nindent 8 }}
-      {{- else }}
       affinity:
-        podAffinity: {{- include "common.affinities.pods" (dict "type" .Values.broker.podAffinityPreset "component" "broker" "customLabels" $podLabels "context" $) | nindent 10 }}
-        podAntiAffinity: {{- include "common.affinities.pods" (dict "type" .Values.broker.podAntiAffinityPreset "component" "broker" "customLabels" $podLabels "context" $) | nindent 10 }}
-        nodeAffinity: {{- include "common.affinities.nodes" (dict "type" .Values.broker.nodeAffinityPreset.type "key" .Values.broker.nodeAffinityPreset.key "values" .Values.broker.nodeAffinityPreset.values) | nindent 10 }}
-      {{- end }}
-      {{- if .Values.broker.nodeSelector }}
-      nodeSelector: {{- include "common.tplvalues.render" (dict "value" .Values.broker.nodeSelector "context" $) | nindent 8 }}
-      {{- end }}
-      {{- if .Values.broker.tolerations }}
-      tolerations: {{- include "common.tplvalues.render" (dict "value" .Values.broker.tolerations "context" $) | nindent 8 }}
-      {{- end }}
-      {{- if .Values.broker.topologySpreadConstraints }}
-      topologySpreadConstraints: {{- include "common.tplvalues.render" (dict "value" .Values.broker.topologySpreadConstraints "context" $) | nindent 8 }}
-      {{- end }}
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                    - {{ printf "%s-controller" (include "common.names.fullname" .) }}
+              topologyKey: "kubernetes.io/hostname"
+      {{- if .Values.global.nodepool.nodeAffinity }}
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: Environment
+                    operator: In
+                    values:
+                    - {{ .Values.global.nodepool.selector }}
+      tolerations:
+        - key: "dedicated"
+          operator: "Equal"
+          value: "{{ .Values.global.nodepool.toleration }}"
+          effect: "NoSchedule"
+      nodeSelector:
+        Environment: {{ .Values.global.nodepool.selector }}
+      {{- end}}
       {{- if .Values.broker.terminationGracePeriodSeconds }}
       terminationGracePeriodSeconds: {{ .Values.broker.terminationGracePeriodSeconds }}
       {{- end }}
