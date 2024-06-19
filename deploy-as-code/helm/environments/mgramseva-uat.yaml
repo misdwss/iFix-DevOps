@@ -16,8 +16,6 @@ cluster-configs:
       [ mgramseva , cert-manager , olap, ifix , jupyter ]  
   db:
     namespace: mgramseva
-  root-ingress:
-    namespace: mgramseva
   nginx-errors:
     namespace: mgramseva
   secrets:
@@ -31,10 +29,8 @@ cluster-configs:
     egov-location: 
       namespace: mgramseva
     egov-pg-service: 
-      namespace: mgramseva                
-    pgadmin: 
-      namespace: mgramseva       
-    egov-enc-service: 
+      namespace: mgramseva
+    egov-enc-service:
       namespace: mgramseva
     egov-notification-mail: 
       namespace: mgramseva
@@ -102,7 +98,7 @@ cluster-configs:
         es-host: "elasticsearch-data-v1.mgramseva"
         es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
-        kafka-brokers: "kafka-v2.mgramseva:9092"
+        kafka-brokers: "kafka-kraft-controller-headless.mgramseva:9092"
         kafka-infra-brokers: "kafka-v2-infra.mgramseva:9092"
         logging-level-jdbc: "debug"
         mobile-validation-workaround: "true"
@@ -671,10 +667,22 @@ kafka-connect-infra:
 
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-kafka-connect:
- image:
-   repository: kafka-connect-mongo
-   tag: 1.5.1
+
+# kafka-kraft >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+kafka-kraft:
+  namespace: mgramseva
+  controller:
+    persistence:
+      enabled: true
+      size: 25Gi
+    heapOpts: "-Xms1024M -Xmx1024M"
+    resources:
+      limits:
+        memory: 1408Mi
+      requests:
+        cpu: 500m
+        memory: 1408Mi
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
