@@ -853,7 +853,7 @@ logrotate:
 
 playground:
   replicas: 1
-  namespace: mgramseva
+  namespace: mgramseva-playground
   images:
     - egovio/playground:ubuntu-18-elasticdump
 

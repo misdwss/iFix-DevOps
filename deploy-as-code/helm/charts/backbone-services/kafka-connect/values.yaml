@@ -3,7 +3,6 @@ name: kafka-connect
 namespace: mgramseva
 labels:
   app: "kafka-connect"
-  group: "infra"
 
 # Container Configs
 image:
