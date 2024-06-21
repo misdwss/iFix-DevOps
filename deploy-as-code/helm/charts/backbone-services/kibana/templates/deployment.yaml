@@ -117,13 +117,8 @@ spec:
                 optional: false
           - name: SERVER_REWRITEBASEPATH
             value: "true"
-          {{- if and (.Values.global.context.path) (has .Values.name .Values.global.context.list) }}
-          - name: SERVER_BASEPATH
-            value: /{{ .Values.global.context.path }}{{ .Values.serverBasePath }}
-            {{- else }}
           - name: SERVER_BASEPATH
             value: {{ .Values.serverBasePath | quote }}
-          {{- end }}
 {{- if .Values.extraEnvs }}
 {{ toYaml .Values.extraEnvs | indent 10 }}
 {{- end }}
