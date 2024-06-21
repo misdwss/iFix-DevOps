@@ -657,16 +657,6 @@ kafka-v2-infra:
   minInsyncReplicas: "1"
   offsetsReplicationFactor: "3"
  # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
- 
- 
-# kafka-connect-infra >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-kafka-connect-infra:
- image:
-   repository: cp-kafka-connect
-   tag: 5.2.2
-
-
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # kafka-kraft >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -717,10 +707,6 @@ zookeeper-v2:
       memory: 384Mi
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-kafka-connect:
-  namespace: mgramseva
-  image:
-    tag: "5.4.1"  
 
 # es-v1-cluster >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 elasticsearch-data-v1:
