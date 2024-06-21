@@ -3,12 +3,11 @@ Generate certificates when the secret doesn't exist
 */}}
 {{- define "elasticsearch.gen-certs" -}}
 
-{{- $ns := .namespace -}}
 {{- $name := index $.Values "cluster-configs" "secrets" "elasticsearch-certificate" "name" -}}
 {{- $esService := index $.Values "cluster-configs" "secrets" "elasticsearch-certificate" "esService" -}}
 {{- $esNamespace := index $.Values "cluster-configs" "secrets" "elasticsearch-certificate" "esNamespace" -}}
 
-{{- $certs := lookup "v1" "Secret" $ns ( printf "%s-certs" $name ) -}}
+{{- $certs := lookup "v1" "Secret" $esNamespace ( printf "%s-certs" $name ) -}}
 {{- if $certs -}}
 tls.crt: {{ index $certs.data "tls.crt" }}
 tls.key: {{ index $certs.data "tls.key" }}
