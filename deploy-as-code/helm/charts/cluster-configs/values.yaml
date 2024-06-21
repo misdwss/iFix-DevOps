@@ -146,3 +146,11 @@ cluster-configs:
     postgres:
       namespace: jenkins
       name: postgres
+
+    elasticsearch:
+      namespace: [ mgramseva, monitoring ]
+      name: elasticsearch-credential
+
+    elasticsearch-certificate:
+      namespace: [ mgramseva, monitoring ]
+      name: elasticsearch-certs
