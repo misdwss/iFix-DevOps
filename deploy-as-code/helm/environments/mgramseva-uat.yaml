@@ -95,7 +95,7 @@ cluster-configs:
         domain: "mgramseva-uat.psegs.in"
         egov-services-fqdn-name: "https://mgramseva-uat.psegs.in/"
         egov-state-level-tenant-id: "pb"
-        es-host: "elasticsearch-data-v1.mgramseva"
+        es-host: "elasticsearch-master.mgramseva"
         es-indexer-host: "https://elasticsearch-master.mgramseva:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
         kafka-brokers: "kafka-kraft-controller-headless.mgramseva:9092"
