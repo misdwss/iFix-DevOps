@@ -1,6 +1,6 @@
 
 name: elasticsearch-data
-namespace: es-cluster
+namespace: mgramseva
 replicas: 3
 
 image:
@@ -23,6 +23,8 @@ minimumMasterNodes: 2
 
 esMajorVersion: 8
 
+securityEnabled: true
+
 # Allows you to add any config files in /usr/share/elasticsearch/config/
 # such as elasticsearch.yml and log4j2.properties
 esConfig: {}
@@ -40,7 +42,7 @@ extraEnvs: |
     value: "/usr/share/elasticsearch/data"
   - name: path.logs
     value: "/usr/share/elasticsearch/logs"
-  {{- if .Values.secret.enabled }}
+  {{- if .Values.securityEnabled }}
   - name: ELASTIC_USERNAME
     valueFrom:
       secretKeyRef:
@@ -202,9 +204,6 @@ podManagementPolicy: "Parallel"
 protocol: https
 httpPort: 9200
 transportPort: 9300
-
-secret:
-  enabled: true
 
 service:
   labels: {}
