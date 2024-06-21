@@ -5,7 +5,7 @@ elasticsearchCertificateAuthoritiesFile: ca.crt
 elasticsearchCredentialSecret: elasticsearch-credential
 
 replicas: 1
-namespace: es-cluster
+namespace: mgramseva
 
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
