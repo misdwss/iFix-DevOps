@@ -18,8 +18,8 @@ ca.crt: {{ index $certs.data "ca.crt" | quote }}
 {{- $altNames := list $esService ( printf "%s.%s" $esService $esNamespace ) ( printf "%s.%s.svc" $esService $esNamespace ) -}}
 {{- $ca := genCA "elasticsearch-ca" 365 -}}
 {{- $cert := genSignedCert $esService nil $altNames 365 $ca -}}
-tls.crt: {{ $cert.Cert | b64enc | quote }}
-tls.key: {{ $cert.Key | b64enc | quote }}
-ca.crt: {{ $ca.Cert | b64enc | quote }}
+tls.crt: {{ $cert.Cert | toString | b64enc | quote }}
+tls.key: {{ $cert.Key | toString | b64enc | quote }}
+ca.crt: {{ $ca.Cert | toString | b64enc | quote }}
 {{- end -}}
 {{- end -}}
