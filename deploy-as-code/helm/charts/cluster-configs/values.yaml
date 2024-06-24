@@ -154,5 +154,3 @@ cluster-configs:
     elasticsearch-certificate:
       namespace: [ mgramseva, monitoring ]
       name: elasticsearch-certs
-      esService: elasticsearch-master
-      esNamespace: mgramseva
