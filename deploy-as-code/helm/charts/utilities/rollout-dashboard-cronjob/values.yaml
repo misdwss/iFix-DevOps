@@ -48,6 +48,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
+  - name: WS_API_URL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ws-calculator
   - name: TENANT_ID
     valueFrom:
       configMapKeyRef:
