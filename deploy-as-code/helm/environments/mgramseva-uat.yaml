@@ -2,7 +2,7 @@ global:
   domain: mgramseva-uat.psegs.in
   #containerRegistry: dwssio
   tracing-enabled: true
-  #namespace: mgramseva
+  namespace: mgramseva
   nodepool:
     nodeAffinity: true
     selector: mgramseva-uat-ng
