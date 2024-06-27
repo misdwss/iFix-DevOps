@@ -68,17 +68,28 @@ jenkins:
     javaOpts: "-Xms2560M -Xmx2560M -Duser.timezone=Asia/Calcutta"
 
 nginx-ingress:
-  replicas: 1
-  default-backend-service: "jenkins/jenkins"
   namespace: jenkins
+  default-backend-service: "jenkins/jenkins"
   cert-issuer: "letsencrypt-staging"
   ssl-protocols: "TLSv1.2 TLSv1.3"
   ssl-ciphers: "EECDH+CHACHA20:EECDH+AES"
   ssl-ecdh-curve: "X25519:prime256v1:secp521r1:secp384r1"
   controller:
-    image:
-      repository: egovio/nginx-ingress-controller
-      tag: "0.26.1"
+    replicas: 1
+    metrics:
+      enabled: false
+      serviceMonitor:
+        enabled: true
+      prometheusRule:
+        enabled: true
+    addHeaders:
+      X-Content-Type-Options: "nosniff"
+      X-Frame-Options: "SAMEORIGIN"
+      X-XSS-Protection: "1; mode=block"
+      Access-Control-Allow-Origin: "https://ifix-builds.psegs.in"
+      Access-Control-Allow-Methods: "GET, POST, OPTIONS"
+      Access-Control-Allow-Headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range"
+    setSslTls: "ifix-builds.psegs.in-tls-certs"
 
 cert-manager:
   namespace: jenkins
