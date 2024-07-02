@@ -1,14 +1,14 @@
 # Common Labels
 labels:
-  app: "rollout-dashboard-cronjob"
-  group: "rollout-dashboard-cronjob"
+  app: "rollout-dashboard-cronjob-indexer"
+  group: "rollout-dashboard-cronjob-indexer"
 
 cron:
-  schedule: "00 18 * * *"
+  schedule: "*/30 * * * *"
 
 # Container Configs
 image:
-  repository: "rollout-dashboard-cronjob"
+  repository: "rollout-dashboard-cronjob-indexer"
   tag: "v1"
 
 command: 
@@ -48,6 +48,11 @@ env: |
       configMapKeyRef:
         name: egov-service-host
         key: egov-mdms-service
+  - name: WS_API_URL
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: ws-calculator
   - name: TENANT_ID
     valueFrom:
       configMapKeyRef:
