@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: prometheus-blackbox-exporter
-  namespace: monitoring
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "prometheus-blackbox-exporter.labels" . | nindent 4 }}
 spec:
