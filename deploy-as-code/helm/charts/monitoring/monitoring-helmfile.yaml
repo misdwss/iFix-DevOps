@@ -1,14 +1,14 @@
 environments:
   uat:
     values:
-      - namespace: uat
+      - namespace: monitoring
       - alertmanager:
           enabled: false
       - ../../environments/mgramseva-uat-secrets.yaml
       - ../../environments/mgramseva-uat.yaml
   prod:
     values:
-      - namespace: prod
+      - namespace: monitoring
       - alertmanager:
           enabled: true
       - ../../environments/mgramseva-prod-secrets.yaml

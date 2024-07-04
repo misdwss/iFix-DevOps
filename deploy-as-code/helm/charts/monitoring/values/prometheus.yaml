@@ -402,7 +402,7 @@ alertmanager:
   ##
   config:
     global:
-      slack_api_url: https://hooks.slack.com/services/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
+      slack_api_url: https://hooks.slack.com/services/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
       resolve_timeout: 5m
     route:
       group_by: ['alertname']
@@ -433,7 +433,7 @@ alertmanager:
     
     - name: slack-notification
       slack_configs:
-        - channel: '#mukta-prod-alerts'
+        - channel: '#punjab-mgramseva-alerts'
           send_resolved: true
           username: 'Alertmanager'
           title: |
