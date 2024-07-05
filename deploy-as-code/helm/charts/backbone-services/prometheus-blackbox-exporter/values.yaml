@@ -123,15 +123,7 @@ readinessProbe:
     port: http
 
 nodeSelector: {}
-tolerations: 
-- effect: NoSchedule
-  key: dedicated
-  operator: Equal
-  value: mgramseva-qa-ng
-- effect: NoSchedule
-  key: dedicated
-  operator: Equal
-  value: ifix-qa-ng
+tolerations: []
 affinity: {}
 
 ## Topology spread constraints rely on node labels to identify the topology domain(s) that each Node is in.

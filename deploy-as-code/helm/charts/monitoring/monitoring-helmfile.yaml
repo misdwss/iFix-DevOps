@@ -2,15 +2,11 @@ environments:
   uat:
     values:
       - namespace: monitoring
-      - alertmanager:
-          enabled: false
       - ../../environments/mgramseva-uat-secrets.yaml
       - ../../environments/mgramseva-uat.yaml
   prod:
     values:
       - namespace: monitoring
-      - alertmanager:
-          enabled: true
       - ../../environments/mgramseva-prod-secrets.yaml
       - ../../environments/mgramseva-prod.yaml
 ---
@@ -32,6 +28,8 @@ releases:
   version: 2.10.1
   values:
   - ./values/loki-stack.yaml
+  - loki:
+      persistence: {{ .Values.loki.persistence | toYaml | nindent 8 }}
 
 - name: kube-prometheus-stack
   installed: true
@@ -42,7 +40,16 @@ releases:
   values:
   - ./values/prometheus.yaml
   - alertmanager:
-      enabled: {{ .Values.alertmanager.enabled }}
+      enabled: {{ .Values.prometheus.alertmanager.enabled }}
+  {{- if .Values.prometheus.alertmanager.enabled }}
+  - alertmanager:
+      config:
+        global:
+          slack_api_url: {{ index .Values "cluster-configs" "secrets" "alertmanager" "slack_api_url" }}
+  {{- end }}
+  - prometheus:
+      prometheusSpec:
+        additionalScrapeConfigs: {{ .Values.prometheus.additionalScrapeConfigs | toYaml | nindent 8 }}
 
 - name: jaeger
   installed: false

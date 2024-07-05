@@ -976,3 +976,40 @@ egov-penalty-schedular:
   egov-penalty-enabled-division-code-list: "DIV1038,DIV1001"
   cron:
     schedule: "*/10 * * * *"
+
+prometheus:
+  alertmanager:
+    enabled: false
+  additionalScrapeConfigs:
+    - job_name: 'nginx-ingress-metrics'
+      static_configs:
+        - targets: [ 'nginx-ingress-metrics.mgramseva:10254' ]
+    - job_name: 'blackbox'
+      metrics_path: /probe
+      params:
+        module: [ http_2xx ]
+      static_configs:
+        - targets:
+            - https://mgramseva-uat.psegs.in/mgramseva/
+            - https://ifix-uat.psegs.in/digit-ui/
+            - https://metabase-uat.psegs.in/
+            - https://mgramseva-uat.psegs.in/hub/
+            - https://mgramseva-uat.psegs.in/kibana/
+            - https://mgramseva-uat.psegs.in/pgadmin/
+      relabel_configs:
+        - source_labels: [ __address__ ]
+          target_label: __param_target
+        - source_labels: [ __param_target ]
+          target_label: instance
+        - target_label: __address__
+          replacement: prometheus-blackbox-exporter:9115
+    - job_name: 'blackbox_exporter'
+      static_configs:
+        - targets: [ 'prometheus-blackbox-exporter:9115' ]
+
+loki:
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi

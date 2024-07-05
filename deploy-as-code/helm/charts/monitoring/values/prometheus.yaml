@@ -402,7 +402,7 @@ alertmanager:
   ##
   config:
     global:
-      slack_api_url: https://hooks.slack.com/services/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
+      slack_api_url: https://hooks.slack.com
       resolve_timeout: 5m
     route:
       group_by: ['alertname']
@@ -3777,30 +3777,14 @@ prometheus:
     additionalScrapeConfigs: 
       - job_name: 'nginx-ingress-metrics'
         static_configs:
-          - targets: ['nginx-ingress-metrics:10254']
+          - targets: ['nginx-ingress-metrics.mgramseva:10254']
       - job_name: 'blackbox'
         metrics_path: /probe
         params:
           module: [http_2xx]
         static_configs:
           - targets:
-              - https://mukta.odisha.gov.in/works-ui/     # Add your domains here
-              # - https://unified-uat.digit.org/monitoring/
-              # - https://unified-uat.digit.org/pgadmin/login?next=%2Fpgadmin%2F
-              # - https://unified-uat.digit.org/kibana/
-              # - https://unified-uat.digit.org/tracing/
-              # - https://unified-qa.digit.org/citizen/     # Add your domains here
-              # - https://unified-qa.digit.org/monitoring/
-              # - https://unified-qa.digit.org/pgadmin/login?next=%2Fpgadmin%2F
-              # - https://unified-qa.digit.org/kibana-upgrade/
-              # - https://unified-qa.digit.org/tracing/
-              # - https://unified-dev.digit.org/citizen/     # Add your domains here
-              # - https://unified-dev.digit.org/monitoring/
-              # - https://unified-dev.digit.org/pgadmin/login?next=%2Fpgadmin%2F
-              # - https://unified-dev-dashboard.digit.org/kibana
-              # - https://unified-dev.digit.org/tracing/
-              # - https://builds.digit.org/
-
+              - http://demo.com
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target

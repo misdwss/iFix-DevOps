@@ -19,6 +19,10 @@ loki:
       path: /ready
       port: http-metrics
     initialDelaySeconds: 45
+  config:
+    memberlist:
+      bind_addr:
+        - ${MY_POD_IP}
   datasource:
     jsonData: "{}"
     uid: ""
