@@ -338,7 +338,7 @@ egov-mdms-service:
   replicas: 3
 
 egov-indexer:
-  replicas: 2
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   initContainers:
@@ -387,7 +387,7 @@ property-services:
  egov-url-shortener-endpoint: "/eus/shortener"
  
 ws-calculator:
- replicas: 5
+ replicas: 3
  memory_limits: 2150Mi
  heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
  sms-demand-enabled: true
