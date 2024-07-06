@@ -59,38 +59,3 @@ Return the appropriate apiVersion for ingress.
 {{- printf "%s/%s:%s" $.Values.global.containerRegistry .repository ( required "Tag is mandatory" .tag ) -}}
 {{- end -}}
 {{- end -}}
-
-{{/*
-Generate certificates when the secret doesn't exist
-*/}}
-{{- define "elasticsearch.gen-certs" -}}
-{{- $certs := lookup "v1" "Secret" .Values.namespace ( printf "%s-certs" (include "name" . ) ) -}}
-{{- if $certs -}}
-tls.crt: {{ index $certs.data "tls.crt" }}
-tls.key: {{ index $certs.data "tls.key" }}
-ca.crt: {{ index $certs.data "ca.crt" }}
-{{- else -}}
-{{- $altNames := list ( include "elasticsearch.masterService" . ) ( printf "%s.%s" (include "elasticsearch.masterService" .) .Values.namespace ) ( printf "%s.%s.svc" (include "elasticsearch.masterService" .) .Values.namespace ) -}}
-{{- $ca := genCA "elasticsearch-ca" 365 -}}
-{{- $cert := genSignedCert ( include "elasticsearch.masterService" . ) nil $altNames 365 $ca -}}
-tls.crt: {{ $cert.Cert | toString | b64enc }}
-tls.key: {{ $cert.Key | toString | b64enc }}
-ca.crt: {{ $ca.Cert | toString | b64enc }}
-{{- end -}}
-{{- end -}}
-
-{{- define "elasticsearch.masterService" -}}
-{{- if empty .Values.masterService -}}
-{{- if empty .Values.fullnameOverride -}}
-{{- if empty .Values.nameOverride -}}
-{{ .Values.clusterName }}-master
-{{- else -}}
-{{ .Values.nameOverride }}-master
-{{- end -}}
-{{- else -}}
-{{ .Values.fullnameOverride }}
-{{- end -}}
-{{- else -}}
-{{ .Values.masterService }}
-{{- end -}}
-{{- end -}}

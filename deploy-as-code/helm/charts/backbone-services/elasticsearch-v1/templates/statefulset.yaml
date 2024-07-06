@@ -3,7 +3,11 @@ apiVersion: {{ template "elasticsearch.statefulset.apiVersion" . }}
 kind: StatefulSet
 metadata:
   name: {{ template "name" . }}
+{{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }} 
+{{- else }}   
   namespace: {{ .Values.namespace }}
+{{- end }}  
   labels:
     app: "{{ template "name" . }}"
     {{- range $key, $value := .Values.labels }}
@@ -51,6 +55,36 @@ spec:
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}
+      {{- if .Values.global.nodepool.nodeAffinity }} 
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+           nodeSelectorTerms:
+            - matchExpressions:
+              - key: Environment
+                operator: In
+                values:
+                {{- if .Values.nodepool }}
+                - {{ .Values.nodepool.selector }}
+                {{- else }}
+                - {{ .Values.global.nodepool.selector }}
+                {{- end }}
+      tolerations:
+      - key: "dedicated"
+        operator: "Equal"
+        {{- if .Values.nodepool }}
+        value: "{{ .Values.nodepool.toleration }}"
+        {{- else }}
+        value: "{{ .Values.global.nodepool.toleration }}"
+        {{- end }}
+        effect: "NoSchedule"
+      nodeSelector:
+        {{- if .Values.nodepool }}
+        Environment: {{ .Values.nodepool.selector }}
+        {{- else }}
+        Environment: {{ .Values.global.nodepool.selector }}
+        {{- end }}
+      {{- end }}  
       securityContext:
 {{ toYaml .Values.podSecurityContext | indent 8 }}
         {{- if .Values.fsGroup }}
@@ -174,7 +208,7 @@ spec:
           fi
 
           cp -a /usr/share/elasticsearch/config/elasticsearch.keystore /tmp/keystore/
-        env: {{ tpl .Values.extraEnvs . | nindent 10 }}
+        env: {{ toYaml .Values.extraEnvs | nindent 10 }}
         envFrom: {{ toYaml .Values.envFrom | nindent 10 }}
         resources: {{ toYaml .Values.initResources | nindent 10 }}
         volumeMounts:
@@ -259,7 +293,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.name
-          {{- if eq .Values.roles "master" }}
+          {{- if eq .Values.roles.master "true" }}
           {{- if ge (int (include "elasticsearch.esMajorVersion" .)) 7 }}
           - name: cluster.initial_master_nodes
             value: "{{ template "elasticsearch.endpoints" . }}"
@@ -273,7 +307,7 @@ spec:
             value: {{ .Values.masterService | quote }}
           {{- else }}
           - name: discovery.seed_hosts
-            value: {{ .Values.masterService }}-headless
+            value: {{ .Values.masterService | quote }}
           {{- end }}
           - name: cluster.name
             value: {{ .Values.clusterName | quote }}
@@ -281,12 +315,12 @@ spec:
             value: {{ .Values.networkHost | quote }}                      
           - name: ES_JAVA_OPTS
             value: {{ .Values.esJavaOpts | quote }}
-          - name: node.roles
-            value: {{ .Values.roles | quote }}
-          - name: ingest.geoip.downloader.enabled
-            value: "false"
+          {{- range $role, $enabled := .Values.roles }}
+          - name: node.{{ $role }}
+            value: {{ $enabled | quote }}
+          {{- end }}
 {{- if .Values.extraEnvs }}
-{{ tpl .Values.extraEnvs . | indent 10 }}
+{{ toYaml .Values.extraEnvs | indent 10 }}
 {{- end }}
 {{- if .Values.envFrom }}
         envFrom:
@@ -325,7 +359,7 @@ spec:
         {{- end }}
         {{- end }}
       {{- if .Values.masterTerminationFix }}
-      {{- if eq .Values.roles "master" }}
+      {{- if eq .Values.roles.master "true" }}
       # This sidecar will prevent slow master re-election
       # https://github.com/elastic/helm-charts/issues/63
       - name: elasticsearch-master-graceful-termination-handler
@@ -374,7 +408,7 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
         {{- if .Values.extraEnvs }}
-{{ tpl .Values.extraEnvs . | indent 10 }}
+{{ toYaml .Values.extraEnvs | indent 10 }}
         {{- end }}
         {{- if .Values.envFrom }}
         envFrom:

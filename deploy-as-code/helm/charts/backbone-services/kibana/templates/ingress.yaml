@@ -1,0 +1,48 @@
+{{- if .Values.ingress.enabled -}}
+{{- $fullName := include "kibana.fullname" . -}}
+{{- $httpPort := .Values.httpPort -}}
+{{- $path := .Values.serverBasePath -}}
+{{- $pathtype := .Values.ingress.pathtype -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  namespace: {{ .Values.namespace }}
+  labels: {{ include "kibana.labels" . | nindent 4 }}
+{{- with .Values.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  rules:
+{{- if .Values.ingress.host }}
+  {{- tpl  .Values.ingress.host . | nindent 2 }}
+{{- else if .Values.ingress.hostName }}
+  - host: {{ .Values.ingress.hostName }}
+{{- else }}
+  - host: {{ .Values.global.domain }}
+{{- end }}
+    http:
+      paths:
+      - path: {{ $path }}
+        pathType: {{ $pathtype }}
+        backend:
+          service:
+            name: {{ $fullName }}
+            port:
+              number: {{ $httpPort }}
+  tls:
+{{- if .Values.ingress.tls }}
+  {{- tpl  .Values.ingress.tls . | nindent 2 }}
+{{- else }}
+{{- if .Values.ingress.hostName }}
+  - hosts:
+    - {{ .Values.ingress.hostName }}
+    secretName: {{ .Values.ingress.hostName }}-tls-certs
+{{- else }}
+  - hosts:
+    - {{ .Values.global.domain }}
+    secretName: {{ .Values.global.domain }}-tls-certs
+{{- end }}
+{{- end }}
+{{- end }}

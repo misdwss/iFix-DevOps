@@ -150,4 +150,11 @@ cluster-configs:
     egov-penalty-schedular:
       namespace: mgramseva
       name: egov-penalty-schedular
-      
+
+    elasticsearch:
+      namespace: [ mgramseva, monitoring ]
+      name: elasticsearch-credential
+
+    elasticsearch-certificate:
+      namespace: [ mgramseva, monitoring ]
+      name: elasticsearch-certs
