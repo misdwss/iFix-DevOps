@@ -6,7 +6,7 @@ namespace: es-cluster
 # Ingress Configs
 ingress:
   enabled: true
-  context: "kibana"
+  context: "kibana-v1"
   additionalAnnotations: |
     nginx.ingress.kubernetes.io/auth-signin:  https://$host/oauth2/start?rd=$escaped_request_uri
     nginx.ingress.kubernetes.io/auth-url:     https://$host/oauth2/auth 
@@ -21,12 +21,12 @@ image:
 replicas: "1"
 httpPort: 5601
 elasticsearchHosts: "http://elasticsearch-data-v1.mgramseva:9200"
-serverBasePath: "/kibana"
-healthCheckPath: "kibana/app/kibana"
+serverBasePath: "/kibana-v1"
+healthCheckPath: "kibana-v1/app/kibana"
 healthChecks:
   enabled: true
-  livenessProbePath: "/kibana/"
-  readinessProbePath: "/kibana/"            
+  livenessProbePath: "/kibana-v1/"
+  readinessProbePath: "/kibana-v1/"
 
 # Additional Container Envs
 env: |
