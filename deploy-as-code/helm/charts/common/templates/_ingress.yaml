@@ -1,15 +1,22 @@
 {{- define "common.ingress" -}}
 {{- if .Values.ingress.enabled -}}
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ template "common.name" . }}
-  namespace: {{ .Values.global.namespace }}  
+{{- if .Values.global.namespace }}
+  namespace: {{ .Values.global.namespace }} 
+{{- else }}   
+  namespace: {{ .Values.namespace }}
+{{- end }} 
   annotations:
 {{- toYaml .Values.ingress.annotations | nindent 4 }}   
 {{- if .Values.ingress.waf.enabled }}      
 {{- toYaml .Values.ingress.waf.annotations | nindent 4 }} 
+{{- end  }}
+{{- if .Values.ingress.cors.enabled }}      
+{{- toYaml .Values.ingress.cors.annotations | nindent 4 }} 
 {{- end  }}
 {{- if .Values.ingress.additionalAnnotations }}                                   
   {{- tpl  .Values.ingress.additionalAnnotations . | nindent 4 }}
@@ -29,11 +36,15 @@ spec:
       paths:
       - backend:
 {{- if .Values.ingress.zuul }}          
-          serviceName: ifix-zuul
-          servicePort: 8080
+          service:
+            name: ifix-zuul
+            port:
+              number: 8080
 {{ else }}
-          serviceName: {{ .Values.ingress.serviceName | default (include "common.name" .) }}
-          servicePort: {{ .Values.ingress.servicePort | default .Values.httpPort }}
+          service:
+            name: {{ .Values.ingress.serviceName | default (include "common.name" .) }}
+            port:
+              number: {{ .Values.ingress.servicePort | default .Values.httpPort }}
 {{- end }}            
         path: /{{ .Values.ingress.context }}
   tls:

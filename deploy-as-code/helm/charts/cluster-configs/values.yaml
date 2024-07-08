@@ -142,3 +142,11 @@ cluster-configs:
     postgres:
       namespace: jenkins
       name: postgres
+
+    elasticsearch:
+      namespace: [ ifix ]
+      name: elasticsearch-credential
+
+    elasticsearch-certificate:
+      namespace: [ ifix ]
+      name: elasticsearch-certs
