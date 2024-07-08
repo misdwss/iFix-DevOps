@@ -993,7 +993,8 @@ ifix-department-entity-service:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-dwss.psegs.in"
 
 mgramseva-ifix-adapter:
-  replicas: 4
+  replicas: 3
+  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
 
 egov-penalty-schedular:
   java-enable-debug: "true"
