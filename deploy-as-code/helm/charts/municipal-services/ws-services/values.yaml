@@ -172,3 +172,13 @@ env: |
   {{- end }}
   - name: IS_EXTERNAL_WORKFLOW_ENABLED
     value: {{ index .Values "is-external-workflow-enabled" | quote }}
+  - name: EGOV_INDEXER_ES_USERNAME
+    valueFrom:
+      secretKeyRef:
+        key: username
+        name: elasticsearch-credential
+  - name: EGOV_INDEXER_ES_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        key: password
+        name: elasticsearch-credential
