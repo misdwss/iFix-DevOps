@@ -3,11 +3,7 @@ apiVersion: {{ template "elasticsearch.statefulset.apiVersion" . }}
 kind: StatefulSet
 metadata:
   name: {{ template "name" . }}
-{{- if .Values.global.namespace }}
-  namespace: {{ .Values.global.namespace }} 
-{{- else }}   
   namespace: {{ .Values.namespace }}
-{{- end }}  
   labels:
     app: "{{ template "name" . }}"
     {{- range $key, $value := .Values.labels }}
@@ -55,24 +51,6 @@ spec:
       {{- if .Values.schedulerName }}
       schedulerName: "{{ .Values.schedulerName }}"
       {{- end }}
-      {{- if .Values.global.nodepool.nodeAffinity }} 
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-           nodeSelectorTerms:
-            - matchExpressions:
-              - key: Environment
-                operator: In
-                values:
-                - {{ .Values.global.nodepool.selector }}     
-      tolerations:
-      - key: "dedicated"
-        operator: "Equal"
-        value: "{{ .Values.global.nodepool.toleration }}"
-        effect: "NoSchedule"
-      nodeSelector:
-        Environment: {{ .Values.global.nodepool.selector }}
-      {{- end }}  
       securityContext:
 {{ toYaml .Values.podSecurityContext | indent 8 }}
         {{- if .Values.fsGroup }}
@@ -196,7 +174,7 @@ spec:
           fi
 
           cp -a /usr/share/elasticsearch/config/elasticsearch.keystore /tmp/keystore/
-        env: {{ toYaml .Values.extraEnvs | nindent 10 }}
+        env: {{ tpl .Values.extraEnvs . | nindent 10 }}
         envFrom: {{ toYaml .Values.envFrom | nindent 10 }}
         resources: {{ toYaml .Values.initResources | nindent 10 }}
         volumeMounts:
@@ -281,7 +259,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.name
-          {{- if eq .Values.roles.master "true" }}
+          {{- if eq .Values.roles "master" }}
           {{- if ge (int (include "elasticsearch.esMajorVersion" .)) 7 }}
           - name: cluster.initial_master_nodes
             value: "{{ template "elasticsearch.endpoints" . }}"
@@ -295,7 +273,7 @@ spec:
             value: {{ .Values.masterService | quote }}
           {{- else }}
           - name: discovery.seed_hosts
-            value: {{ .Values.masterService | quote }}
+            value: {{ .Values.masterService }}-headless
           {{- end }}
           - name: cluster.name
             value: {{ .Values.clusterName | quote }}
@@ -303,12 +281,12 @@ spec:
             value: {{ .Values.networkHost | quote }}                      
           - name: ES_JAVA_OPTS
             value: {{ .Values.esJavaOpts | quote }}
-          {{- range $role, $enabled := .Values.roles }}
-          - name: node.{{ $role }}
-            value: {{ $enabled | quote }}
-          {{- end }}
+          - name: node.roles
+            value: {{ .Values.roles | quote }}
+          - name: ingest.geoip.downloader.enabled
+            value: "false"
 {{- if .Values.extraEnvs }}
-{{ toYaml .Values.extraEnvs | indent 10 }}
+{{ tpl .Values.extraEnvs . | indent 10 }}
 {{- end }}
 {{- if .Values.envFrom }}
         envFrom:
@@ -347,7 +325,7 @@ spec:
         {{- end }}
         {{- end }}
       {{- if .Values.masterTerminationFix }}
-      {{- if eq .Values.roles.master "true" }}
+      {{- if eq .Values.roles "master" }}
       # This sidecar will prevent slow master re-election
       # https://github.com/elastic/helm-charts/issues/63
       - name: elasticsearch-master-graceful-termination-handler
@@ -396,7 +374,7 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
         {{- if .Values.extraEnvs }}
-{{ toYaml .Values.extraEnvs | indent 10 }}
+{{ tpl .Values.extraEnvs . | indent 10 }}
         {{- end }}
         {{- if .Values.envFrom }}
         envFrom:

@@ -24,7 +24,7 @@ creation_rules:
           encrypted_regex: '^(secrets)$'
           kms: 'arn:aws:kms:ap-south-1:434036464328:key/2c94f2aa-a4a2-4c2e-9360-385e126d4b0c'
           #gcp_kms: 'projects/digit-egov/locations/asia-south1/keyRings/egov-sops/cryptoKeys/egov-sops-key'
-          pgp: 'B9FF61E01273EDF7DE298B52F4D6BD77E5C66196'
+#          pgp: 'B9FF61E01273EDF7DE298B52F4D6BD77E5C66196'
 
         - path_regex: misdwss/mgramseva\-ci\-secrets\.yaml$   #ci
           encrypted_regex: '^(secrets)$'
@@ -39,7 +39,7 @@ creation_rules:
         - kms: 'arn:aws:kms:ap-south-1:434036464328:key/2c94f2aa-a4a2-4c2e-9360-385e126d4b0c'
           #gcp_kms: 'projects/digit-egov/locations/asia-south1/keyRings/egov-sops/cryptoKeys/egov-sops-key'
           encrypted_regex: '^(secrets)$'
-          pgp: 'B9FF61E01273EDF7DE298B52F4D6BD77E5C66196'
+#          pgp: 'B9FF61E01273EDF7DE298B52F4D6BD77E5C66196'
 
         # - path_regex: environments/dev\.yaml$
         #   encrypted_regex: '^(secrets)$'

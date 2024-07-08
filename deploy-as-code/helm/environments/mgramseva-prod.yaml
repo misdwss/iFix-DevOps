@@ -93,8 +93,8 @@ cluster-configs:
         domain: "mgramseva-dwss.punjab.gov.in"
         egov-services-fqdn-name: "https://mgramseva-dwss.punjab.gov.in/"
         egov-state-level-tenant-id: "pb"
-        es-host: "elasticsearch-data-v1.mgramseva"
-        es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
+        es-host: "elasticsearch-master.mgramseva"
+        es-indexer-host: "https://elasticsearch-master.mgramseva:9200/"
         flyway-locations: "filesystem:/flyway/sql,filesystem:/flyway/seed,filesystem:/flyway/qa"
         kafka-brokers: "kafka-kraft-controller-headless.mgramseva:9092"
         kafka-infra-brokers: "kafka-v2.mgramseva:9092"
@@ -338,7 +338,7 @@ egov-mdms-service:
   replicas: 3
 
 egov-indexer:
-  replicas: 2
+  replicas: 3
   heap: "-Xmx512m -Xms512m"
   memory_limits: "768Mi"
   initContainers:
@@ -387,7 +387,7 @@ property-services:
  egov-url-shortener-endpoint: "/eus/shortener"
  
 ws-calculator:
- replicas: 5
+ replicas: 3
  memory_limits: 2150Mi
  heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
  sms-demand-enabled: true
@@ -737,6 +737,41 @@ kafka-connect:
   image:
     tag: "5.4.1"  
 
+# es-cluster >>>>>>>>>>>>>>>>>>>>>>>>>>>>
+elasticsearch-master:
+  replicas: 3
+  image:
+    tag: 8.11.3
+  persistence:
+    enabled: true
+    dataDirSize: "2Gi"
+
+  esJavaOpts: "-Xmx448m -Xms448m"
+  resources:
+    requests:
+      memory: "1Gi"
+    limits:
+      memory: "1Gi"
+
+elasticsearch-data:
+  image:
+    tag: 8.11.3
+  persistence:
+    enabled: true
+    dataDirSize: "25Gi"
+
+  esJavaOpts: "-Xmx2g -Xms2g"
+  resources:
+    requests:
+      memory: "3Gi"
+    limits:
+      memory: "3Gi"
+
+kibana:
+  image:
+    tag: 8.11.3
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 # es-v1-cluster >>>>>>>>>>>>>>>>>>>>>>>>>>>>
 elasticsearch-data-v1:
   namespace: mgramseva
@@ -752,14 +787,18 @@ elasticsearch-data-v1:
         zone: ap-south-1a
       - volumeId: "vol-06dafc12f46be4a74"
         zone: ap-south-1a
-  esJavaOpts: "-Xmx1g -Xms1g"
+  esJavaOpts: "-Xmx3g -Xms3g"
   resources:
     requests:
-      # cpu: "1000m"
-      memory: "2Gi"
+      cpu: "1000m"
+      memory: "5Gi"
     limits:
-      # cpu: "1000m"
-      memory: "2Gi"
+      cpu: "1500m"
+      memory: "5Gi"
+  nodepool:
+    nodeAffinity: true
+    selector: elasticsearch-prod-ng
+    toleration: elasticsearch-prod-ng
 
 elasticsearch-master-v1:
   namespace: mgramseva
@@ -883,10 +922,6 @@ playground:
     - egovio/playground:1.0
 
 pgadmin:
-  images:
-    - egovio/pgadmin:v0.1
-
-pgadmin:
   namespace: mgramseva
   images:
     - egovio/pgadmin:v4.7.7
@@ -935,15 +970,6 @@ oauth2-proxy:
       github_org = "misdwss"
       github_team = "mgramsewa-prod,devops-team"
       upstreams = [ "file:///dev/null" ]
-
-grafana:
-  namespace: monitoring
-  dashboardsFolder: /work-dir/config-mgramseva/configs/monitoring-dashboards
-  initContainers:
-    gitSync:
-      enabled: true
-      repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "master"
       
 minio:
   mode: distributed
@@ -1008,3 +1034,40 @@ egov-penalty-schedular:
   user-system-role: "EMPLOYEE"
   cron:
     schedule: "*/60 * * * *"
+
+prometheus:
+  alertmanager:
+    enabled: true
+  additionalScrapeConfigs:
+    - job_name: 'nginx-ingress-metrics'
+      static_configs:
+        - targets: [ 'nginx-ingress-metrics.mgramseva:10254' ]
+    - job_name: 'blackbox'
+      metrics_path: /probe
+      params:
+        module: [ http_2xx ]
+      static_configs:
+        - targets:
+            - https://mgramseva-dwss.punjab.gov.in/mgramseva/
+            - https://ifix-dwss.psegs.in/digit-ui/
+            - https://metabase-dwss.psegs.in/
+            - https://mgramseva-dwss.punjab.gov.in/hub/
+            - https://mgramseva-dwss.punjab.gov.in/kibana/
+            - https://mgramseva-dwss.punjab.gov.in/pgadmin/
+      relabel_configs:
+        - source_labels: [ __address__ ]
+          target_label: __param_target
+        - source_labels: [ __param_target ]
+          target_label: instance
+        - target_label: __address__
+          replacement: prometheus-blackbox-exporter:9115
+    - job_name: 'blackbox_exporter'
+      static_configs:
+        - targets: [ 'prometheus-blackbox-exporter:9115' ]
+
+loki:
+  persistence:
+    enabled: true
+    accessModes:
+      - ReadWriteOnce
+    size: 50Gi
