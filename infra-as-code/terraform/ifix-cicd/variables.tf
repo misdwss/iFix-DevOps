@@ -19,11 +19,11 @@ variable "availability_zones" {
 }
 
 variable "kubernetes_version" {
-  default = "1.18"
+  default = "1.29"
 }
 
 variable "instance_type" {
-  default = "t3a.xlarge"
+  default = "m4.large"
 }
 
 variable "override_instance_types" {
@@ -31,7 +31,7 @@ variable "override_instance_types" {
 }
 
 variable "number_of_worker_nodes" {
-  default = "1"
+  default = "2"
 }
 
 variable "spot_max_price" {
