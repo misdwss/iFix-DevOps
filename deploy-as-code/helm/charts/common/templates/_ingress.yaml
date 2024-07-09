@@ -44,6 +44,7 @@ spec:
               number: {{ .Values.ingress.servicePort | default .Values.httpPort }}
 {{- end }}            
         path: /{{ .Values.ingress.context }}
+        pathType: ImplementationSpecific
   tls:
 {{- if .Values.ingress.tls }}
   {{- tpl  .Values.ingress.tls . | nindent 2 }}
