@@ -53,7 +53,7 @@ cluster-configs:
         tracer-errors-provideexceptionindetails: "true"
         timezone: "Asia/Kolkata"
         druid-host: "druid-broker.olap"
-        es-indexer-host: "http://elasticsearch-data-v1.mgramseva:9200/"
+        es-indexer-host: "https://elasticsearch-master.mgramseva:9200/"
 
     egov-service-host:
       data:
