@@ -51,7 +51,7 @@ env: |
   - name: SECURITY_BASIC_ENABLED
     value: "false" 
   - name: EGOV_PERSIST_YML_REPO_PATH
-    value: "https://raw.githubusercontent.com/misdwss/config-mgramseva/UAT/egov-persister/mdmsrsister.yml"  
+    value: "https://raw.githubusercontent.com/misdwss/config-mgramseva/UAT/egov-persister/mdms-persister.yml"  
   - name: MANAGEMENT_SECURITY_ENABLED
     value: "false"
   - name: EGOV_ENC_SIGN_HOST
