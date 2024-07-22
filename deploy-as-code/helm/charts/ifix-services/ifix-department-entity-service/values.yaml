@@ -21,7 +21,10 @@ initContainers:
 image:
   repository: "ifix-department-entity-service"
 replicas: "1"
-
+healthChecks:
+  enabled: true
+  livenessProbePath: "/ifix-department-entity/health"
+  readinessProbePath: "/ifix-department-entity/health"
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx192m -Xms192m"
