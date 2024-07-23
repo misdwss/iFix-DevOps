@@ -234,11 +234,7 @@ ifix-migration-toolkit:
   persister-kafka-department-hierarchy-create-topic: save-dept-entity-hierarchy-application
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
   
-ifix-department-entity-service: 
-  replica: 3
-  memory_limits: 1Gi
-  heap: "-Xmx756m -Xms756m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC"
-  
+
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 egov-filestore:
@@ -1016,12 +1012,15 @@ adapter-master-data-service:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-dwss.psegs.in"
 
 ifix-department-entity-service:
-  replicas: 2
   ingress:
     cors:
       enabled: true
       annotations:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-dwss.psegs.in"
+  replica: 3
+  memory_limits: 1Gi
+  heap: "-Xmx756m -Xms756m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC"
+  
 
 mgramseva-ifix-adapter:
   replicas: 3
