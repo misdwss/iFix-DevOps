@@ -233,7 +233,12 @@ ifix-migration-toolkit:
   department-hierarchy-migration-batch-size: 20
   persister-kafka-department-hierarchy-create-topic: save-dept-entity-hierarchy-application
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
-
+  
+ifix-department-entity-service: 
+  replica: 3
+  memory_limits: 1Gi
+  heap: "-Xmx756m -Xms756m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC"
+  
 # core >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 egov-filestore:
