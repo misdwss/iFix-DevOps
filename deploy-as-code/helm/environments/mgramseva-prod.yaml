@@ -1017,7 +1017,7 @@ ifix-department-entity-service:
       enabled: true
       annotations:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-dwss.psegs.in"
-  replica: 3
+  replicas: 3
   memory_limits: 1Gi
   heap: "-Xmx756m -Xms756m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC"
   
