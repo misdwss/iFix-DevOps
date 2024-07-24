@@ -1018,8 +1018,8 @@ ifix-department-entity-service:
       annotations:
         nginx.ingress.kubernetes.io/cors-allow-origin: "https://ifix-dwss.psegs.in"
   replicas: 3
-  memory_limits: 1Gi
-  heap: "-Xmx756m -Xms756m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC"
+  memory_limits: 2200Mi
+  heap: "-Xmx1900m -Xms1900m -Xmn1700m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC"
   
 
 mgramseva-ifix-adapter:
