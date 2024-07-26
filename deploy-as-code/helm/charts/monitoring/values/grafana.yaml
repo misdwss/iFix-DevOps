@@ -793,7 +793,10 @@ dashboards:
       token: ''       
     BlackBox:
       url: https://raw.githubusercontent.com/egovernments/configs/master/monitoring-dashboards/blackbox.json
-      token: ''      
+      token: ''
+    persistent-volumes:
+      url: https://raw.githubusercontent.com/egovernments/configs/master/monitoring-dashboards/kubernetes-persistent-volumes.json
+      token: ''
         
       
 
@@ -837,8 +840,9 @@ grafana.ini:
       allow_assign_grafana_admin: false
       auto_login: false
       scopes: user:email,read:org
-      role_attribute_path: contains(groups[*], '@egovernments/mukta-prod') && 'Editor' || 'Viewer'
-      role_attribute_strict: false
+      allowed_organizations: ["egovernments"]
+      role_attribute_path: "'Viewer'"
+      role_attribute_strict: true
       auth_url: https://github.com/login/oauth/authorize
       token_url: https://github.com/login/oauth/access_token
       api_url: https://api.github.com/user
