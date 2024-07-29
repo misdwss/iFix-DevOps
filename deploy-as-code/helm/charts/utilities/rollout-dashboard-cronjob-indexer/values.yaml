@@ -58,7 +58,7 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: egov-state-level-tenant-id
-   - name: IFIX_DEP_ENTITY_URL
+  - name: IFIX_DEP_ENTITY_URL
     value: "http://ifix-department-entity-service.mgramseva:8080/"
 resources: |
   requests: {}
