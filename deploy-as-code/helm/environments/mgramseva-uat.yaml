@@ -338,6 +338,8 @@ egov-mdms-service:
   java-args: -Dspring.profiles.active=monitoring
   masters-config-url: "file:///work-dir/mdms-mgramseva/master-config.json"
   replicas: 2
+  heap: "-Xmx756m -Xms756m -Xmn600m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC"
+  memory_limits: "1Gi"
 
 egov-indexer:
   heap: "-Xmx512m -Xms512m"
