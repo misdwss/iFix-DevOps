@@ -391,7 +391,7 @@ ws-calculator:
  replicas: 3
  memory_limits: 2150Mi
  heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
- sms-demand-enabled: true
+ sms-demand-enabled: false
  sms-payment-link-enabled: false
  sms-bill-download-enable: true
  egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
