@@ -447,7 +447,7 @@ ingress-nginx:
   controller:
     replicas: 1
     metrics:
-      enabled: false
+      enabled: true
       serviceMonitor:
         enabled: true
       prometheusRule:
@@ -459,6 +459,9 @@ ingress-nginx:
       Access-Control-Allow-Origin: "https://mgramseva-uat.psegs.in"
       Access-Control-Allow-Methods: "GET, POST, OPTIONS"
       Access-Control-Allow-Headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range"
+      use-gzip: "true"
+      gzip-types: "application/json application/javascript text/css text/plain text/html"
+      gzip-min-length: "256"
     setSslTls: "mgramseva-uat.psegs.in-tls-certs"
 
 cert-manager:
