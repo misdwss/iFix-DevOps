@@ -460,8 +460,6 @@ ingress-nginx:
       Access-Control-Allow-Methods: "GET, POST, OPTIONS"
       Access-Control-Allow-Headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range"
       use-gzip: "true"
-      gzip-types: "application/json application/javascript text/css text/plain text/html"
-      gzip-min-length: "256"
     setSslTls: "mgramseva-uat.psegs.in-tls-certs"
 
 cert-manager:
