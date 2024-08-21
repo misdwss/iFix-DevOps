@@ -452,6 +452,8 @@ ingress-nginx:
         enabled: true
       prometheusRule:
         enabled: true
+    config:
+      use-gzip: "true"
     addHeaders:
       X-Content-Type-Options: "nosniff"
       X-Frame-Options: "SAMEORIGIN"
@@ -459,7 +461,6 @@ ingress-nginx:
       Access-Control-Allow-Origin: "https://mgramseva-uat.psegs.in"
       Access-Control-Allow-Methods: "GET, POST, OPTIONS"
       Access-Control-Allow-Headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range"
-      use-gzip: "true"
     setSslTls: "mgramseva-uat.psegs.in-tls-certs"
 
 cert-manager:
