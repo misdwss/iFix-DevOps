@@ -470,6 +470,8 @@ ingress-nginx:
         enabled: true
       prometheusRule:
         enabled: true
+    config:
+      use-gzip: "true"
     addHeaders:
       X-Content-Type-Options: "nosniff"
       X-Frame-Options: "SAMEORIGIN"
