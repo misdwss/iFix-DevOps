@@ -90,6 +90,10 @@ env: |
         key: egov-workflow-v2
   - name: JAVA_ENABLE_DEBUG
     value: "true"
+  - name: FLYWAY_ENABLED
+    value: "true"
+  - name: SPRING_FLYWAY_ENABLED
+    value: "true"
   {{- if index .Values "global" "tracer-errors-provideexceptionindetails" }}
   - name: TRACER_ERRORS_PROVIDEEXCEPTIONINDETAILS
     valueFrom:
