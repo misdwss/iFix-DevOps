@@ -560,6 +560,7 @@ egov-workflow-v2:
   workflow-statelevel: "true"
 
 egov-hrms:
+  replicas: 3
   java-args: -Dspring.profiles.active=monitoring
   heap: "-Xmx192m -Xms192m"
   employee-applink: "https://mgramseva-dev.egov.org.in/employee/user/login"
