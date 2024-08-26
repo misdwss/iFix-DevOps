@@ -132,9 +132,9 @@ env: |
     valueFrom:
       secretKeyRef:
         key: username
-        name: elasticsearch-credential
+        name: elasticsearch
   - name: EGOV_ES_PASSWORD
     valueFrom:
       secretKeyRef:
         key: password
-        name: elasticsearch-credential
+        name: elasticsearch
