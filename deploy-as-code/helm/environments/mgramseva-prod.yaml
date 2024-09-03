@@ -178,14 +178,14 @@ mdms-v2:
   resources: |
     requests:
       cpu: 200m
-      memory: 2150Mi
+      memory: 3Gi
     limits:
       cpu: 500m
-      memory: 2150Mi
+      memory: 3Gi
   
 billing-service:
   replicas: 3
-  memory_limits: 2150Mi
+  memory_limits: 3Gi
   heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   demand.updateurl: '{"WS":"http://ws-calculator.mgramseva:8080/ws-calculator/waterCalculator/_updateDemand"}'
   sms-bill-notification-enable: false
@@ -351,7 +351,7 @@ egov-indexer:
 
 egov-pg-service:
   replicas: 1
-  memory_limits: 2150Mi
+  memory_limits: 3Gi
   heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
   axis: true
   egov-url-shortener-endpoint: "/eus/shortener"
@@ -389,7 +389,7 @@ property-services:
  
 ws-calculator:
  replicas: 3
- memory_limits: 2150Mi
+ memory_limits: 3Gi
  heap: "-Xmx1950m -Xms1950m -Xmn1750m -XX:TieredStopAtLevel=1 -server -XX:+UseG1GC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintGCDateStamps -Xloggc:garbage_collection.log"
  sms-demand-enabled: false
  sms-payment-link-enabled: false
@@ -405,7 +405,7 @@ ws-calculator:
 
 egov-localization:
   replicas: 3
-  memory_limits: 512Mi
+  memory_limits: 1Gi
 
 pdf-service:
   replicas: 2
@@ -671,10 +671,10 @@ kafka-kraft:
     heapOpts: "-Xms1024M -Xmx1024M"
     resources:
       limits:
-        memory: 1408Mi
+        memory: 2500Mi
       requests:
         cpu: 500m
-        memory: 1408Mi
+        memory: 2500Mi
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
    
