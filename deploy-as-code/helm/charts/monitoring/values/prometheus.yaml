@@ -175,121 +175,134 @@ defaultRules:
 additionalPrometheusRules: 
  - name: podalerts
    groups:
-     - name: SSLCertificateAlerts
+     - name: KubernetesPodAlerts
        rules:
-       - alert: SSLCertificateExpiring
-         expr: probe_ssl_earliest_cert_expiry{job="blackbox", instance="prometheus-blackbox-exporter:9115"} - time() < 2*24*3600
-         for: 1m
-         labels:
-           severity: warning
-           repeat_interval: 30m
        - alert: KubernetesContainerOomKiller
-         expr: '(kube_pod_container_status_restarts_total - kube_pod_container_status_restarts_total offset 10m >= 1) and ignoring (reason) min_over_time(kube_pod_container_status_last_terminated_reason{reason="OOMKilled"}[10m]) == 1'
+         expr: '(kube_pod_container_status_restarts_total - kube_pod_container_status_restarts_total offset 10m >= 1) and ignoring (reason) min_over_time(kube_pod_container_status_last_terminated_reason{reason="OOMKilled", namespace!~"monitoring|kube-system|default|logging"}[10m]) >= 1'
          for: 1m
          labels:
-           severity: warning
-         annotations:
-           summary: Kubernetes container oom killer ({{ $labels.namespace }}/{{ $labels.pod }}:{{ $labels.container }})
-           description: "Container {{ $labels.container }} in pod {{ $labels.namespace }}/{{ $labels.pod }} has been OOMKilled {{ $value }} times in the last 10 minutes.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+           severity: critical
            repeat_interval: 30m
+         annotations:
+           summary: Kubernetes container OOM Killed
+           description: |
+             A Container in pod {{ $labels.pod }} has been OOMKilled {{ $value }} times in the last 10 minutes.
+             - namespace: ({{ $labels.namespace }}
+             - pod: {{ $labels.pod }}
+             - container: {{ $labels.container }}
        - alert: KubernetesPodNotHealthy
-         expr: 'sum by (namespace, pod) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed"}) > 0'
+         expr: 'sum by (namespace, pod, phase) (kube_pod_status_phase{phase=~"Pending|Unknown|Failed", namespace!~"monitoring|kube-system|default|logging"}) > 0'
          for: 10m
          labels:
            severity: critical
+           repeat_interval: 30m
          annotations:
            summary: Kubernetes Pod not healthy ({{ $labels.namespace }}/{{ $labels.pod }})
-           description: "Pod {{ $labels.namespace }}/{{ $labels.pod }} has been in a non-running state for longer than 15 minutes.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+           description: |
+             Pod {{ $labels.pod }} has been in a non-running state for longer than 10 minutes.
+             - namespace: {{ $labels.namespace }}
+             - pod: {{ $labels.pod }}
+             - status: {{ $labels.phase }}
+       - alert: KubernetesPodCrashLooping
+         expr: 'max_over_time(kube_pod_container_status_waiting_reason{job="kube-state-metrics", namespace!~"monitoring|kube-system|default|logging", reason="CrashLoopBackOff"}[10m]) >= 1'
+         for: 1m
+         labels:
+           severity: critical
            repeat_interval: 30m
-      #  - alert: PodCrashLooping
-      #    expr: max_over_time(kube_pod_container_status_waiting_reason{reason="CrashLoopBackOff", job="{{ $kubeStateMetricsJob }}", namespace=~"{{ $targetNamespace }}"}[1m]) >= 1
-      #    for: 1m
-      #    labels:
-      #      severity: critcal
-      #      repeat_interval: 30m
+         annotations:
+           summary: Kubernetes Pod {{ $labels.pod }} is in CrashLoopBackOff
+           description: "Pod {{ $labels.pod }} is in CrashLoopBackOff for 10 minutes.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
  - name: nodealerts
    groups:
-     - name: KubernetesNodeNotReady
+     - name: KubernetesNodeAlerts
        rules:
        - alert: KubernetesNodeNotReady
-         expr: 'kube_node_status_condition{condition="Ready",status="true"} == 0'
+         expr: 'kube_node_status_condition{condition="Ready", status="true"} == 0'
          for: 5m
          labels:
            severity: critical
+           repeat_interval: 30m
          annotations:
            summary: Kubernetes Node ready (node {{ $labels.node }})
-           description: "Node {{ $labels.node }} has been unready for a long time\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-           repeat_interval: 30m
+           description: "Node {{ $labels.node }} has been unready for a long time"
        - alert: KubernetesNodeMemoryPressure
-         expr: 'kube_node_status_condition{condition="MemoryPressure",status="true"} == 1'
+         expr: 'kube_node_status_condition{condition="MemoryPressure", status="true"} == 1'
          for: 2m
          labels:
            severity: critical
+           repeat_interval: 30m
          annotations:
            summary: Kubernetes memory pressure (node {{ $labels.node }})
-           description: "Node {{ $labels.node }} has MemoryPressure condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-           repeat_interval: 30m
+           description: "Node {{ $labels.node }} has MemoryPressure condition"
        - alert: KubernetesNodeDiskPressure
-         expr: 'kube_node_status_condition{condition="DiskPressure",status="true"} == 1'
+         expr: 'kube_node_status_condition{condition="DiskPressure", status="true"} == 1'
          for: 2m
          labels:
            severity: critical
-         annotations:
-           summary: Kubernetes disk pressure (node {{ $labels.node }})
-           description: "Node {{ $labels.node }} has DiskPressure condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
            repeat_interval: 30m
+         annotations:
+           summary: Kubernetes NODE disk pressure
+           description: "Node {{ $labels.node }} has DiskPressure condition"
        - alert: KubernetesNodeNetworkUnavailable
-         expr: 'kube_node_status_condition{condition="NetworkUnavailable",status="true"} == 1'
+         expr: 'kube_node_status_condition{condition="NetworkUnavailable", status="true"} == 1'
          for: 2m
          labels:
            severity: critical
+           repeat_interval: 30m
          annotations:
            summary: Kubernetes Node network unavailable (instance {{ $labels.instance }})
            description: "Node {{ $labels.node }} has NetworkUnavailable condition\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-           repeat_interval: 30m
  - name: volumealerts
    groups:
-     - name: KubernetesPersistentvolume
+     - name: KubernetesVolumeAlerts
        rules:
        - alert: KubernetesVolumeOutOfDiskSpace
-         expr: 'kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes * 100 < 10'
-         for: 2m
+         expr: '(kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes * 100) < 20'
+         for: 10m
          labels:
-           severity: warning
+           severity: critical
+           repeat_interval: 30m
          annotations:
            summary: Kubernetes Volume out of disk space (instance {{ $labels.instance }})
-           description: "Volume is almost full (< 10% left)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-           repeat_interval: 30m
-       - alert: KubernetesVolumeFullInFourDays
-         expr: 'predict_linear(kubelet_volume_stats_available_bytes[6h:5m], 4 * 24 * 3600) < 0'
-         for: 1m
-         labels:
-           severity: critical
-         annotations:
-           summary: Kubernetes Volume full in four days (instance {{ $labels.instance }})
-           description: "Volume under {{ $labels.namespace }}/{{ $labels.persistentvolumeclaim }} is expected to fill up within four days. Currently {{ $value | humanize }}% is available.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-           repeat_interval: 30m
+           description: |
+             Volume is almost full (< 60% left)
+             Current Usage = {{ $value | printf "%.2f" }}%
+             LABELS:
+               - namespace: {{ $labels.namespace }}
+               - persistentvolumeclaim: {{ $labels.persistentvolumeclaim }}
+               - node: {{ $labels.node }}
        - alert: KubernetesPersistentvolumeError
-         expr: 'kube_persistentvolume_status_phase{phase=~"Failed|Pending", job="kube-state-metrics"} > 0'
-         for: 1m
+         expr: 'kube_persistentvolume_status_phase{phase=~"Failed|Pending", job="kube-state-metrics", namespace!~"monitoring|kube-system|default|logging"} > 0'
+         for: 5m
          labels:
            severity: critical
+           repeat_interval: 30m
          annotations:
            summary: Kubernetes PersistentVolumeClaim pending ({{ $labels.namespace }}/{{ $labels.persistentvolumeclaim }})
            description: "Persistent volume {{ $labels.persistentvolume }} is in bad state\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-           repeat_interval: 30m
  - name: sslalerts
    groups:
-     - name: sslcertificateexpiration
+     - name: SSLCertificateAlerts
        rules:
-        - alert: SSLCertExpiringSoon
-          expr: probe_ssl_earliest_cert_expiry{job="web-probe"} - time() < 86400 * 20
-          for: 60m
+        - alert: SSLCertificateExpiringSoon
+          expr: probe_ssl_earliest_cert_expiry{job="blackbox", instance="prometheus-blackbox-exporter:9115"} - time() < 2*24*3600
+          for: 1m
           labels:
-            severity: warning
+            severity: critical
+            repeat_interval: 30m
           annotations:
             summary: "SSL certificate is about to expire"
             description: "SSL Certificate for {{`{{`}}$labels.instance{{`}}`}} expires in {{`{{`}} .Value | humanizeDuration {{`}}`}}."
+        - alert: SSLCertificateExpired
+          expr: probe_ssl_earliest_cert_expiry{job="blackbox", instance="prometheus-blackbox-exporter:9115"} - time() < 0
+          for: 1m
+          labels:
+            severity: critical
+            repeat_interval: 30m
+          annotations:
+            summary: "SSL certificate has expired"
+            description: "SSL Certificate for {{ $labels.instance }} has expired.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
 
 ## Provide custom recording or alerting rules to be deployed into the cluster.
 ##
@@ -411,72 +424,65 @@ alertmanager:
       group_interval: 5m
       repeat_interval: 10m
       routes:
-      # - receiver: slack-notification
-      #   match:
-      #     severity: warning
-      #   continue: true  
+      - receiver: slack-notification
+        match:
+          severity: warning
+        continue: true
       - receiver: slack-notification
         match:
           severity: critical
         continue: true
-      # - receiver: email-notification
-      #   match:
-      #     severity: critical
-      #   continue: true
-      # - receiver: email-notification
-      #   match:
-      #     severity: warning
-      #   continue: true
+      - receiver: email-notification
+        match:
+          severity: critical
+        continue: true
 
     receivers:
-    - name: default
-    
     - name: slack-notification
       slack_configs:
-        - channel: '#punjab-mgramseva-alerts'
+        - channel: '<slack-channel>'
           send_resolved: true
           username: 'Alertmanager'
           title: |
             [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }}
           text: |
             {{ range .Alerts -}}
-            *Alert:* {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
             {{- "\n" -}}
+            *Alert:* {{ .Annotations.summary }}
+            {{ if .Labels.severity }}*Severity:* `{{ .Labels.severity }}`{{ end }}
+            *Cluster:* {{ .Labels.cluster }}
             *Details:*
-            {{- "\n" -}}
-            - *alertname:* `{{ .Labels.alertname }}`
-            - *pod:* `{{ .Labels.pod }}`
-            - *namespace:* `{{ .Labels.namespace }}`
+            {{ .Annotations.description }}
             {{ end }}
 
-    # - name: email-notification
-    #   email_configs:
-    #     - to: 'gowtham.chowdam@egovernments.org'
-    #       from: 'unified.alerts@example.com'
-    #       smarthost: 'smtp.gmail.com:587'
-    #       auth_username: 'unified.alerts@egovernments.org'
-    #       auth_password: 'mujp cgjj fwxa whyd'
-    #       send_resolved: true 
-    #       headers:
-    #         subject: |
-    #           [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.cluster }} - {{ .CommonLabels.alertname }}
-    #       html: |
-    #         <html>
-    #         <head>
-    #         <title>Alert!</title>
-    #         </head>
-    #         <body>
-    #         {{ range .Alerts.Firing }}
-    #         <ul>
-    #         <li> <b>Alert Name:</b> {{ .Labels.alertname }} </li>
-    #         {{ if .Labels.pod }}<li> <b>Pod:-</b> {{ .Labels.pod }} </li>{{ end }}
-    #         {{ if .Labels.persistentvolumeclaim }}<li> <b>PVC:-</b> {{ .Labels.persistentvolumeclaim }} </li>{{ end }}
-    #         <li> <b>Severity:</b> {{ if eq .Labels.severity "critical" }}<b style="color:red;">CRITICAL</b>{{ else if eq .Labels.severity "warning" }}<b style="color:orange;">WARNING</b>{{ else }}<b>{{ .Labels.severity | toUpper }}</b>{{ end }} </li>
-    #         <li> <b>Namespace:</b> {{ .Labels.namespace }} </li>
-    #         <li> <b>Cluster:</b> {{ .Labels.cluster }} </li>
-    #         </ul><br>
-    #         {{ end }}
-    #         </body></html>
+#    - name: email-notification
+#      email_configs:
+#        - to: 'gowtham.chowdam@egovernments.org'
+#          from: 'unified.alerts@example.com'
+#          smarthost: 'smtp.gmail.com:587'
+#          auth_username: 'unified.alerts@egovernments.org'
+#          auth_password: 'mujp cgjj fwxa whyd'
+#          send_resolved: true
+#          headers:
+#            subject: |
+#              [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.cluster }} - {{ .CommonLabels.alertname }}
+#          html: |
+#            <html>
+#            <head>
+#            <title>Alert!</title>
+#            </head>
+#            <body>
+#            {{ range .Alerts.Firing }}
+#            <ul>
+#            <li> <b>Alert Name:</b> {{ .Labels.alertname }} </li>
+#            {{ if .Labels.pod }}<li> <b>Pod:-</b> {{ .Labels.pod }} </li>{{ end }}
+#            {{ if .Labels.persistentvolumeclaim }}<li> <b>PVC:-</b> {{ .Labels.persistentvolumeclaim }} </li>{{ end }}
+#            <li> <b>Severity:</b> {{ if eq .Labels.severity "critical" }}<b style="color:red;">CRITICAL</b>{{ else if eq .Labels.severity "warning" }}<b style="color:orange;">WARNING</b>{{ else }}<b>{{ .Labels.severity | toUpper }}</b>{{ end }} </li>
+#            <li> <b>Namespace:</b> {{ .Labels.namespace }} </li>
+#            <li> <b>Cluster:</b> {{ .Labels.cluster }} </li>
+#            </ul><br>
+#            {{ end }}
+#            </body></html>
     # templates:
     # - '/etc/alertmanager/config/*.tmpl'
 
@@ -3432,7 +3438,7 @@ prometheus:
     ## External labels to add to any time series or alerts when communicating with external systems
     ##
     externalLabels:
-      cluster: mukta-prod
+      cluster: demo
 
     ## enable --web.enable-remote-write-receiver flag on prometheus-server
     ##

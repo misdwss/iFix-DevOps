@@ -125,11 +125,11 @@ storage:
       # cassandra.tls.enabled: "false"
   elasticsearch:
     scheme: http
-    host: elasticsearch-master.v1
+    host: elasticsearch-master.mgramseva
     port: 9200
     anonymous: false
     user: elastic
-    usePassword: true
+    usePassword: false
     password: changeme
     # indexPrefix: test
     ## Use existing secret (ignores previous password)

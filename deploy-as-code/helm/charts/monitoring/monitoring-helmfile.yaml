@@ -30,6 +30,17 @@ releases:
   - ./values/loki-stack.yaml
   - loki:
       persistence: {{ .Values.loki.persistence | toYaml | nindent 8 }}
+      {{- if .Values.loki.additionalConfigs }}
+      config:
+        schema_config: {{ .Values.loki.additionalConfigs.schema_config | toYaml | nindent 10 }}
+        storage_config: {{ .Values.loki.additionalConfigs.storage_config | toYaml | nindent 10 }}
+        compactor: {{ .Values.loki.additionalConfigs.compactor | toYaml | nindent 10 }}
+        table_manager: {{ .Values.loki.additionalConfigs.table_manager | toYaml | nindent 10 }}
+      {{- end }}
+      {{- if .Values.loki.serviceAccount.annotations }}
+      serviceAccount:
+        annotations: {{ .Values.loki.serviceAccount.annotations | toYaml | nindent 10 }}
+      {{- end }}
 
 - name: kube-prometheus-stack
   installed: true
@@ -43,13 +54,12 @@ releases:
       enabled: {{ .Values.prometheus.alertmanager.enabled }}
   {{- if .Values.prometheus.alertmanager.enabled }}
   - alertmanager:
-      config:
-        global:
-          slack_api_url: {{ index .Values "cluster-configs" "secrets" "alertmanager" "slack_api_url" }}
+      config: {{ index .Values "cluster-configs" "secrets" "alertmanager" "config" | toYaml | nindent 8 }}
   {{- end }}
   - prometheus:
       prometheusSpec:
         additionalScrapeConfigs: {{ .Values.prometheus.additionalScrapeConfigs | toYaml | nindent 8 }}
+        externalLabels: {{ .Values.prometheus.externalLabels | toYaml | nindent 10 }}
 
 - name: jaeger
   installed: false
@@ -69,6 +79,10 @@ releases:
   version: 7.3.0
   values:
   - ./values/grafana.yaml
+  - grafana.ini:
+      auth.github:
+        allowed_organizations: {{ .Values.grafana.github.allowed_organizations }}
+        role_attribute_path: {{ .Values.grafana.github.role_attribute_path }}
   - envRenderSecret:
       GF_AUTH_GITHUB_CLIENT_ID: {{ index .Values "cluster-configs" "secrets" "grafana" "clientID" }}
       GF_AUTH_GITHUB_CLIENT_SECRET: {{ index .Values "cluster-configs" "secrets" "grafana" "clientSecret" }}

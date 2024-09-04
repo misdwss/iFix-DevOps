@@ -907,13 +907,6 @@ oauth2-proxy:
       github_org = "misdwss"
       github_team = "mgramsewa-uat,devops-team"
       upstreams = [ "file:///dev/null" ]
-
-grafana:
-  initContainers:
-    gitSync:
-      enabled: true
-      repo: "git@github.com:misdwss/config-mgramseva"
-      branch: "UAT"
       
 minio:
   mode: distributed
@@ -985,9 +978,19 @@ egov-penalty-schedular:
   cron:
     schedule: "*/10 * * * *"
 
+### Grafana >>>>>>>>>>>>>>>>>>>>
+grafana:
+  github:
+    allowed_organizations: ["misdwss"]
+    role_attribute_path: contains(groups[*], '@misdwss/devops-team') && 'Admin' || contains(groups[*], '@misdwss/mgramsewa-uat') && 'Viewer'
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+### Prometheus & Alertmanager >>>>>>>>>>>>>>>>>>>>
 prometheus:
   alertmanager:
     enabled: false
+  externalLabels:
+    cluster: mgramseva-uat
   additionalScrapeConfigs:
     - job_name: 'nginx-ingress-metrics'
       static_configs:
@@ -1014,10 +1017,41 @@ prometheus:
     - job_name: 'blackbox_exporter'
       static_configs:
         - targets: [ 'prometheus-blackbox-exporter:9115' ]
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+### loki-stack >>>>>>>>>>>>>>>>>>>>
 loki:
   persistence:
     enabled: true
     accessModes:
       - ReadWriteOnce
-    size: 10Gi
+    size: 30Gi
+  serviceAccount:
+    annotations: { }
+  additionalConfigs:
+    schema_config:
+      configs:
+        - from: 2020-10-24
+          store: boltdb-shipper
+          object_store: filesystem
+          schema: v11
+          index:
+            prefix: index_
+            period: 24h
+    storage_config:
+      boltdb_shipper:
+        active_index_directory: /data/loki/index
+        cache_location: /data/loki/index_cache
+        shared_store: filesystem
+        cache_ttl: 24h
+      filesystem:
+        directory: /data/loki/chunks
+    compactor:
+      working_directory: /data/loki/boltdb-shipper-compactor
+      shared_store: filesystem
+      retention_enabled: true
+      compaction_interval: 168h
+    table_manager:
+      retention_deletes_enabled: true
+      retention_period: 168h  # 7 days
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
