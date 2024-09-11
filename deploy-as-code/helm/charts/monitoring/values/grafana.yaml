@@ -783,9 +783,6 @@ dashboards:
       url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
       token: ''
     k8s-views-pods:
-      url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
-      token: ''
-    k8s-views-pods-temp:
       url: https://raw.githubusercontent.com/misdwss/iFix-DevOps/monitoring/deploy-as-code/helm/charts/monitoring/dashboards/k8s-views-pods.json
       token: ''
     ingress-dashboard:
