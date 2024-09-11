@@ -271,7 +271,7 @@ additionalPrometheusRules:
      - name: KubernetesVolumeAlerts
        rules:
        - alert: KubernetesVolumeOutOfDiskSpace
-         expr: '(kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes * 100) < 20'
+         expr: '(1 - (kubelet_volume_stats_available_bytes / kubelet_volume_stats_capacity_bytes)) * 100 > 80'
          for: 10m
          labels:
            severity: critical
@@ -279,8 +279,8 @@ additionalPrometheusRules:
          annotations:
            summary: Kubernetes Volume out of disk space (instance {{ $labels.instance }})
            description: |
-             Volume is almost full (< 60% left).
-             Current Usage = {{ $value | printf "%.2f" }}%.
+             Volume is almost full (> 80% used).
+             Current Usage = {{ printf "%.0f" $value }}%
              LABELS:
              {{ range $key, $value := $labels }}
                - {{ $key }}: {{ $value }}
