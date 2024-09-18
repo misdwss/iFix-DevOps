@@ -121,7 +121,8 @@ cluster-configs:
     egov-service-host:
       namespace: [mgramseva]
       data:
-        boundary-service: "http://boundary-service.egov:8080/"
+        boundary-bulk-bff: "http://boundary-bulk-bff.mgramseva:8080/"
+        boundary-service: "http://boundary-service.mgramseva:8080/"
         billing-service: "http://billing-service.mgramseva:8080/"
         collection-services: "http://collection-services.mgramseva:8080/"
         demand-services: "http://demand-services.mgramseva:8080/"
