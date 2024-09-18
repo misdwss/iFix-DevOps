@@ -32,10 +32,6 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: kafka-brokers 
-  - name: KAFKA_SAVE_CAMPAIGN_DETAILS_TOPIC
-    value: save-campaign-details
-  - name: KAFKA_UPDATE_CAMPAIGN_DETAILS_TOPIC
-    value: update-campaign-details  
   - name: EGOV_FILESTORE_SERVICE_HOST
     valueFrom:
       configMapKeyRef:
@@ -111,9 +107,9 @@ env: |
   - name: DB_SCHEMA
     value: "public"
   - name: LOCALE
-    value: {{ .Values.defaultLocale | default "en_MZ" }} 
+    value: {{ .Values.defaultLocale | default "en_IN" }} 
   - name: LOCALIZATION_MODULE
-    value: "rainmaker-hcm-admin-schemas"
+    value: "rainmaker-admin-schemas"
   - name: APP_LOG_LEVEL
     value: {{ .Values.logLevel | default "info" }} 
   - name: APP_MAX_DEBUG_CHAR
@@ -127,3 +123,9 @@ env: |
     value: "6379"
   - name: REDIS_HOST
     value: "redis.backbone"
+  - name: EGOV_HOST
+    value: "https://mgramseva-uat.psegs.in/"
+  - name: BOUNDARY_CODE_HEADER_NAME
+    value: "BOUNDARY_CODE"
+  - name: BOUNDARY_TAB_NAME
+    value: "BOUNDARY_DATA"
