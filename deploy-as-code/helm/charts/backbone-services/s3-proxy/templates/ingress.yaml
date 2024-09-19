@@ -23,4 +23,5 @@ spec:
             port:
               number: {{ .Values.httpPort }}
         path: /{{ index $.Values "cluster-configs" "configmaps" "egov-config" "data" "s3-assets-bucket" }}/
+        pathType: ImplementationSpecific
 

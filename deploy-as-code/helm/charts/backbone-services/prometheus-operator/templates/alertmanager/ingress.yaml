@@ -25,6 +25,7 @@ spec:
             port:
               number: {{ $servicePort }}
         path: {{ $routePrefix }}
+        pathType: ImplementationSpecific
   tls:
   - hosts:
     - {{ .Values.global.domain }}

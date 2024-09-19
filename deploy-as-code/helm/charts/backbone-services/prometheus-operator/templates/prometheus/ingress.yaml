@@ -31,6 +31,7 @@ spec:
         paths:
   {{- range $p := $paths }}
           - path: {{ tpl $p $ }}
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ $serviceName }}
@@ -43,6 +44,7 @@ spec:
         paths:
   {{- range $p := $paths }}
           - path: {{ tpl $p $ }}
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: {{ $serviceName }}

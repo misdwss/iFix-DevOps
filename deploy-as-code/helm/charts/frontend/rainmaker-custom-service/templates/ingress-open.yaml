@@ -14,6 +14,7 @@ spec:
             port:
               number: 8000
         path: /customization/(open|static)
+        pathType: ImplementationSpecific
   tls:
   - hosts:
     - {{ .Values.global.domain }}
