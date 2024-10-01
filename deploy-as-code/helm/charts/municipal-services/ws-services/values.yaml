@@ -105,6 +105,8 @@ env: |
     value: {{ index .Values "egov-url-shortener-endpoint" | quote }}
   - name: EGOV_SHORTENER_URL
     value: {{ index .Values "egov-shortener-url" | quote }}
+  - name: REPORT_IN_CHRONOLOGICAL_ORDER
+    value: {{ index .Values "report-in-chronological-order" | quote }}
   - name: EGOV_FILESTORE_HOST
     valueFrom:
       configMapKeyRef:
