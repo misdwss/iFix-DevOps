@@ -690,6 +690,14 @@ kafka-kraft:
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+kafka-ui:
+  yamlApplicationConfig:
+    kafka:
+      clusters:
+        - name: mgramseva-uat
+          bootstrapServers: kafka-kraft-controller-headless.mgramseva:9092
+          readonly: true
+
 # zookeeper-v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 zookeeper-v2:
   namespace: mgramseva
