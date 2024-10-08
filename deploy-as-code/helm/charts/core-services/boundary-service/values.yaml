@@ -72,3 +72,12 @@ env: |
     value: {{ index .Values "kafka-topics-update-boundary" | quote }}
   - name: KAFKA_TOPICS_UPDATE_BOUNDARY_HIERARCHY
     value: {{ index .Values "kafka-topics-update-boundary-hierarchy" | quote }}
+  - name: EGOV_MDMS_HOST
+    valueFrom:
+      configMapKeyRef:
+        name: egov-service-host
+        key: egov-mdms-service
+  - name: EGOV_MDMS_SEARCH_ENDPOINT
+    value: {{ index .Values "egov-mdms-search-endpoint" | quote }}
+  - name: EGOV_MDMS_CREATE_ENDPOINT
+    value: {{ index .Values "egov-mdms-create-endpoint" | quote }}
