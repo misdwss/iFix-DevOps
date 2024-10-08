@@ -554,6 +554,7 @@ egov-hrms:
   employee-applink: "https://mgramseva-uat.psegs.in/mgramseva-web/employee/user/login"
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
   sms-user-creation-enabled: false
+  egov-hrms-default-pagination-limit:3000
  
 
 egov-apportion-service:
