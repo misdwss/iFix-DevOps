@@ -948,6 +948,28 @@ pgadmin:
 
 #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+jupyterhub:
+  hub:
+    config:
+      Authenticator:
+        admin_users:
+          - mgramseva-admin
+      NativeAuthenticator:
+        minimum_password_length: 8
+        check_common_password: false
+        allowed_failed_logins: 5
+        seconds_before_next_try: 300
+      JupyterHub:
+        admin_access: true
+  ingress:
+    enabled: true
+    hosts:
+      - mgramseva-dwss.punjab.gov.in
+    tls:
+      - hosts:
+          - mgramseva-dwss.punjab.gov.in
+        secretName: mgramseva-dwss.punjab.gov.in-tls-certs
+
 # fluent-bit >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 fluent-bit:
   images:
