@@ -9,7 +9,7 @@ cron:
 # Init Containers Configs
 initContainers:
   dbMigration:
-    enabled: false
+    enabled: true
 
 # Container Configs
 image:
