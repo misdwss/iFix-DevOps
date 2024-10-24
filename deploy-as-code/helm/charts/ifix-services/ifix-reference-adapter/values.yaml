@@ -78,7 +78,7 @@ env: |
       configMapKeyRef:
         name: egov-config
         key: tracer-errors-provideexceptionindetails
-  {{- end }} mdms.search.endpoint
+  {{- end }}
   - name: SPRING_KAFKA_CONSUMER_GROUP_ID
     value: ifix-adaptor-mapper
   - name: MDMS_SEARCH_ENDPOINT
