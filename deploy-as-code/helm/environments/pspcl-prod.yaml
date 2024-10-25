@@ -61,7 +61,7 @@ cluster-configs:
         ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
         keycloak: "http://keycloak.ifix:8080/"
         redis-host: "redis.ifix"
-        egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
+        egov-mdms-service: "http://mdms-v2.mgramseva:8080/"
 
 ifix-master-data-service:
   server-context-path: "/ifix-master-data"
@@ -250,6 +250,7 @@ pspcl-ifix-adapter:
   fiscal-event-receiver: "mgramseva-prod"
   ifix-host: "https://ifix-dwss.psegs.in/"
   keycloak-host: "https://ifix-dwss.psegs.in/"
+  egov-mdms-search-endpoint: "mdms-v2/v1/_search"
   java-enable-debug: "true"
   cron:
     schedule: "0 0 * * *"

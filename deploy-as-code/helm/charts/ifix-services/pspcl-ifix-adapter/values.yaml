@@ -45,7 +45,9 @@ env: |
   - name: FISCAL_EVENT_TENANTID
     value: {{ index .Values "fiscal-event-tenantId" | quote }}
   - name: DEMAND_COACODE  
-    value: {{ index .Values "demand-coaCode" | quote }} 
+    value: {{ index .Values "demand-coaCode" | quote }}
+  - name: EGOV_MDMS_SEARCH_ENDPOINT  
+    value: {{ index .Values "egov-mdms-search-endpoint" | quote }}
   - name: RECEIPT_COACODE
     value: {{ index .Values "receipt-coaCode" | quote }}
   - name: FISCAL_EVENT_RECEIVER  

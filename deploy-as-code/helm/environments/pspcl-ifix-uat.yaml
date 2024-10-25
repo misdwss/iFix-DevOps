@@ -59,7 +59,7 @@ cluster-configs:
         fiscal-event-service: "http://fiscal-event-service.ifix:8080/"
         ifix-zuul: "http://ifix-zuul.ifix:8080/"
         ifix-department-entity-service: "http://ifix-department-entity-service.ifix:8080/"
-        egov-mdms-service: "http://egov-mdms-service.mgramseva:8080/"
+        egov-mdms-service: "http://mdms-v2.mgramseva:8080/"
       
 
 
@@ -81,6 +81,7 @@ pspcl-ifix-adapter:
   fiscal-event-receiver: "mgramseva-uat"
   ifix-host: "https://ifix-uat.psegs.in/"
   keycloak-host: "https://ifix-uat.psegs.in/"
+  egov-mdms-search-endpoint: "mdms-v2/v1/_search"
   java-enable-debug: "true"
   cron:
     schedule: "*/10 * * * *"
