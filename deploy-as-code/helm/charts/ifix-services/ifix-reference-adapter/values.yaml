@@ -83,6 +83,8 @@ env: |
     value: ifix-adaptor-mapper
   - name: KAFKA_TOPICS_IFIX_ADAPTOR_MAPPER
     value: ifix-adaptor-mapper
+  - name: MDMS_SEARCH_ENDPOINT
+    value: {{ index .Values "egov-mdms-search-endpoint" | quote }}  
   - name: KEYCLOAK_CREDENTIALS_CLIENTID
     value: {{ index .Values "keycloak-credentials-clientid" | quote }}
   - name: PSPCL_IFIX_EVENT_RECEIVER_NAME
