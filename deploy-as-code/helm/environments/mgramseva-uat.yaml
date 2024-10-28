@@ -700,6 +700,9 @@ kafka-ui:
         - name: mgramseva-uat
           bootstrapServers: kafka-kraft-controller-headless.mgramseva:9092
           readonly: true
+        - name: ifix-uat
+          bootstrapServers: kafka-v2.ifix:9092
+          readonly: true
 
 # zookeeper-v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 zookeeper-v2:
