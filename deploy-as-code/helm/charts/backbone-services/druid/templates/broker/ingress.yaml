@@ -1,7 +1,7 @@
 {{- if .Values.broker.ingress.enabled -}}
 {{- $fullName := include "druid.broker.fullname" . -}}
 {{- $ingressPath := .Values.broker.ingress.path -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
@@ -27,7 +27,10 @@ spec:
       http:
         paths:
           - path: /{{ .Values.broker.ingress.path }}
+            pathType: ImplementationSpecific
             backend:
-              serviceName: {{ include "druid.broker.fullname" . }}
-              servicePort: http
+              service:
+                name: {{ include "druid.broker.fullname" . }}
+                port:
+                  name: http
 {{- end }}
