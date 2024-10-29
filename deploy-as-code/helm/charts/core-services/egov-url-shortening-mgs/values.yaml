@@ -7,7 +7,7 @@ labels:
 ingress:
   enabled: true
   zuul: false
-  context: "eus"
+  context: "eus1"
 
 # Init Containers Configs
 initContainers:
@@ -23,13 +23,13 @@ image:
 replicas: "1"
 healthChecks:
   enabled: true
-  livenessProbePath: "/eus/health"
-  readinessProbePath: "/eus/health"
+  livenessProbePath: "/eus1/health"
+  readinessProbePath: "/eus1/health"
 appType: "java-spring"
 tracing-enabled: true
 heap: "-Xmx192m -Xms192m"
 java-args: "-Dspring.profiles.active=monitoring"
-server-context: "/eus"
+server-context: "/eus1"
 
 # Additional Container Envs
 env: |
