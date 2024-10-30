@@ -35,6 +35,8 @@ server-context-path: "/fiscal-event-service"
 env: |  
   - name: SERVER_SERVLET_CONTEXT_PATH
     value: {{ index .Values "server-context-path" | quote }}
+  - name: FISCAL.EVENT.DEFAULT.LIMIT
+    value: {{ index .Values "fiscal-event-default-limit" | quote }}
   - name: SERVER_PORT
     value: "8080"
   - name: KAFKA_CONFIG_BOOTSTRAP_SERVER_CONFIG

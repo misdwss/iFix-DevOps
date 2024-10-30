@@ -1,6 +1,6 @@
 global:
   domain: ifix-uat.psegs.in
-  containerRegistry: dwssio
+  #containerRegistry: dwssio
   tracing-enabled: false
   namespace: ifix
   nodepool:
@@ -78,6 +78,7 @@ fiscal-event-service:
   fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
   fiscal-event-push-request-max-size: "1000"
   fiscal-event-kafka-postgres-topic: "save-fiscal-event"
+  fiscal-event-default-limit: 5000
 
 fiscal-event-post-processor:
   fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
