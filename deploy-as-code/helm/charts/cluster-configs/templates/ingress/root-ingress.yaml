@@ -7,6 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/app-root: /{{ .appRoot }}
   {{- end }}    
     cert-manager.io/cluster-issuer: {{ index . "cert-issuer" }}
+    kubernetes.io/ingress.class: nginx
   name: {{ .name }}
   namespace: {{ .namespace }}
 spec:

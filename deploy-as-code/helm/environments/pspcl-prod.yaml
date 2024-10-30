@@ -25,7 +25,11 @@ cluster-configs:
       namespaces: [ifix]
 
   root-ingress:
+    namespace: pspcl
     cert-issuer: letsencrypt-prod
+    serviceName: citizen
+    appRoot: citizen
+
   configmaps:
     egov-config:
       data:
