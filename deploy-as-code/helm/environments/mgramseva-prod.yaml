@@ -212,13 +212,16 @@ ws-services:
   egov-url-shortener-endpoint: "/eus/shortener"
   report-in-chronological-order: true
 ifix-reference-adapter:
+  replicas: 3
+  heap: "-Xmx384m -Xms384m"
+  memory_limits: 768Mi
   keycloak-credentials-clientid: "mgram-prod"
   pspcl-ifix-event-receiver-name: "mgramseva-prod"
   mgramseva-oauth-token-scope: "read"
   mgramseva-oauth-token-grantType: "password"
   mgramseva-oauth-token-tenantId: "pb"
   mgramseva-oauth-token-userType: "EMPLOYEE"
-  samplejob-frequency: "0 */15 * ? * *"
+  samplejob-frequency: "0 */30 * ? * *"
   spring-quartz-jdbc-initialize-schema: "always"
   mgramseva-pspcl-vendor-name: "PSPCLVENDOR"
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
