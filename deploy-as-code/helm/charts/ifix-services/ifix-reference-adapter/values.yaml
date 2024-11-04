@@ -91,6 +91,8 @@ env: |
     value: {{ index .Values "pspcl-ifix-event-receiver-name" | quote }}
   - name: MGRAMSEVA_OAUTH_TOKEN_SCOPE
     value: {{ index .Values "mgramseva-oauth-token-scope" | quote }}
+  - name: IFIX_FISCAL_EVENT_SEARCH_TIME_OVERLAP_MINUTES
+    value: {{ index .Values "ifix-fiscal-event-search-time-overlap-minutes" | quote }}
   - name: MGRAMSEVA_OAUTH_TOKEN_GRANTTYPE
     value: {{ index .Values "mgramseva-oauth-token-grantType" | quote }}
   - name: MGRAMSEVA_OAUTH_TOKEN_TENANTID

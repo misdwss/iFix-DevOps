@@ -218,10 +218,11 @@ ifix-reference-adapter:
   mgramseva-oauth-token-grantType: "password"
   mgramseva-oauth-token-tenantId: "pb"
   mgramseva-oauth-token-userType: "EMPLOYEE"
-  samplejob-frequency: "0 */2 * ? * *"
+  samplejob-frequency: "0 */15 * ? * *"
   spring-quartz-jdbc-initialize-schema: "always"
   mgramseva-pspcl-vendor-name: "PSPCLVENDOR"
   egov-mdms-search-endpoint: "/mdms-v2/v1/_search"
+  ifix-fiscal-event-search-time-overlap-minutes: 10
 
 ifix-migration-toolkit:
   fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
