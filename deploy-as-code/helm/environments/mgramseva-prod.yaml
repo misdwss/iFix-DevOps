@@ -212,9 +212,7 @@ ws-services:
   egov-url-shortener-endpoint: "/eus/shortener"
   report-in-chronological-order: true
 ifix-reference-adapter:
-  replicas: 3
-  heap: "-Xmx384m -Xms384m"
-  memory_limits: 768Mi
+  replicas: 1
   keycloak-credentials-clientid: "mgram-prod"
   pspcl-ifix-event-receiver-name: "mgramseva-prod"
   mgramseva-oauth-token-scope: "read"
