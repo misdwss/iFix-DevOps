@@ -133,6 +133,9 @@ ifix-master-data-service:
   server-context-path: "/ifix-master-data"
 
 fiscal-event-service:
+  replicas: 3
+  heap: "-Xmx384m -Xms384m"
+  memory_limits: 768Mi
   fiscal-kafka-push-topic: "fiscal-event-request-validated"
   fiscal-event-kafka-push-topic: "fiscal-event-request-validated"
   fiscal-event-push-request-max-size: "1000"
