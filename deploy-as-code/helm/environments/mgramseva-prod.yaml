@@ -1120,3 +1120,6 @@ kafka-ui:
         - name: mgramseva-prod
           bootstrapServers: kafka-kraft-controller-headless.mgramseva:9092
           readonly: true
+        - name: ifix-prod
+          bootstrapServers: kafka-v2.ifix:9092
+          readonly: true
